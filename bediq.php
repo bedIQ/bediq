@@ -45,6 +45,10 @@ if ( !defined( 'ABSPATH' ) ) exit;
  */
 class Bed_IQ {
 
+    public $plugin_url;
+    public $plugin_path;
+    public $theme_dir_path;
+
     /**
      * Constructor for the Bed_IQ class
      *
@@ -64,7 +68,10 @@ class Bed_IQ {
         add_action( 'init', array( $this, 'localization_setup' ) );
         add_action( 'init', array( $this, 'init_post_types' ) );
         add_action( 'init', array( $this, 'file_includes' ) );
+        add_action( 'init', array( $this, 'init' ) );
         add_action( 'admin_notices', array( $this, 'required_plugin_notice' ) );
+
+        add_filter( 'template_include', array( $this, 'template_loader' ), 20 );
 
         // Loads frontend scripts and styles
         add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
@@ -77,7 +84,7 @@ class Bed_IQ {
      * Checks for an existing Bed_IQ() instance
      * and if it doesn't find one, creates it.
      */
-    public static function init() {
+    public static function get_instance() {
         static $instance = false;
 
         if ( ! $instance ) {
@@ -87,14 +94,21 @@ class Bed_IQ {
         return $instance;
     }
 
+    function init() {
+        $this->theme_dir_path = apply_filters( 'bediq_theme_dir_path', 'bediq/' );
+    }
+
     function file_includes() {
 
         if ( is_admin() ) {
             require_once dirname( __FILE__ ) . '/includes/metadata.php';
             require_once dirname( __FILE__ ) . '/admin/settings.php';
         } else {
-
+            require_once dirname( __FILE__ ) . '/includes/core-functions.php';
+            require_once dirname( __FILE__ ) . '/includes/template-functions.php';
         }
+
+        require_once dirname( __FILE__ ) . '/includes/posts-to-posts.php';
     }
 
     /**
@@ -138,7 +152,7 @@ class Bed_IQ {
         /**
          * All styles goes here
          */
-        // wp_enqueue_style( 'bediq-styles', plugins_url( 'assets/css/style.css', __FILE__ ), false, date( 'Ymd' ) );
+        wp_enqueue_style( 'bediq-styles', plugins_url( 'assets/css/style.css', __FILE__ ), false, date( 'Ymd' ) );
 
         /**
          * All scripts goes here
@@ -570,10 +584,74 @@ class Bed_IQ {
             <?php
         }
     }
-    
 
+    /**
+     * Get the plugin url.
+     *
+     * @access public
+     * @return string
+     */
+    public function plugin_url() {
+        if ( $this->plugin_url ) return $this->plugin_url;
+        return $this->plugin_url = untrailingslashit( plugins_url( '/', __FILE__ ) );
+    }
+
+
+    /**
+     * Get the plugin path.
+     *
+     * @access public
+     * @return string
+     */
+    public function plugin_path() {
+        if ( $this->plugin_path ) return $this->plugin_path;
+
+        return $this->plugin_path = untrailingslashit( plugin_dir_path( __FILE__ ) );
+    }
+
+    /**
+     * Get the template path.
+     *
+     * @access public
+     * @return string
+     */
+    public function template_path() {
+        return $this->plugin_path() . '/templates/';
+    }
+
+
+    /**
+     * Get Ajax URL.
+     *
+     * @access public
+     * @return string
+     */
+    public function ajax_url() {
+        return admin_url( 'admin-ajax.php', 'relative' );
+    }
+
+    function template_loader( $template ) {
+        $find = array( 'bediq.php' );
+        $file = '';
+
+        if ( is_single() && get_post_type() == 'room' ) {
+            $file   = 'single-room.php';
+            $find[] = $file;
+            $find[] = $this->theme_dir_path. $file;
+        }
+
+        if ( $file ) {
+            $template = locate_template( $find );
+
+            if ( ! $template ) {
+                $template = $this->template_path() . $file;
+            }
+        }
+
+        return $template;
+    }
 
 } // Bed_IQ
 
 global $bediq;
-$bediq = Bed_IQ::init();
+$bediq = Bed_IQ::get_instance();
