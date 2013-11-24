@@ -64,6 +64,7 @@ class Bed_IQ {
         add_action( 'init', array( $this, 'localization_setup' ) );
         add_action( 'init', array( $this, 'init_post_types' ) );
         add_action( 'init', array( $this, 'file_includes' ) );
+        add_action( 'admin_notices', array( $this, 'required_plugin_notice' ) );
 
         // Loads frontend scripts and styles
         add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
@@ -154,6 +155,11 @@ class Bed_IQ {
 
     }
 
+    /**
+     * Register necessary post types and custom taxonomies
+     *
+     * @return void
+     */
     function init_post_types() {
 
         register_post_type( 'slide', array(
@@ -454,32 +460,117 @@ class Bed_IQ {
         ) );
 
         //taxonomies
-        register_taxonomy( 'accommodation', array(
-            0 => 'room',
-            ), array('hierarchical' => true, 'label' => __( 'Accommodation', 'bediq' ), 'show_ui' => true, 'query_var' => true, 'rewrite' => array('slug' => ''), 'singular_label' => 'Accommodation')
+        register_taxonomy( 'accommodation', array( 'room' ),
+            array(
+                'hierarchical' => true,
+                'label' => __( 'Accommodation', 'bediq' ),
+                'show_ui' => true,
+                'query_var' => true,
+                'rewrite' => array('slug' => ''),
+                'singular_label' => __( 'Accommodation', 'bediq' )
+            )
         );
 
-        register_taxonomy( 'hotel_offers', array(
-            0 => 'offer',
-        ), array('hierarchical' => true, 'label' => __( 'Hotel Offers', 'bediq' ), 'show_ui' => true, 'query_var' => true, 'rewrite' => array('slug' => 'hotel-offers'), 'singular_label' => 'Offers') );
+        register_taxonomy( 'hotel_offers', array( 'offer' ),
+            array(
+                'hierarchical' => true,
+                'label' => __( 'Hotel Offers', 'bediq' ),
+                'show_ui' => true,
+                'query_var' => true,
+                'rewrite' => array('slug' => 'hotel-offers'),
+                'singular_label' => __( 'Offers', 'bediq' )
+            )
+        );
 
-        register_taxonomy( 'venues', array(
-            0 => 'facility',
-        ), array('hierarchical' => true, 'label' => __( 'Venues', 'bediq' ), 'show_ui' => true, 'query_var' => true, 'rewrite' => array('slug' => ''), 'singular_label' => 'Venue') );
+        register_taxonomy( 'venues', array( 'facility' ),
+            array(
+                'hierarchical' => true,
+                'label' => __( 'Venues', 'bediq' ),
+                'show_ui' => true,
+                'query_var' => true,
+                'rewrite' => array('slug' => ''),
+                'singular_label' => __( 'Venues', 'bediq' )
+            )
+        );
 
-        register_taxonomy( 'dining', array(
-            0 => 'outlet',
-        ), array('hierarchical' => true, 'label' => __( 'Dining', 'bediq' ), 'show_ui' => true, 'query_var' => true, 'rewrite' => array('slug' => ''), 'singular_label' => 'Dining') );
+        register_taxonomy( 'dining', array( 'outlet' ),
+            array(
+                'hierarchical' => true,
+                'label' => __( 'Dining', 'bediq' ),
+                'show_ui' => true,
+                'query_var' => true,
+                'rewrite' => array('slug' => ''),
+                'singular_label' => __( 'Dining', 'bediq' )
+            )
+        );
 
-        register_taxonomy( 'things-to-do', array(
-            0 => 'activity',
-        ), array('hierarchical' => true, 'label' => __( 'Things To Do', 'bediq' ), 'show_ui' => true, 'query_var' => true, 'rewrite' => array('slug' => ''), 'singular_label' => 'Things To Do') );
+        register_taxonomy( 'things-to-do', array( 'activity' ),
+            array(
+                'hierarchical' => true,
+                'label' => __( 'Things To Do', 'bediq' ),
+                'show_ui' => true,
+                'query_var' => true,
+                'rewrite' => array('slug' => ''),
+                'singular_label' => __( 'Things To Do', 'bediq' )
+            )
+        );
 
-        register_taxonomy( 'accommodation', array(
-            0 => 'room',
-        ), array('hierarchical' => true, 'label' => __( 'Accommodation', 'bediq' ), 'show_ui' => true, 'query_var' => true, 'rewrite' => array('slug' => ''), 'singular_label' => 'Accommodation') );
+        register_taxonomy( 'accommodation', array( 'room' ),
+            array(
+                'hierarchical' => true,
+                'label' => __( 'Accommodation', 'bediq' ),
+                'show_ui' => true,
+                'query_var' => true,
+                'rewrite' => array('slug' => ''),
+                'singular_label' => __( 'Accommodation', 'bediq' )
+            )
+        );
+    }
+
+    /**
+     * Show error nag in admin area if required plugins are not
+     * installed
+     *
+     * @return void
+     */
+    function required_plugin_notice() {
+
+        if ( !current_user_can( 'activate_plugins' ) ) {
+            return;
+        }
+
+        $required_plugins = array(
+            array(
+                'function' => 'x_add_metadata_field',
+                'name' => 'Custom Metadata Manager',
+                'url' => 'http://wordpress.org/plugins/custom-metadata/'
+            ),
+            array(
+                'function' => 'p2p_register_connection_type',
+                'name' => 'Posts 2 Posts',
+                'url' => 'http://wordpress.org/plugins/posts-to-posts/'
+            ),
+        );
+
+        $not_installed = array();
+        foreach ($required_plugins as $plugin) {
+            if ( !function_exists( $plugin['function'] ) ) {
+                $not_installed[] = sprintf( '<a href="%s">%s</a>', esc_url( $plugin['url'] ), $plugin['name'] );
+            }
+        }
+
+        if ( $not_installed ) {
+            ?>
+            <div class="error">
+                <p>
+                    <?php printf( __( 'Please install %s plugin(s) for Bed IQ to work properly', 'bediq' ), implode( ', ', $not_installed ) ); ?>
+                </p>
+            </div>
+            <?php
+        }
     }
 
 } // Bed_IQ
 
-$baseplugin = Bed_IQ::init();
+global $bediq;
+$bediq = Bed_IQ::init();

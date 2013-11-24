@@ -1,6 +1,6 @@
 <?php
 
-function bediq_custom_fields() {
+function bediq_metada_init() {
     if ( function_exists( 'x_add_metadata_group' ) && function_exists( 'x_add_metadata_field' ) ) {
 
         $currency = array(
@@ -172,34 +172,34 @@ function bediq_custom_fields() {
 
         // Events and Activities
         x_add_metadata_group( 'events', array('event', 'activity'), array(
-            'label' => 'Event'
+            'label' => __( 'Event', 'bediq' )
         ) );
 
         x_add_metadata_field( 'owner', array('event', 'activity'), array(
             'group' => 'events',
             'field_type' => 'select',
             'values' => bediq_users_dropdown( 'delete_others_pages' ),
-            'description' => 'Please choose organizer or set one up under <a href="users.php">Users</a>',
-            'label' => 'Organizer',
+            'description' => __( 'Please choose organizer or set one up under <a href="users.php">Users</a>', 'bediq' ),
+            'label' => __( 'Organizer', 'bediq' )
         ) );
 
         x_add_metadata_field( 'start_time', array('event', 'activity'), array(
             'group' => 'events',
             'field_type' => 'datepicker',
-            'description' => 'Please enter the start time of the event',
-            'label' => 'Event Begins',
+            'description' => __( 'Please enter the start time of the event', 'bediq' ),
+            'label' => __( 'Event Begins', 'bediq' )
         ) );
 
         x_add_metadata_field( 'end_time', array('event', 'activity'), array(
             'group' => 'events',
             'field_type' => 'datepicker',
-            'description' => 'Please enter the end time of the event',
-            'label' => 'End Time',
+            'description' => __( 'Please enter the end time of the event', 'bediq' ),
+            'label' => __( 'End Time', 'bediq' ),
         ) );
 
         x_add_metadata_field( 'overlay', array('event'), array(
             'group' => 'events',
-            'label' => 'Photo',
+            'label' => __( 'Photo', 'bediq' ),
             'field_type' => 'upload',
             'description' => ''
         ) );
@@ -562,7 +562,7 @@ function bediq_custom_fields() {
     }
 }
 
-add_action( 'admin_init', 'bediq_custom_fields' );
+add_action( 'admin_init', 'bediq_metada_init' );
 
 function bediq_post_dropdown( $post_type = 'post' ) {
     $items = array(0 => '--Select--');
