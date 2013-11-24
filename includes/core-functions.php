@@ -61,7 +61,7 @@ function bediq_get_template( $template_name, $args = array() ) {
  * @param string $meta_key
  * @param int $post_id
  */
-function bediq_disply_multi_meta( $meta_key, $post_id, $title = '', $item_prop = '' ) {
+function bediq_display_multi_meta( $meta_key, $post_id, $title = '', $item_prop = '' ) {
     $array = get_post_meta( $post_id, $meta_key );
 
     if ( count( $array ) > 0 && $array[0] != '' ) {
@@ -89,4 +89,18 @@ function bediq_date_iso( $timestamp ) {
     $datetime = date_i18n( 'c', $timestamp, true );
 
     return $datetime;
+}
+
+/**
+ * Prints a single taxonomy links from a post
+ *
+ * @param type $taxonomy
+ */
+function bediq_print_tax_link( $taxonomy ) {
+    global $post;
+
+    $cat = get_the_term_list( $post->ID, $taxonomy, '', ', ', '' );
+    if ( $cat && !is_wp_error( $cat ) ) {
+        echo $cat;
+    }
 }

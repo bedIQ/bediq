@@ -87,31 +87,31 @@ $on_request = get_post_meta( $post->ID, 'on_request' );
                     </tr>
                 <?php } ?>
             </table>
-            <p><?php bediq_disply_multi_meta( 'facilities_room', $post->ID ); ?></p>
+            <p><?php bediq_display_multi_meta( 'facilities_room', $post->ID ); ?></p>
         </div>
 
         <?php if ( $entertain ) { ?>
-            <div class="tab-pane" id="bediq-entertainment"><p><?php bediq_disply_multi_meta( 'entertainment', $post->ID ); ?></p></div>
+            <div class="tab-pane" id="bediq-entertainment"><p><?php bediq_display_multi_meta( 'entertainment', $post->ID ); ?></p></div>
         <?php } ?>
 
         <?php if ( $bed_features ) { ?>
-            <div class="tab-pane" id="bediq-bed"><p><?php bediq_disply_multi_meta( 'bed_features', $post->ID ); ?></p></div>
+            <div class="tab-pane" id="bediq-bed"><p><?php bediq_display_multi_meta( 'bed_features', $post->ID ); ?></p></div>
         <?php } ?>
 
         <?php if ( $bath ) { ?>
-            <div class="tab-pane" id="bediq-bath"><p><?php bediq_disply_multi_meta( 'bath', $post->ID ); ?></p></div>
+            <div class="tab-pane" id="bediq-bath"><p><?php bediq_display_multi_meta( 'bath', $post->ID ); ?></p></div>
         <?php } ?>
 
         <?php if ( $communication ) { ?>
-            <div class="tab-pane" id="bediq-comm"><p><?php bediq_disply_multi_meta( 'communication', $post->ID ); ?></p></div>
+            <div class="tab-pane" id="bediq-comm"><p><?php bediq_display_multi_meta( 'communication', $post->ID ); ?></p></div>
         <?php } ?>
 
         <?php if ( $safety ) { ?>
-            <div class="tab-pane" id="bediq-safety"><p><?php bediq_disply_multi_meta( 'safety', $post->ID ); ?></p></div>
+            <div class="tab-pane" id="bediq-safety"><p><?php bediq_display_multi_meta( 'safety', $post->ID ); ?></p></div>
         <?php } ?>
 
         <?php if ( $on_request ) { ?>
-            <div class="tab-pane" id="bediq-on-req"><p><?php bediq_disply_multi_meta( 'on_request', $post->ID ); ?></p></div>
+            <div class="tab-pane" id="bediq-on-req"><p><?php bediq_display_multi_meta( 'on_request', $post->ID ); ?></p></div>
         <?php } ?>
     </div>
 

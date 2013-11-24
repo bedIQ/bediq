@@ -27,6 +27,21 @@ add_action( 'bediq_single_event_summary', 'bediq_template_event_organizer', 20 )
 add_action( 'bediq_single_event_summary', 'bediq_template_description', 20 );
 
 
+/*  --------------------------------------------------
+:: Offer Hooks
+-------------------------------------------------- */
+
+add_action( 'bediq_before_single_offer_summary', 'bediq_template_offer_header', 10 );
+add_action( 'bediq_before_single_offer_summary', 'bediq_template_offer_book_button', 15 );
+
+add_action( 'bediq_single_offer_summary', 'bediq_template_offer_schema', 10 );
+add_action( 'bediq_single_offer_summary', 'bediq_template_offer_tabs', 15 );
+
+
+/*  --------------------------------------------------
+:: Room functions
+-------------------------------------------------- */
+
 function bediq_template_post_title() {
     ?>
     <header class="entry-header">
@@ -72,6 +87,10 @@ function bediq_template_featured_image() {
     }
 }
 
+/*  --------------------------------------------------
+:: Event functions
+-------------------------------------------------- */
+
 function bediq_template_event_schema() {
     bediq_get_template( 'event/schema.php' );
 }
@@ -86,4 +105,36 @@ function bediq_template_event_details() {
 
 function bediq_template_event_organizer() {
     bediq_get_template( 'event/organizer.php' );
+}
+
+/*  --------------------------------------------------
+:: Offer functions
+-------------------------------------------------- */
+
+
+function bediq_template_offer_header() {
+    bediq_get_template( 'offers/header.php' );
+}
+
+function bediq_template_offer_rooms() {
+    bediq_get_template( 'offers/rooms.php' );
+}
+
+function bediq_template_offer_schema() {
+    bediq_get_template( 'offers/schema.php' );
+}
+
+function bediq_template_offer_tabs() {
+    bediq_get_template( 'offers/tabs.php' );
+}
+
+function bediq_template_offer_book_button() {
+    global $post;
+
+    $url = esc_url( get_post_meta( $post->ID, 'url', true ) );
+    ?>
+    <div align="right">
+        <a href="<?php echo $url; ?>" taget="_blank" class="btn btn-danger"><?php _e( 'Book Now!', 'bediq' ); ?></a>
+    </div>
+    <?php
 }
