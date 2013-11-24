@@ -84,3 +84,9 @@ function bediq_disply_multi_meta( $meta_key, $post_id, $title = '', $item_prop =
         }
     }
 }
+
+function bediq_date_iso( $timestamp ) {
+    $datetime = date_i18n( 'c', $timestamp, true );
+
+    return $datetime;
+}

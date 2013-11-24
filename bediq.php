@@ -638,6 +638,11 @@ class Bed_IQ {
             $file   = 'single-room.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
+
+        } else if ( is_single() && get_post_type() == 'event' ) {
+            $file   = 'single-event.php';
+            $find[] = $file;
+            $find[] = $this->theme_dir_path. $file;
         }
 
         if ( $file ) {
