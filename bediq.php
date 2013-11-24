@@ -91,6 +91,7 @@ class Bed_IQ {
 
         if ( is_admin() ) {
             require_once dirname( __FILE__ ) . '/includes/metadata.php';
+            require_once dirname( __FILE__ ) . '/admin/settings.php';
         } else {
 
         }
@@ -555,7 +556,7 @@ class Bed_IQ {
         $not_installed = array();
         foreach ($required_plugins as $plugin) {
             if ( !function_exists( $plugin['function'] ) ) {
-                $not_installed[] = sprintf( '<a href="%s">%s</a>', esc_url( $plugin['url'] ), $plugin['name'] );
+                $not_installed[] = sprintf( '<a href="%s" target="_blank">%s</a>', esc_url( $plugin['url'] ), $plugin['name'] );
             }
         }
 
@@ -563,12 +564,14 @@ class Bed_IQ {
             ?>
             <div class="error">
                 <p>
-                    <?php printf( __( 'Please install %s plugin(s) for Bed IQ to work properly', 'bediq' ), implode( ', ', $not_installed ) ); ?>
+                    <?php printf( __( 'Please install %s plugin(s) for <strong>Bed IQ</strong> to work properly', 'bediq' ), implode( ', ', $not_installed ) ); ?>
                 </p>
             </div>
             <?php
         }
     }
+    
+
 
 } // Bed_IQ
 
