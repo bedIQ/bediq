@@ -64,6 +64,16 @@ add_action( 'bediq_before_single_activity_summary', 'bediq_template_activity_ima
 add_action( 'bediq_single_activity_summary', 'bediq_template_activity_details', 10 );
 add_action( 'bediq_single_activity_summary', 'bediq_template_post_content', 15 );
 
+/*  --------------------------------------------------
+:: leisure template Hooks
+-------------------------------------------------- */
+add_action( 'bediq_before_single_leisure_summary', 'bediq_template_post_title', 10 );
+add_action( 'bediq_before_single_leisure_summary', 'bediq_template_leisure_schema', 15 );
+
+add_action( 'bediq_single_leisure_summary', 'bediq_template_leisure_imageWrap', 10 );
+add_action( 'bediq_single_leisure_summary', 'bediq_template_leisure_facility', 15 );
+add_action( 'bediq_single_leisure_summary', 'bediq_template_post_content', 20 );
+add_action( 'bediq_single_leisure_summary', 'bediq_template_leisure_connected', 25 );
 
 
 /*  --------------------------------------------------
@@ -209,7 +219,7 @@ function bediq_template_activity_title() {
             <h1><?php the_title(); ?></h1>
         </div>
         <div class="alignright">
-            <?php wedevs_print_tax_link( 'things-to-do' ); ?>
+            <?php bediq_print_tax_link( 'things-to-do' ); ?>
         </div>
     </header><!-- .entry-header -->
   
@@ -228,11 +238,22 @@ function bediq_template_activity_details() {
     bediq_get_template( 'acivity/details.php' );
 }
 
-function bediq_template_post_content() {
-    ?>
-    <div itemprop="description">
-        <?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'bediq' ) ); ?>
-    </div>
-    <?php
+/*  --------------------------------------------------
+:: leisure functions
+-------------------------------------------------- */
+
+function bediq_template_leisure_schema() {
+    bediq_get_template( 'leisure/schema.php' );
+}
+
+function bediq_template_leisure_imageWrap() {
+    bediq_get_template( 'leisure/image-wrap.php' );
+}
+
+function bediq_template_leisure_facility() {
+    bediq_get_template( 'leisure/facility.php' );
+}
+function bediq_template_leisure_connected() {
+    bediq_get_template( 'leisure/conected.php' );
 }
 
