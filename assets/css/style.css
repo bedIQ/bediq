@@ -1,1 +1,21 @@
 .bediq-hidden{display:none;}
+
+.overlay {
+  position: relative;
+  margin: 0 0 15px 0;
+}
+.overlay .hotel-offers {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.45);
+  color: #333333;
+  overflow: hidden;
+}
+.overlay .hotel-offers a {
+  color: #333333;
+}.overlay .hotel-offers h2 {
+  margin-bottom: 10px;
+  line-height: 18px;
+}
