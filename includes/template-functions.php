@@ -1,7 +1,7 @@
 <?php
 
 /*  --------------------------------------------------
-:: Room Hooks
+:: Room template Hooks
 -------------------------------------------------- */
 
 add_action( 'bediq_before_single_room', 'bediq_template_featured_image', 10 );
@@ -15,7 +15,7 @@ add_action( 'bediq_single_room_summary', 'bediq_template_room_tabs', 15 );
 add_action( 'bediq_single_room_summary', 'bediq_template_room_offers', 20 );
 
 /*  --------------------------------------------------
-:: Event Hooks
+:: Event template Hooks
 -------------------------------------------------- */
 
 add_action( 'bediq_before_single_event_summary', 'bediq_template_post_title', 10 );
@@ -28,7 +28,7 @@ add_action( 'bediq_single_event_summary', 'bediq_template_description', 20 );
 
 
 /*  --------------------------------------------------
-:: Offer Hooks
+:: Offer template Hooks
 -------------------------------------------------- */
 
 add_action( 'bediq_before_single_offer_summary', 'bediq_template_offer_header', 10 );
@@ -36,6 +36,10 @@ add_action( 'bediq_before_single_offer_summary', 'bediq_template_offer_book_butt
 
 add_action( 'bediq_single_offer_summary', 'bediq_template_offer_schema', 10 );
 add_action( 'bediq_single_offer_summary', 'bediq_template_offer_tabs', 15 );
+
+/*  --------------------------------------------------
+:: Outlet template Hooks
+-------------------------------------------------- */
 
 
 /*  --------------------------------------------------
@@ -138,3 +142,42 @@ function bediq_template_offer_book_button() {
     </div>
     <?php
 }
+
+
+/*  --------------------------------------------------
+:: Outlet functions
+-------------------------------------------------- */
+
+function bediq_template_outlet_image() {
+    bediq_get_template( 'outlet/image.php' );
+}
+
+function bediq_template_outlet_activity() {
+    bediq_get_template( 'outlet/activities.php' );
+}
+
+function bediq_template_outlet_event() {
+    bediq_get_template( 'outlet/events.php' );
+}
+
+function bediq_template_outlet_offer() {
+    bediq_get_template( 'outlet/offers.php' );
+}
+
+function bediq_template_outlet_schema() {
+    bediq_get_template( 'outlet/schema.php' );
+}
+
+function bediq_template_outlet_details() {
+    bediq_get_template( 'outlet/details.php' );
+}
+
+add_action( 'bediq_before_single_outlet_summary', 'bediq_template_post_title', 10 );
+add_action( 'bediq_before_single_outlet_summary', 'bediq_template_outlet_image', 15 );
+add_action( 'bediq_before_single_outlet_summary', 'bediq_template_outlet_schema', 20 );
+
+add_action( 'bediq_single_outlet_summary', 'bediq_template_outlet_details', 10 );
+add_action( 'bediq_single_outlet_summary', 'bediq_template_outlet_event', 15 );
+add_action( 'bediq_single_outlet_summary', 'bediq_template_outlet_offer', 20 );
+add_action( 'bediq_single_outlet_summary', 'bediq_template_outlet_activity', 25 );
+

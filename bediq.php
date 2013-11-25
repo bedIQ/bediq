@@ -648,6 +648,31 @@ class Bed_IQ {
             $file   = 'single-offer.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
+
+        } else if ( is_single() && get_post_type() == 'outlet' ) {
+            $file   = 'single-outlet.php';
+            $find[] = $file;
+            $find[] = $this->theme_dir_path. $file;
+
+        } else if ( is_single() && get_post_type() == 'facility' ) {
+            $file   = 'single-facility.php';
+            $find[] = $file;
+            $find[] = $this->theme_dir_path. $file;
+
+        } else if ( is_single() && get_post_type() == 'activity' ) {
+            $file   = 'single-activity.php';
+            $find[] = $file;
+            $find[] = $this->theme_dir_path. $file;
+
+        } else if ( is_single() && get_post_type() == 'leisure' ) {
+            $file   = 'single-leisure.php';
+            $find[] = $file;
+            $find[] = $this->theme_dir_path. $file;
+
+        } else if ( is_single() && get_post_type() == 'service' ) {
+            $file   = 'single-service.php';
+            $find[] = $file;
+            $find[] = $this->theme_dir_path. $file;
         }
 
         if ( $file ) {
