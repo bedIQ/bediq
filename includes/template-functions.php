@@ -10,7 +10,7 @@ add_action( 'bediq_before_single_room_summary', 'bediq_template_post_title', 10 
 add_action( 'bediq_before_single_room_summary', 'bediq_template_room_schema', 15 );
 add_action( 'bediq_before_single_room_summary', 'bediq_template_room_book_now', 20 );
 
-add_action( 'bediq_single_room_summary', 'bediq_template_description', 10 );
+add_action( 'bediq_single_room_summary', 'bediq_template_post_content', 10 );
 add_action( 'bediq_single_room_summary', 'bediq_template_room_tabs', 15 );
 add_action( 'bediq_single_room_summary', 'bediq_template_room_offers', 20 );
 
@@ -24,7 +24,7 @@ add_action( 'bediq_before_single_event_summary', 'bediq_template_event_image_ove
 
 add_action( 'bediq_single_event_summary', 'bediq_template_event_details', 10 );
 add_action( 'bediq_single_event_summary', 'bediq_template_event_organizer', 20 );
-add_action( 'bediq_single_event_summary', 'bediq_template_description', 20 );
+add_action( 'bediq_single_event_summary', 'bediq_template_post_content', 20 );
 
 
 /*  --------------------------------------------------
@@ -37,9 +37,20 @@ add_action( 'bediq_before_single_offer_summary', 'bediq_template_offer_book_butt
 add_action( 'bediq_single_offer_summary', 'bediq_template_offer_schema', 10 );
 add_action( 'bediq_single_offer_summary', 'bediq_template_offer_tabs', 15 );
 
+
 /*  --------------------------------------------------
 :: Outlet template Hooks
 -------------------------------------------------- */
+
+add_action( 'bediq_before_single_outlet_summary', 'bediq_template_post_title', 10 );
+add_action( 'bediq_before_single_outlet_summary', 'bediq_template_outlet_image', 15 );
+add_action( 'bediq_before_single_outlet_summary', 'bediq_template_outlet_schema', 20 );
+
+add_action( 'bediq_single_outlet_summary', 'bediq_template_post_content', 10 );
+add_action( 'bediq_single_outlet_summary', 'bediq_template_outlet_details', 15 );
+add_action( 'bediq_single_outlet_summary', 'bediq_template_outlet_event', 20 );
+add_action( 'bediq_single_outlet_summary', 'bediq_template_outlet_offer', 25 );
+add_action( 'bediq_single_outlet_summary', 'bediq_template_outlet_activity', 30 );
 
 
 /*  --------------------------------------------------
@@ -54,16 +65,16 @@ function bediq_template_post_title() {
     <?php
 }
 
-function bediq_template_room_schema() {
-    bediq_get_template( 'room/schema.php' );
-}
-
-function bediq_template_description() {
+function bediq_template_post_content() {
     ?>
     <div itemprop="description">
         <?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'bediq' ) ); ?>
     </div>
     <?php
+}
+
+function bediq_template_room_schema() {
+    bediq_get_template( 'room/schema.php' );
 }
 
 function bediq_template_room_tabs() {
@@ -171,13 +182,4 @@ function bediq_template_outlet_schema() {
 function bediq_template_outlet_details() {
     bediq_get_template( 'outlet/details.php' );
 }
-
-add_action( 'bediq_before_single_outlet_summary', 'bediq_template_post_title', 10 );
-add_action( 'bediq_before_single_outlet_summary', 'bediq_template_outlet_image', 15 );
-add_action( 'bediq_before_single_outlet_summary', 'bediq_template_outlet_schema', 20 );
-
-add_action( 'bediq_single_outlet_summary', 'bediq_template_outlet_details', 10 );
-add_action( 'bediq_single_outlet_summary', 'bediq_template_outlet_event', 15 );
-add_action( 'bediq_single_outlet_summary', 'bediq_template_outlet_offer', 20 );
-add_action( 'bediq_single_outlet_summary', 'bediq_template_outlet_activity', 25 );
 
