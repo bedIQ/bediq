@@ -59,51 +59,11 @@ add_action( 'bediq_single_outlet_summary', 'bediq_template_outlet_activity', 30 
 -------------------------------------------------- */
 add_action( 'bediq_before_single_activity_summary', 'bediq_template_activity_title', 10 );
 add_action( 'bediq_before_single_activity_summary', 'bediq_template_activity_schema', 15 );
+add_action( 'bediq_before_single_activity_summary', 'bediq_template_activity_image_overlay', 20 );
 
-add_action( 'bediq_single_activity_summary', 'bediq_template_activity_tabs', 10 );
-add_action( 'bediq_single_activity_summary', 'bediq_template_activity_offers', 15 );
+add_action( 'bediq_single_activity_summary', 'bediq_template_activity_details', 10 );
+add_action( 'bediq_single_activity_summary', 'bediq_template_post_content', 15 );
 
-
-
-
-/*  --------------------------------------------------
-:: Activity functions
--------------------------------------------------- */
-
-function bediq_template_activity_title() {
-    ?>
-    <header class="entry-header">
-        <div class="alignleft" itemprop="name">
-            <h1><?php the_title(); ?></h1>
-        </div>
-        <div class="alignright">
-            <?php wedevs_print_tax_link( 'things-to-do' ); ?>
-        </div>
-    </header><!-- .entry-header -->
-  
-    <?php
-}
-
-function bediq_template_post_content() {
-    ?>
-    <div itemprop="description">
-        <?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'bediq' ) ); ?>
-    </div>
-    <?php
-}
-
-function bediq_template_activity_schema() {
-    bediq_get_template( 'activity/schema.php' );
-}
-
-function bediq_template_room_offers() {
-    bediq_get_template( 'room/offers.php' );
-}
-function bediq_template_featured_image() {
-    if ( has_post_thumbnail() ) {
-        the_post_thumbnail( 'full', array('class' => 'flex-container', 'itemprop' => 'image') );
-    }
-}
 
 
 /*  --------------------------------------------------
@@ -234,5 +194,45 @@ function bediq_template_outlet_schema() {
 
 function bediq_template_outlet_details() {
     bediq_get_template( 'outlet/details.php' );
+}
+
+
+
+/*  --------------------------------------------------
+:: Activity functions
+-------------------------------------------------- */
+
+function bediq_template_activity_title() {
+    ?>
+    <header class="entry-header">
+        <div class="alignleft" itemprop="name">
+            <h1><?php the_title(); ?></h1>
+        </div>
+        <div class="alignright">
+            <?php wedevs_print_tax_link( 'things-to-do' ); ?>
+        </div>
+    </header><!-- .entry-header -->
+  
+    <?php
+}
+
+function bediq_template_activity_schema() {
+    bediq_get_template( 'activity/schema.php' );
+}
+
+function bediq_template_activity_image_overlay() {
+    bediq_get_template( 'activity/image-overlay.php' );
+}
+
+function bediq_template_activity_details() {
+    bediq_get_template( 'acivity/details.php' );
+}
+
+function bediq_template_post_content() {
+    ?>
+    <div itemprop="description">
+        <?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'bediq' ) ); ?>
+    </div>
+    <?php
 }
 
