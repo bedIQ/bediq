@@ -296,34 +296,6 @@ class Bed_IQ {
             ),
         ) );
 
-        register_post_type( 'product', array(
-            'label' => __( 'Products', 'bediq' ),
-            'description' => __( 'Description', 'bediq' ),
-            'public' => true,
-            'show_ui' => true,
-            'show_in_menu' => true,
-            'capability_type' => 'post',
-            'hierarchical' => false,
-            'rewrite' => array('slug' => 'product'),
-            'query_var' => true,
-            'supports' => array('title', 'editor'),
-            'labels' => array(
-                'name' => __( 'Products', 'bediq' ),
-                'singular_name' => __( 'Product', 'bediq' ),
-                'menu_name' => __( 'Product', 'bediq' ),
-                'add_new' => __( 'Add Product', 'bediq' ),
-                'add_new_item' => __( 'Add New Product', 'bediq' ),
-                'edit' => __( 'Edit', 'bediq' ),
-                'edit_item' => __( 'Edit Product', 'bediq' ),
-                'new_item' => __( 'New Product', 'bediq' ),
-                'view' => __( 'View Product', 'bediq' ),
-                'view_item' => __( 'View Product', 'bediq' ),
-                'search_items' => __( 'Search Products', 'bediq' ),
-                'not_found' => __( 'No Products Found', 'bediq' ),
-                'not_found_in_trash' => __( 'No Products Found in Trash', 'bediq' ),
-                'parent' => __( 'Parent Product', 'bediq' ),
-            ),
-        ) );
 
         register_post_type( 'outlet', array(
             'label' => __( 'Outlets', 'bediq' ),
@@ -366,7 +338,7 @@ class Bed_IQ {
             'rewrite' => array('slug' => 'facility'),
             'query_var' => true,
             'has_archive' => true,
-            'supports' => array('title', 'editor'),
+            'supports' => array('title', 'editor', 'thumbnail'),
             'labels' => array(
                 'name' => __( 'Facilities', 'bediq' ),
                 'singular_name' => __( 'Facility', 'bediq' ),
@@ -396,7 +368,7 @@ class Bed_IQ {
             'rewrite' => array('slug' => 'activity'),
             'query_var' => true,
             'has_archive' => true,
-            'supports' => array('title', 'editor'),
+            'supports' => array('title', 'editor', 'thumbnail'),
             'labels' => array(
                 'name' => __( 'Activities', 'bediq' ),
                 'singular_name' => __( 'Activity', 'bediq' ),
@@ -426,7 +398,7 @@ class Bed_IQ {
             'rewrite' => array('slug' => 'leisure'),
             'query_var' => true,
             'has_archive' => true,
-            'supports' => array('title', 'editor'),
+            'supports' => array('title', 'editor', 'thumbnail'),
             'labels' => array(
                 'name' => __( 'Leisure', 'bediq' ),
                 'singular_name' => __( 'Leisure', 'bediq' ),
@@ -453,9 +425,10 @@ class Bed_IQ {
             'show_in_menu' => true,
             'capability_type' => 'post',
             'hierarchical' => false,
-            'rewrite' => array('slug' => ''),
+            'rewrite' => array('slug' => 'services'),
             'query_var' => true,
-            'supports' => array('title', 'editor'),
+            'has_archive' => true,
+            'supports' => array('title', 'editor', 'thumbnail'),
             'labels' => array(
                 'name' => __( 'Services', 'bediq' ),
                 'singular_name' => __( 'Service', 'bediq' ),
@@ -669,8 +642,8 @@ class Bed_IQ {
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
 
-        } else if ( is_single() && get_post_type() == 'service' ) {
-            $file   = 'single-service.php';
+        } else if ( is_single() && get_post_type() == 'services' ) {
+            $file   = 'single-services.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
         }

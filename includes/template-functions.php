@@ -65,15 +65,42 @@ add_action( 'bediq_single_activity_summary', 'bediq_template_activity_details', 
 add_action( 'bediq_single_activity_summary', 'bediq_template_post_content', 15 );
 
 /*  --------------------------------------------------
-:: leisure template Hooks
+:: Leisure template Hooks
 -------------------------------------------------- */
 add_action( 'bediq_before_single_leisure_summary', 'bediq_template_post_title', 10 );
 add_action( 'bediq_before_single_leisure_summary', 'bediq_template_leisure_schema', 15 );
 
-add_action( 'bediq_single_leisure_summary', 'bediq_template_leisure_imageWrap', 10 );
-add_action( 'bediq_single_leisure_summary', 'bediq_template_leisure_facility', 15 );
+add_action( 'bediq_single_leisure_summary', 'bediq_template_leisure_image', 10 );
+add_action( 'bediq_single_leisure_summary', 'bediq_template_leisure_facility_widget', 15 );
 add_action( 'bediq_single_leisure_summary', 'bediq_template_post_content', 20 );
-add_action( 'bediq_single_leisure_summary', 'bediq_template_leisure_connected', 25 );
+add_action( 'bediq_single_leisure_summary', 'bediq_template_leisure_connected_offers', 25 );
+add_action( 'bediq_single_leisure_summary', 'bediq_template_leisure_connected_events', 30 );
+add_action( 'bediq_single_leisure_summary', 'bediq_template_leisure_connected_activities', 35 );
+
+
+/*  --------------------------------------------------
+:: Facility template Hooks
+-------------------------------------------------- */
+add_action( 'bediq_before_single_facility_summary', 'bediq_template_post_title', 10 );
+add_action( 'bediq_before_single_facility_summary', 'bediq_template_facility_schema', 15 );
+
+add_action( 'bediq_single_facility_summary', 'bediq_template_facility_image', 10 );
+add_action( 'bediq_single_facility_summary', 'bediq_template_facility_facility_widget', 15 );
+add_action( 'bediq_single_facility_summary', 'bediq_template_post_content', 20 );
+add_action( 'bediq_single_facility_summary', 'bediq_template_facility_connected_offers', 25 );
+add_action( 'bediq_single_facility_summary', 'bediq_template_facility_connected_events', 30 );
+add_action( 'bediq_single_facility_summary', 'bediq_template_facility_connected_activities', 35 );
+
+
+/*  --------------------------------------------------
+:: Services template Hooks
+-------------------------------------------------- */
+add_action( 'bediq_before_single_sercices_summary', 'bediq_template_post_title', 10 );
+add_action( 'bediq_before_single_sercices_summary', 'bediq_template_services_schema', 15 );
+
+add_action( 'bediq_single_services_summary', 'bediq_template_featured_image', 10 );
+add_action( 'bediq_single_services_summary', 'bediq_template_post_content', 15 );
+add_action( 'bediq_single_services_summary', 'bediq_template_services_connected_offers', 20 );
 
 
 /*  --------------------------------------------------
@@ -246,14 +273,61 @@ function bediq_template_leisure_schema() {
     bediq_get_template( 'leisure/schema.php' );
 }
 
-function bediq_template_leisure_imageWrap() {
-    bediq_get_template( 'leisure/image-wrap.php' );
+function bediq_template_leisure_image() {
+    bediq_get_template( 'leisure/image.php' );
 }
 
-function bediq_template_leisure_facility() {
-    bediq_get_template( 'leisure/facility.php' );
+function bediq_template_leisure_facility_widget() {
+    bediq_get_template( 'leisure/facility-wiget.php' );
 }
-function bediq_template_leisure_connected() {
-    bediq_get_template( 'leisure/conected.php' );
+function bediq_template_leisure_connected_offers() {
+    bediq_get_template( 'leisure/conected-offers.php' );
+}
+function bediq_template_leisure_connected_events() {
+    bediq_get_template( 'leisure/conected-events.php' );
+}
+function bediq_template_leisure_connected_activities() {
+    bediq_get_template( 'leisure/conected-activities.php' );
 }
 
+/*  --------------------------------------------------
+:: Facility functions
+-------------------------------------------------- */
+
+function bediq_template_facility_schema() {
+    bediq_get_template( 'facility/schema.php' );
+}
+
+function bediq_template_facility_image() {
+    bediq_get_template( 'facility/image.php' );
+}
+
+function bediq_template_facility_facility_widget() {
+    bediq_get_template( 'facility/facility-widget.php' );
+}
+function bediq_template_facility_connected_offers() {
+    bediq_get_template( 'facility/conected-offers.php' );
+}
+
+function bediq_template_facility_connected_events() {
+    bediq_get_template( 'facility/conected-events.php' );
+}
+function bediq_template_facility_connected_activities() {
+    bediq_get_template( 'facility/conected-activities.php' );
+}
+
+/*  --------------------------------------------------
+:: Services functions
+-------------------------------------------------- */
+
+function bediq_template_services_schema() {
+    bediq_get_template( 'services/schema.php' );
+}
+
+function bediq_template_services_image() {
+    bediq_get_template( 'services/image.php' );
+}
+
+function bediq_template_services_connected_offers() {
+    bediq_get_template( 'services/conected-offers.php' );
+}
