@@ -1,5 +1,5 @@
 <?php $location = ''; //of_get_option( 'contact-location' ); ?>
-<div class="hidden">
+<div class="bediq-hidden">
     <span itemprop="place" itemscope itemtype="http://schema.org/Place">
         <?php
         if ( !empty( $location ) ) {

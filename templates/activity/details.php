@@ -3,7 +3,8 @@ global $post;
 
 $start_date = (int) get_post_meta( $post->ID, 'start_time', true );
 $end_date = (int) get_post_meta( $post->ID, 'end_time', true );
-$event_locations = array();// wedevs_get_activity_locations( $post->ID );
+$event_locations = array();
+//wedevs_get_activity_locations( $post->ID );
 ?>
 <div class="widget bediq-outlet-details">
     <div class="bediq-widget-area">

@@ -1,17 +1,23 @@
-<?php do_action( 'bediq_before_single_offer' ); ?>
+<div class="bediq-col-12">
+	<?php do_action( 'bediq_before_single_offer' ); ?>
+</div>
 
 <article itemscope itemtype="http://schema.org/Product" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-    <?php
-    do_action( 'bediq_before_single_offer_summary' );
-    ?>
+	<div class="bediq-col-12">
+	    <?php do_action( 'bediq_before_single_offer_summary' ); ?>
+	</div>
 
-    <div class="summary entry-summary">
+	<div class="bediq-col-12">
         <?php do_action( 'bediq_single_offer_summary' ); ?>
-    </div>
+	</div>
 
-    <?php do_action( 'bediq_after_single_offer_summary' ); ?>
+	<div class="bediq-col-12">
+	    <?php do_action( 'bediq_after_single_offer_summary' ); ?>
+	</div>
 
 </article>
 
-<?php do_action( 'bediq_after_single_offer' ); ?>
+<div class="bediq-col-12">
+	<?php do_action( 'bediq_after_single_offer' ); ?>
+</div>

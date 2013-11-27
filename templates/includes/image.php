@@ -1,14 +1,14 @@
 <?php
 global $post;
 
-$image = esc_attr( get_post_meta( $post->ID, 'photo', true ) );
+$image = esc_attr( get_post_meta( $post->ID, 'overlay', true ) );
 ?>
-<div class="bediq-image-wrap">
+<div class="bediq-image">
     <?php
     if ( function_exists( 'wpthumb' ) && !empty( $image ) ) {
-        $image = wpthumb( $image, 'width=700&height=267&crop=1' );
+        $args = array('width' => 700, 'height' => 300, 'crop' => true);
+        $image = wpthumb( $image, apply_filters( 'bediq_wpthumb_image', $args ) );
     }
-
     if ( $image ) {
         ?>
         <img src="<?php echo $image; ?>" itemprop="image" class="archive-image" alt="image" />

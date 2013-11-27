@@ -1,17 +1,23 @@
+<div class="bediq-col-12">
 <?php do_action( 'bediq_before_single_room' ); ?>
+</div>
 
 <article itemscope itemtype="http://schema.org/Product" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	
+	<div class="bediq-col-12">
+    	<?php do_action( 'bediq_before_single_room_summary' ); ?>
+    </div>
 
-    <?php
-    do_action( 'bediq_before_single_room_summary' );
-    ?>
-
-    <div class="summary entry-summary">
+    <div class="bediq-col-12">
         <?php do_action( 'bediq_single_room_summary' ); ?>
     </div>
 
-    <?php do_action( 'bediq_after_single_room_summary' ); ?>
-
+    <div class="bediq-col-12">
+    	<?php do_action( 'bediq_after_single_room_summary' ); ?>
+    </div>
+    
 </article>
 
-<?php do_action( 'bediq_after_single_room' ); ?>
+<div class="bediq-col-12">
+	<?php do_action( 'bediq_after_single_room' ); ?>
+</div>

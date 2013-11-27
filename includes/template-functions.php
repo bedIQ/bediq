@@ -11,40 +11,51 @@ add_action( 'bediq_before_single_room_summary', 'bediq_template_room_schema', 15
 add_action( 'bediq_before_single_room_summary', 'bediq_template_room_book_now', 20 );
 
 add_action( 'bediq_single_room_summary', 'bediq_template_post_content', 10 );
-add_action( 'bediq_single_room_summary', 'bediq_template_room_tabs', 15 );
-add_action( 'bediq_single_room_summary', 'bediq_template_room_offers', 20 );
+
+add_action( 'bediq_after_single_room_summary', 'bediq_template_room_tabs', 10 );
+add_action( 'bediq_after_single_room_summary', 'bediq_template_room_offers', 15 );
+add_action( 'bediq_after_single_room_summary', 'bediq_template_tab', 20 );
 
 /*  --------------------------------------------------
 :: Event template Hooks
 -------------------------------------------------- */
 
-add_action( 'bediq_before_single_event_summary', 'bediq_template_post_title', 10 );
-add_action( 'bediq_before_single_event_summary', 'bediq_template_event_schema', 15 );
-add_action( 'bediq_before_single_event_summary', 'bediq_template_event_image_overlay', 20 );
+add_action( 'bediq_before_single_event', 'bediq_template_thumbnail_image', 10 );
 
-add_action( 'bediq_single_event_summary', 'bediq_template_event_details', 10 );
-add_action( 'bediq_single_event_summary', 'bediq_template_event_organizer', 20 );
-add_action( 'bediq_single_event_summary', 'bediq_template_post_content', 20 );
+add_action( 'bediq_before_single_event_summary', 'bediq_template_post_title', 10 );
+add_action( 'bediq_before_single_event_summary', 'bediq_template_time', 14 );
+add_action( 'bediq_before_single_event_summary', 'bediq_template_event_schema', 15 );
+
+add_action( 'bediq_single_event_summary', 'bediq_template_post_content', 10 );
+add_action( 'bediq_single_event_summary', 'bediq_template_event_details', 20 );
+add_action( 'bediq_single_event_summary', 'bediq_template_event_organizer', 30 );
 
 
 /*  --------------------------------------------------
 :: Offer template Hooks
 -------------------------------------------------- */
 
-add_action( 'bediq_before_single_offer_summary', 'bediq_template_offer_header', 10 );
+
+add_action( 'bediq_before_single_offer', 'bediq_template_thumbnail_image', 10 );
+add_action( 'bediq_before_single_offer', 'bediq_template_offer_offer', 15 );
+
+add_action( 'bediq_before_single_offer_summary', 'bediq_template_post_title', 10 );
 add_action( 'bediq_before_single_offer_summary', 'bediq_template_offer_book_button', 15 );
 
+add_action( 'bediq_single_offer_summary', 'bediq_template_post_content', 10 );
 add_action( 'bediq_single_offer_summary', 'bediq_template_offer_schema', 10 );
-add_action( 'bediq_single_offer_summary', 'bediq_template_offer_tabs', 15 );
+
+add_action( 'bediq_after_single_offer_summary', 'bediq_template_offer_tabs', 15 );
 
 
 /*  --------------------------------------------------
 :: Outlet template Hooks
 -------------------------------------------------- */
 
+add_action( 'bediq_before_single_outlet', 'bediq_template_thumbnail_image', 10 );
+
 add_action( 'bediq_before_single_outlet_summary', 'bediq_template_post_title', 10 );
-add_action( 'bediq_before_single_outlet_summary', 'bediq_template_outlet_image', 15 );
-add_action( 'bediq_before_single_outlet_summary', 'bediq_template_outlet_schema', 20 );
+add_action( 'bediq_before_single_outlet_summary', 'bediq_template_outlet_schema', 15 );
 
 add_action( 'bediq_single_outlet_summary', 'bediq_template_post_content', 10 );
 add_action( 'bediq_single_outlet_summary', 'bediq_template_outlet_details', 15 );
@@ -57,59 +68,73 @@ add_action( 'bediq_single_outlet_summary', 'bediq_template_outlet_activity', 30 
 /*  --------------------------------------------------
 :: Activity template Hooks
 -------------------------------------------------- */
-add_action( 'bediq_before_single_activity_summary', 'bediq_template_activity_title', 10 );
-add_action( 'bediq_before_single_activity_summary', 'bediq_template_activity_schema', 15 );
-add_action( 'bediq_before_single_activity_summary', 'bediq_template_activity_image_overlay', 20 );
 
-add_action( 'bediq_single_activity_summary', 'bediq_template_activity_details', 10 );
-add_action( 'bediq_single_activity_summary', 'bediq_template_post_content', 15 );
+add_action( 'bediq_before_single_activity', 'bediq_template_thumbnail_image', 10 );
+
+add_action( 'bediq_before_single_activity_summary', 'bediq_template_activity_title', 10 );
+add_action( 'bediq_before_single_activity_summary', 'bediq_template_time', 11 );
+add_action( 'bediq_before_single_activity_summary', 'bediq_template_activity_schema', 15 );
+
+add_action( 'bediq_single_activity_summary', 'bediq_template_post_content', 10 );
+add_action( 'bediq_single_activity_summary', 'bediq_template_activity_details', 20 );
+
 
 /*  --------------------------------------------------
 :: Leisure template Hooks
 -------------------------------------------------- */
+
+
+add_action( 'bediq_before_single_leisure', 'bediq_template_thumbnail_image', 10 );
+
 add_action( 'bediq_before_single_leisure_summary', 'bediq_template_post_title', 10 );
 add_action( 'bediq_before_single_leisure_summary', 'bediq_template_leisure_schema', 15 );
+add_action( 'bediq_before_single_leisure_summary', 'bediq_template_leisure_facility_widget', 20 );
 
-add_action( 'bediq_single_leisure_summary', 'bediq_template_leisure_image', 10 );
-add_action( 'bediq_single_leisure_summary', 'bediq_template_leisure_facility_widget', 15 );
-add_action( 'bediq_single_leisure_summary', 'bediq_template_post_content', 20 );
-add_action( 'bediq_single_leisure_summary', 'bediq_template_leisure_connected_offers', 25 );
-add_action( 'bediq_single_leisure_summary', 'bediq_template_leisure_connected_events', 30 );
-add_action( 'bediq_single_leisure_summary', 'bediq_template_leisure_connected_activities', 35 );
+add_action( 'bediq_single_leisure_summary', 'bediq_template_post_content', 10 );
+add_action( 'bediq_single_leisure_summary', 'bediq_template_leisure_connected_offers', 20 );
+add_action( 'bediq_single_leisure_summary', 'bediq_template_leisure_connected_events', 25 );
+add_action( 'bediq_single_leisure_summary', 'bediq_template_leisure_connected_activities', 30 );
 
 
 /*  --------------------------------------------------
 :: Facility template Hooks
 -------------------------------------------------- */
+
+
+add_action( 'bediq_before_single_facility', 'bediq_template_thumbnail_image', 10 );
+
+
 add_action( 'bediq_before_single_facility_summary', 'bediq_template_post_title', 10 );
 add_action( 'bediq_before_single_facility_summary', 'bediq_template_facility_schema', 15 );
+add_action( 'bediq_before_single_facility_summary', 'bediq_template_facility_facility_widget', 20 );
 
-add_action( 'bediq_single_facility_summary', 'bediq_template_facility_image', 10 );
-add_action( 'bediq_single_facility_summary', 'bediq_template_facility_facility_widget', 15 );
-add_action( 'bediq_single_facility_summary', 'bediq_template_post_content', 20 );
-add_action( 'bediq_single_facility_summary', 'bediq_template_facility_connected_offers', 25 );
-add_action( 'bediq_single_facility_summary', 'bediq_template_facility_connected_events', 30 );
-add_action( 'bediq_single_facility_summary', 'bediq_template_facility_connected_activities', 35 );
+add_action( 'bediq_single_facility_summary', 'bediq_template_post_content', 15 );
+add_action( 'bediq_single_facility_summary', 'bediq_template_facility_connected_offers', 20 );
+add_action( 'bediq_single_facility_summary', 'bediq_template_facility_connected_events', 25 );
+add_action( 'bediq_single_facility_summary', 'bediq_template_facility_connected_activities', 30 );
 
 
 /*  --------------------------------------------------
 :: Services template Hooks
 -------------------------------------------------- */
+
+
+add_action( 'bediq_before_single_services', 'bediq_template_featured_image', 10 );
+
 add_action( 'bediq_before_single_sercices_summary', 'bediq_template_post_title', 10 );
 add_action( 'bediq_before_single_sercices_summary', 'bediq_template_services_schema', 15 );
 
-add_action( 'bediq_single_services_summary', 'bediq_template_featured_image', 10 );
-add_action( 'bediq_single_services_summary', 'bediq_template_post_content', 15 );
-add_action( 'bediq_single_services_summary', 'bediq_template_services_connected_offers', 20 );
-
+add_action( 'bediq_single_services_summary', 'bediq_template_post_content', 10 );
+add_action( 'bediq_single_services_summary', 'bediq_template_services_connected_offers', 15 );
 
 /*  --------------------------------------------------
-:: Room functions
+:: common functions
 -------------------------------------------------- */
+
 
 function bediq_template_post_title() {
     ?>
-    <header class="entry-header">
+    <header>
         <h1 class="entry-title" itemprop="name"><?php the_title(); ?></h1>
     </header><!-- .entry-header -->
     <?php
@@ -117,11 +142,45 @@ function bediq_template_post_title() {
 
 function bediq_template_post_content() {
     ?>
-    <div itemprop="description">
+    <div itemprop="description" class="bediq-description">
         <?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'bediq' ) ); ?>
     </div>
     <?php
 }
+function bediq_template_featured_image() {
+    if ( has_post_thumbnail() ) {
+
+        if ( function_exists( 'wpthumb') ) {
+            
+            $args = apply_filters( 'bediq_wpthumb_featured_image', 'width=960&height=300&crop=1' );
+            the_post_thumbnail( $args);
+
+        } else {
+
+            $args = array('class' => 'flex-container', 'itemprop' => 'image');
+            the_post_thumbnail( 'full', apply_filters( 'bediq_featured_image', $args ));
+        }
+
+    } else {
+
+    }
+}
+
+function bediq_template_thumbnail_image() {
+    bediq_get_template( 'includes/image.php' );
+}
+
+function bediq_template_time() {
+    bediq_get_template( 'includes/time.php' );
+}
+
+function bediq_template_tab() {
+    bediq_get_template( 'includes/tab-check.php' );
+}
+
+/*  --------------------------------------------------
+:: Room functions
+-------------------------------------------------- */
 
 function bediq_template_room_schema() {
     bediq_get_template( 'room/schema.php' );
@@ -146,11 +205,7 @@ function bediq_template_room_book_now() {
     <?php
 }
 
-function bediq_template_featured_image() {
-    if ( has_post_thumbnail() ) {
-        the_post_thumbnail( 'full', array('class' => 'flex-container', 'itemprop' => 'image') );
-    }
-}
+
 
 /*  --------------------------------------------------
 :: Event functions
@@ -158,10 +213,6 @@ function bediq_template_featured_image() {
 
 function bediq_template_event_schema() {
     bediq_get_template( 'event/schema.php' );
-}
-
-function bediq_template_event_image_overlay() {
-    bediq_get_template( 'event/image-overlay.php' );
 }
 
 function bediq_template_event_details() {
@@ -177,8 +228,8 @@ function bediq_template_event_organizer() {
 -------------------------------------------------- */
 
 
-function bediq_template_offer_header() {
-    bediq_get_template( 'offers/header.php' );
+function bediq_template_offer_offer() {
+    bediq_get_template( 'offers/offer.php' );
 }
 
 function bediq_template_offer_rooms() {
@@ -204,14 +255,9 @@ function bediq_template_offer_book_button() {
     <?php
 }
 
-
 /*  --------------------------------------------------
 :: Outlet functions
 -------------------------------------------------- */
-
-function bediq_template_outlet_image() {
-    bediq_get_template( 'outlet/image.php' );
-}
 
 function bediq_template_outlet_activity() {
     bediq_get_template( 'outlet/activities.php' );
@@ -241,8 +287,8 @@ function bediq_template_outlet_details() {
 
 function bediq_template_activity_title() {
     ?>
-    <header class="entry-header">
-        <div class="alignleft" itemprop="name">
+    <header>
+        <div class="entry-title" itemprop="name">
             <h1><?php the_title(); ?></h1>
         </div>
         <div class="alignright">
@@ -257,12 +303,8 @@ function bediq_template_activity_schema() {
     bediq_get_template( 'activity/schema.php' );
 }
 
-function bediq_template_activity_image_overlay() {
-    bediq_get_template( 'activity/image-overlay.php' );
-}
-
 function bediq_template_activity_details() {
-    bediq_get_template( 'acivity/details.php' );
+    bediq_get_template( 'activity/details.php' );
 }
 
 /*  --------------------------------------------------
@@ -271,10 +313,6 @@ function bediq_template_activity_details() {
 
 function bediq_template_leisure_schema() {
     bediq_get_template( 'leisure/schema.php' );
-}
-
-function bediq_template_leisure_image() {
-    bediq_get_template( 'leisure/image.php' );
 }
 
 function bediq_template_leisure_facility_widget() {
@@ -298,10 +336,6 @@ function bediq_template_facility_schema() {
     bediq_get_template( 'facility/schema.php' );
 }
 
-function bediq_template_facility_image() {
-    bediq_get_template( 'facility/image.php' );
-}
-
 function bediq_template_facility_facility_widget() {
     bediq_get_template( 'facility/facility-widget.php' );
 }
@@ -322,10 +356,6 @@ function bediq_template_facility_connected_activities() {
 
 function bediq_template_services_schema() {
     bediq_get_template( 'services/schema.php' );
-}
-
-function bediq_template_services_image() {
-    bediq_get_template( 'services/image.php' );
 }
 
 function bediq_template_services_connected_offers() {

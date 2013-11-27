@@ -1,17 +1,23 @@
-<?php do_action( 'bediq_before_single_outlet' ); ?>
+<div class="bediq-col-12">
+	<?php do_action( 'bediq_before_single_outlet' ); ?>
+</div>
 
 <article itemscope itemtype="http://schema.org/LocalBusiness" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-    <?php
-    do_action( 'bediq_before_single_outlet_summary' );
-    ?>
+	<div class="bediq-col-12">
+	    <?php do_action( 'bediq_before_single_outlet_summary' ); ?>
+	</div>
 
-    <div class="summary entry-summary">
+	<div class="bediq-col-12">
         <?php do_action( 'bediq_single_outlet_summary' ); ?>
-    </div>
+	</div>
 
-    <?php do_action( 'bediq_after_single_outlet_summary' ); ?>
+	<div class="bediq-col-12">
+	    <?php do_action( 'bediq_after_single_outlet_summary' ); ?>
+	</div>
 
 </article>
 
-<?php do_action( 'bediq_after_single_outlet' ); ?>
+<div class="bediq-col-12">
+	<?php do_action( 'bediq_after_single_outlet' ); ?>
+</div>
