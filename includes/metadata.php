@@ -197,12 +197,12 @@ function bediq_metada_init() {
             'label' => __( 'End Time', 'bediq' ),
         ) );
 
-        x_add_metadata_field( 'overlay', array('event'), array(
+        /*x_add_metadata_field( 'overlay', array('event'), array(
             'group' => 'events',
             'label' => __( 'Photo', 'bediq' ),
             'field_type' => 'upload',
             'description' => ''
-        ) );
+        ) );*/
 
         //activity special
         x_add_metadata_group( 'activity', array('activity'), array(
@@ -220,12 +220,12 @@ function bediq_metada_init() {
             'label' => 'Offers'
         ) );
 
-        x_add_metadata_field( 'overlay', array('offer'), array(
+       /* x_add_metadata_field( 'overlay', array('offer'), array(
             'group' => 'offers',
             'label' => 'Photo',
             'field_type' => 'upload',
             'description' => ''
-        ) );
+        ) );*/
 
         /*
         x_add_metadata_field( 'discount_type', 'offer', array(
@@ -355,12 +355,12 @@ function bediq_metada_init() {
             'description' => 'A URL to a map of the place.'
         ) );
 
-        x_add_metadata_field( 'photo', array('facility', 'leisure', 'outlet'), array(
+        /*x_add_metadata_field( 'photo', array('facility', 'leisure', 'outlet'), array(
             'group' => 'facility',
             'label' => 'Photo',
             'field_type' => 'upload',
             'description' => 'A photograph of this place.'
-        ) );
+        ) );*/
 
         x_add_metadata_field( 'opening_hours', array('facility', 'leisure', 'outlet'), array(
             'group' => 'facility',
@@ -503,6 +503,13 @@ function bediq_metada_init() {
             'group' => 'rooms',
             'label' => 'Link to Booking Engine',
             'description' => 'Please enter the link to your Booking Engine, preferably straight to the Room Type'
+        ) );
+        x_add_metadata_field( 'photo', array('room'), array(
+            'group' => 'facility',
+            'label' => 'Photo',
+            'field_type' => 'upload',
+            'description' => 'A photograph of this room.',
+            'multiple' => true
         ) );
 
         //services

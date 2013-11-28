@@ -5,4 +5,6 @@
 	$( "#bediq-tabs" ).tabs({
 		collapsible: true
 	});
+
+	$('.flexslider').flexslider();
 });

@@ -154,6 +154,7 @@ class Bed_IQ {
          */
         wp_enqueue_style( 'bediq-styles', plugins_url( 'assets/css/style.css', __FILE__ ), false, date( 'Ymd' ) );
         wp_enqueue_style( 'ui-styles', plugins_url( 'assets/css/ui.css', __FILE__ ), false, date( 'Ymd' ) );
+        wp_enqueue_style( 'ui-styles', plugins_url( 'assets/css/flexslider.css', __FILE__ ), false, date( 'Ymd' ) );
 
         /**
          * All scripts goes here
@@ -163,6 +164,7 @@ class Bed_IQ {
         wp_enqueue_script( 'jquery-ui-accordion' );
         wp_enqueue_script( 'jquery-ui-tabs' );
         wp_enqueue_script( 'bediq-scripts', plugins_url( 'assets/js/script.js', __FILE__ ), array( 'jquery' ), false, true );
+        wp_enqueue_script( 'bediq-scripts', plugins_url( 'assets/js/jquery.flexslider.js', __FILE__ ), array( 'jquery' ), false, true );
 
 
         /**
