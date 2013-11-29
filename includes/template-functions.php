@@ -130,7 +130,7 @@ add_action( 'bediq_after_single_services_summary', 'bediq_template_services_tab'
 function bediq_template_post_title() {
     ?>
     <header>
-        <h1 class="entry-title" itemprop="name"><?php the_title(); ?></h1>
+        <h1 class="bediq-entry-title" itemprop="name"><?php the_title(); ?></h1>
     </header><!-- .entry-header -->
     <?php
 }
@@ -145,8 +145,9 @@ function bediq_template_post_content() {
 function bediq_template_featured_image() {
     if ( has_post_thumbnail() ) {
 
+        echo '<div class="bediq-image-wrap">';
         if ( function_exists( 'wpthumb') ) {
-            
+
             $args = apply_filters( 'bediq_wpthumb_featured_image', 'width=990&height=300&crop=1' );
             the_post_thumbnail( $args);
 
@@ -155,6 +156,8 @@ function bediq_template_featured_image() {
             $args = array('class' => 'flex-container', 'itemprop' => 'image');
             the_post_thumbnail( 'full', apply_filters( 'bediq_featured_image', $args ));
         }
+
+        echo '</div>';
 
     } else {
 
@@ -270,7 +273,7 @@ function bediq_template_activity_title() {
             <?php bediq_print_tax_link( 'things-to-do' ); ?>
         </div>
     </header><!-- .entry-header -->
-  
+
     <?php
 }
 

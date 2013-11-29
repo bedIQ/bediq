@@ -9,45 +9,47 @@
 * http://api.jqueryui.com/tabs/#theming
 */
 .ui-tabs {
-        position: relative;/* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
-        padding: .2em;
+    position: relative;/* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+    padding: .2em;
 }
+
 .ui-tabs .ui-tabs-nav {
-        margin: 0;
-        padding: .2em .2em 0;
+    margin: 0;
+    padding: .2em .2em 0;
 }
+
 .ui-tabs .ui-tabs-nav li {
-        list-style: none;
-        float: left;
-        position: relative;
-        top: 0;
-        margin: 1px .2em 0 0;
-        border-bottom-width: 0;
-        padding: 0;
-        white-space: nowrap;
+    list-style: none;
+    float: left;
+    position: relative;
+    top: 0;
+    margin: 1px .2em 0 0;
+    border-bottom-width: 0;
+    padding: 0;
+    white-space: nowrap;
 }
 .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
-        float: left;
-        padding: .5em 1em;
-        text-decoration: none;
+    float: left;
+    padding: .5em 1em;
+    text-decoration: none;
 }
 .ui-tabs .ui-tabs-nav li.ui-tabs-active {
-        margin-bottom: -1px;
-        padding-bottom: 1px;
+    margin-bottom: -1px;
+    padding-bottom: 1px;
 }
 .ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor,
 .ui-tabs .ui-tabs-nav li.ui-state-disabled .ui-tabs-anchor,
 .ui-tabs .ui-tabs-nav li.ui-tabs-loading .ui-tabs-anchor {
-        cursor: text;
+    cursor: text;
 }
 .ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
-        cursor: pointer;
+    cursor: pointer;
 }
 .ui-tabs .ui-tabs-panel {
-        display: block;
-        border-width: 0;
-        padding: 1em 1.4em;
-        background: none;
+    display: block;
+    border-width: 0;
+    padding: 1em 1.4em;
+    background: none;
 }
 /*-----------------------tabs end------------------------*/
 
@@ -57,30 +59,30 @@
 
 /*-----------------------accordion------------------------*/
 .ui-accordion .ui-accordion-header {
-        display: block;
-        cursor: pointer;
-        position: relative;
-        margin: 2px 0 0 0;
-        padding: .5em .5em .5em .7em;
-        min-height: 0; /* support: IE7 */
-        font-size: 100%;
+    display: block;
+    cursor: pointer;
+    position: relative;
+    margin: 2px 0 0 0;
+    padding: .5em .5em .5em .7em;
+    min-height: 0; /* support: IE7 */
+    font-size: 100%;
 }
 .ui-accordion .ui-accordion-icons {
-        padding-left: 2.2em;
+    padding-left: 2.2em;
 }
 .ui-accordion .ui-accordion-icons .ui-accordion-icons {
-        padding-left: 2.2em;
+    padding-left: 2.2em;
 }
 .ui-accordion .ui-accordion-header .ui-accordion-header-icon {
-        position: absolute;
-        left: .5em;
-        top: 50%;
-        margin-top: -8px;
+    position: absolute;
+    left: .5em;
+    top: 50%;
+    margin-top: -8px;
 }
 .ui-accordion .ui-accordion-content {
-        padding: 0;
-        border-top: 0;
-        overflow: auto;
+    padding: 0;
+    border-top: 0;
+    overflow: auto;
 }
 
 
@@ -95,4 +97,17 @@
 }
 .ui-accordion-header-active{
 	background-color: #e1e1e1;
+}
+
+/*----------------------- Overrides ------------------------*/
+.bediq-container .ui-widget {
+    font-size: 15px;
+}
+
+.bediq-container .ui-widget .ui-widget {
+    font-size: 13px;
+}
+
+.bediq-container .ui-accordion .ui-accordion-content {
+    padding: 10px;
 }

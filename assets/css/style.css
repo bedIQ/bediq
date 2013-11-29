@@ -1,34 +1,20 @@
 
-li{
-    font-size: 14px;
-}
 /*----------------------clear fix-------------*/
+.clearfix:before,
 .clearfix:after {
-    content: ".";
-    display: block;
-    clear: both;
-    visibility: hidden;
-    line-height: 0;
-    height: 0;
+  display: table;
+  content: " ";
 }
- 
-.clearfix {
-    display: inline-block;
-}
- 
-html[xmlns] .clearfix {
-    display: block;
-}
- 
-* html .clearfix {
-    height: 1%;
+
+.clearfix:after {
+  clear: both;
 }
 /*----------------------tabs-----------------*/
 #bediq-accordion{
 
 }
 #bediq-tabs{
-    max-height:350px; 
+    max-height:350px;
     width:100%;
 }
 /*----------------------common----------------*/
@@ -168,10 +154,11 @@ fieldset[disabled] .bediq-btn-default.active {
     margin-top:0px;
 }
  .bediq-container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 20px;
 }
 
 .bediq-container:before,
@@ -229,7 +216,6 @@ fieldset[disabled] .bediq-btn-default.active {
 }
 .bediq-half {
     width: 50%;
-    padding: 5px 10px;
 }
 
 .bediq-half-right {
@@ -241,6 +227,16 @@ fieldset[disabled] .bediq-btn-default.active {
 .bediq-half-gap {
     margin-left: 50%;
 }
+
+.bediq-image-wrap {
+    margin-bottom: 15px;
+}
+
+.bediq-entry-title {
+    font-size: 16px;
+    padding: 5px 0 10px;
+}
+
 /*----------------------- Twenty Thirteen Special---------------------*/
 
 .twentythirteen .bediq-container {
