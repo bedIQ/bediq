@@ -8,8 +8,8 @@
         <div class="bediq-half">
 
             <?php if ( !empty( $occupancy_adults ) || !empty( $occupancy_child ) ) { ?>
-                <?php _e( '', 'bediq' ); ?>
-                max.
+                <span class="occupency">
+                <?php _e( 'Max.', 'bediq' ); ?>
                     <?php
                     if ( !empty( $occupancy_adults ) ) {
                         printf( __( '%s adults', 'bediq' ), $occupancy_adults );
@@ -19,9 +19,17 @@
                         printf( __( ' and %s kids', 'bediq' ), $occupancy_child );
                     } 
                 } ?>
-               		<?php _e( ', ', 'bediq' ); ?> <?php echo $room_type; ?>
+                </span>
+                <span class="bediq-separator">|</span>
+                <span class="room-type">
+               	    <?php echo $room_type; ?>
+                </span>
+
                 <?php if ( !empty( $room_size ) ) { ?>
-	                    <?php _e( ', ', 'bediq' ); ?> <?php echo $room_size; ?>
+                    <span class="bediq-separator">|</span>
+                    <span class="room-size">
+	                    <?php echo $room_size; ?>
+                    </span>
                 <?php } ?>
 
         </div>

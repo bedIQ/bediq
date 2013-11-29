@@ -26,7 +26,7 @@ $connected = new WP_Query( array(
 <div id="bediq-accordion">
 	<h3>Facilities</h3>
 	<div>
-		<div id="bediq-tabs" style="height:300px; width:100%;">
+		<div id="bediq-tabs">
 			<ul>
 				<li class="active"><a href="#bediq-room" data-toggle="tab"><i class="icon-home"></i> <?php _e( 'Room', 'bediq' ); ?></a></li>
 
@@ -101,8 +101,14 @@ $connected = new WP_Query( array(
 	                        <td><?php echo $pet_policy; ?></td>
 	                    </tr>
 	                <?php } ?>
+
+	                <tr>
+	                	<td><?php _e( 'Room Facilities:', 'bediq' ); ?></td>
+	                	<td>
+	                		<?php bediq_display_multi_meta( 'facilities_room', $post->ID ); ?>
+	                	</td>
+	                </tr>
 	            </table>
-	            <p><?php bediq_display_multi_meta( 'facilities_room', $post->ID ); ?></p>
     		</div>
 
         <?php if ( $entertain ) { ?>

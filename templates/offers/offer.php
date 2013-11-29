@@ -9,16 +9,17 @@ $discount = get_post_meta( $post->ID, 'price_discount', true );
 ?>
 
         <div class="hotel-offers bediq-half">
-            <div class="alignleft">
-                <?php bediq_print_tax_link( 'hotel_offers' ); ?>
-            </div>
-
-            <div>
+            <?php bediq_print_tax_link( 'hotel_offers' ); ?>
+             <span class="time">
                 <?php _e( 'book by', 'bediq' ); ?> <time itemprop="priceValidUntil" datetime="<?php echo date( 'c', $price_valid_to ) ?>"><?php echo date_i18n( 'j F, Y', $price_valid_to ); ?></time>
-                <br />
-                <span style="display: block;" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                    <a href="<?php echo $url; ?>"><?php _e( 'from', 'bediq' ); ?> <span itemprop="priceDiscount"><?php echo $currency; ?> <?php echo $price; ?></span></a><br />
-                    <span itemprop="priceCurrency"><?php echo $currency; ?></span> <del><span itemprop="price"><?php echo $discount; ?></span></del>
+            </span>
+            <span class="bediq-separator">|</span>
+                <span class="price">
+                    <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                        <a href="<?php echo $url; ?>"><?php _e( 'from', 'bediq' ); ?> <span itemprop="priceDiscount"><?php echo $currency; ?> <?php echo $price; ?></span></a>
+                        <span class="bediq-separator">|</span>
+                        <span itemprop="priceCurrency"><?php echo $currency; ?></span> <del><span itemprop="price"><?php echo $discount; ?></span></del>
+                    </span>
                 </span>
-            </div>
+            
         </div>

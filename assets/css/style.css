@@ -1,6 +1,38 @@
-.bg{
-    background-color: #e1e1e1;
+
+li{
+    font-size: 14px;
 }
+/*----------------------clear fix-------------*/
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+ 
+.clearfix {
+    display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+    display: block;
+}
+ 
+* html .clearfix {
+    height: 1%;
+}
+/*----------------------tabs-----------------*/
+#bediq-accordion{
+
+}
+#bediq-tabs{
+    max-height:350px; 
+    width:100%;
+}
+/*----------------------common----------------*/
+
 .bediq-hidden{
     display:none;
 }
@@ -14,10 +46,11 @@
     padding: 0;
 }
 .entry-title{
-    border-bottom: groove;
+    border-bottom: 1px solid #CCCCCC;
     padding-top: 20px;
+    margin-bottom: 1px !important;
 }
-/*-------------------image overlay-----------------------*/
+/*---------------image overlay----------------*/
 .overlay {
     position: relative;
     margin: 0 0 15px 0;
@@ -37,11 +70,11 @@
     margin-bottom: 10px;
     line-height: 18px;
 }
-/*---------------------Button-------------------------*/
+/*------------------Button-------------------*/
 .bediq-btn {
     display: inline-block;
     padding: 6px 12px;
-    margin-bottom: 0;
+    margin-bottom: auto;
     font-size: 14px;
     font-weight: normal;
     line-height: 1.428571429;
@@ -130,10 +163,39 @@ fieldset[disabled] .bediq-btn-default.active {
     border-color: #cccccc;
 }
 /*---------------------template-------------------*/
- 
+.bg{
+    background-color: #F4F4F4;
+    margin-top:0px;
+}
+ .bediq-container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.bediq-container:before,
+.bediq-container:after {
+  display: table;
+  content: " ";
+}
+
+.bediq-container:after {
+  clear: both;
+}
+
+.bediq-container:before,
+.bediq-container:after {
+  display: table;
+  content: " ";
+}
+
+.bediq-container:after {
+  clear: both;
+}
+
 .bediq-row {
-    margin-right: -15px;
-    margin-left: -15px;
+    margin: 0;
 }
 
 .bediq-row:before,
@@ -155,8 +217,6 @@ fieldset[disabled] .bediq-btn-default.active {
 .bediq-row:after {
     clear: both;
 }
-
-
 
 .bediq-full,
 .bediq-half {
@@ -169,6 +229,7 @@ fieldset[disabled] .bediq-btn-default.active {
 }
 .bediq-half {
     width: 50%;
+    padding: 5px 10px;
 }
 
 .bediq-half-right {
@@ -180,4 +241,63 @@ fieldset[disabled] .bediq-btn-default.active {
 .bediq-half-gap {
     margin-left: 50%;
 }
-/*---------------------------template-------------------------*/
+/*----------------------- Twenty Thirteen Special---------------------*/
+
+.twentythirteen .bediq-container {
+    max-width: 65%;
+    margin: 40px auto;
+}
+
+.twentythirteen .bediq-container .hentry {
+    padding: 0;
+}
+
+/*----------------------- Misc. ---------------------*/
+
+.bediq-separator {
+    color: #ccc;
+    padding: 0 3px;
+}
+
+/*----------------------- jQuery UI Overrides ---------------------*/
+/*---accordion----*/
+.bediq-container .ui-widget-content {
+    border: none;
+}
+
+.bediq-container .ui-accordion .ui-accordion-content {
+    border: 1px solid #e1e1e1;
+}
+.ui-accordion .ui-accordion-content{
+    padding: 0 20px;
+}
+.ui-accordion-header{
+    background-color: #F4F4F4;
+}
+.ui-accordion-header:hover{
+    background-color: #e1e1e1;
+}
+.ui-accordion-header-active{
+    background-color: #e1e1e1;
+}
+
+
+/*---tab----*/
+.ui-tabs .ui-tabs-nav{
+    overflow: hidden;
+    background-color: #d0d0d0;
+}
+.ui-tabs .ui-tabs-nav li {
+    background-color: #e0e0e0;
+    border: 1px solid #c0c0c0;
+}
+.ui-tabs .ui-tabs-nav li:hover {
+    background-color: #fff;
+}
+.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor{
+    background-color: #fff;
+    border-bottom: 1px solid #fff;
+}
+.ui-tabs .ui-tabs-nav{
+    overflow: hidden;
+}

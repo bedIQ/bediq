@@ -76,6 +76,7 @@ class Bed_IQ {
         // Loads frontend scripts and styles
         add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
+        add_filter( 'body_class', array($this, 'body_class') );
     }
 
     /**
@@ -664,6 +665,13 @@ class Bed_IQ {
         }
 
         return $template;
+    }
+
+    function body_class( $classes ) {
+        $current_theme = wp_get_theme();
+        $classes[] = $current_theme->template;
+
+        return $classes;
     }
 
 } // Bed_IQ

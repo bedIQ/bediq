@@ -79,7 +79,7 @@ $address = get_post_meta( $post->ID, 'address', true );
 
 	<h3>Details</h3>
 	<div>
-		<div id="bediq-tabs" style="height:300px; width:100%;">
+		<div id="bediq-tabs">
 			<ul>
 				<li><a href="#tabs-1"><?php _e( 'Style', 'bediq' ); ?></a></li>
 				<li><a href="#tabs-2"><?php _e( 'Opening Hours', 'bediq' ); ?></a></li>
