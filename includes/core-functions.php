@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Get template part implementation for BedIQ
+ *
+ * Looks at the theme directory first
+ */
 function bediq_get_template_part( $slug, $name = '' ) {
     global $bediq;
 
