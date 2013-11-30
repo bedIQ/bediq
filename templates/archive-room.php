@@ -1,8 +1,8 @@
 <?php
 /**
- * The Template for displaying all single event.
+ * The Template for displaying all archive room.
  *
- * Override this template by copying it to yourtheme/bediq/single-event.php
+ * Override this template by copying it to yourtheme/bediq/archive-room.php
  *
  * @author      Tareq Hasan
  * @package     BedIQ/Templates
@@ -17,7 +17,7 @@ get_header( 'bediq' ); ?>
 
         <?php while ( have_posts() ) : the_post(); ?>
 
-            <?php bediq_get_template_part( 'content', 'single-event' ); ?>
+            <?php bediq_get_template_part( 'content', 'archive-room' ); ?>
 
         <?php endwhile; // end of the loop. ?>
 

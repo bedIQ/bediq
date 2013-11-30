@@ -10,7 +10,7 @@
 */
 .ui-tabs {
         position: relative;/* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
-        padding: .2em;
+        padding: 0;
 }
 .ui-tabs .ui-tabs-nav {
         margin: 0;
@@ -87,12 +87,3 @@
 
 /*-----------------------custom------------------------*/
 
-.ui-accordion-header{
-	background-color: #F4F4F4;
-}
-.ui-accordion-header:hover{
-	background-color: #e1e1e1;
-}
-.ui-accordion-header-active{
-	background-color: #e1e1e1;
-}

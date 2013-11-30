@@ -6,7 +6,7 @@ $event_locations = array();// wedevs_get_event_locations( $post->ID );
 $user = get_post_meta( $post->ID, 'owner', true );
 $owner = get_user_by( 'id', $user );
 ?>
-<div id="bediq-accordion">
+<div class="bediq-accordion">
 
 	<h3><?php _e( 'Details of', 'bediq' ); ?> <?php the_title(); ?></h3>
 	<div>

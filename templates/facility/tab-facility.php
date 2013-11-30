@@ -10,7 +10,7 @@ $opening_hours_schema = esc_attr( get_post_meta( $post->ID, 'opening_hours_schem
 $address = get_post_meta( $post->ID, 'address', true );
 
 ?>
-<div id="bediq-accordion">
+<div class="bediq-accordion">
 	<?php if ( $connected_offers->have_posts() ) {
     ?>
 	<h3><?php _e( 'Current Offers at', 'twentyeleven' ); ?> <?php the_title(); ?></h3>
@@ -61,7 +61,7 @@ $address = get_post_meta( $post->ID, 'address', true );
 
 	<h3>Details</h3>
 	<div>
-		<div id="bediq-tabs">
+		<div class="bediq-tabs">
 			<ul>
 				<li><a href="#tabs-1"><?php _e( 'Style', 'twentyeleven' ); ?></a></li>
 				<li><a href="#tabs-2"><?php _e( 'Opening Hours', 'twentyeleven' ); ?></a></li>

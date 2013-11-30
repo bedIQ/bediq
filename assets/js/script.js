@@ -1,8 +1,8 @@
 
  jQuery(function($) {
- 	$( "#bediq-accordion" ).accordion();
+ 	$( ".bediq-accordion" ).accordion();
 	
-	$( "#bediq-tabs" ).tabs({
+	$( ".bediq-tabs" ).tabs({
 		collapsible: true
 	});
 

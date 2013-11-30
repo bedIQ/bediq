@@ -23,10 +23,10 @@ $connected = new WP_Query( array(
 ) );
 ?>
 
-<div id="bediq-accordion">
+<div class="bediq-accordion">
 	<h3>Facilities</h3>
 	<div>
-		<div id="bediq-tabs">
+		<div class="bediq-tabs">
 			<ul>
 				<li class="active"><a href="#bediq-room" data-toggle="tab"><i class="icon-home"></i> <?php _e( 'Room', 'bediq' ); ?></a></li>
 
@@ -71,7 +71,7 @@ $connected = new WP_Query( array(
 
 	                <?php if ( !empty( $occupancy_adults ) || !empty( $occupancy_child ) ) { ?>
 	                    <tr>
-	                        <td><?php _e( 'Suited for: .', 'bediq' ); ?></td>
+	                        <td><?php _e( 'Suited for: ', 'bediq' ); ?></td>
 	                        <td> max.
 	                            <?php
 	                            if ( !empty( $occupancy_adults ) ) {
@@ -89,7 +89,7 @@ $connected = new WP_Query( array(
 	                <?php if ( !empty( $extra_bed ) ) { ?>
 	                    <tr>
 	                        <td>
-	                            <?php _e( 'Offers space for', 'bediq' ); ?>
+	                            <?php _e( 'Offers space for:', 'bediq' ); ?>
 	                        </td>
 	                        <td><?php echo $extra_bed; ?> <?php _e( 'Extrabeds', 'bediq' ); ?></td>
 	                    </tr>
@@ -97,7 +97,7 @@ $connected = new WP_Query( array(
 
 	                <?php if ( !empty( $pet_policy ) ) { ?>
 	                    <tr>
-	                        <td><?php _e( 'Pet Policy', 'bediq' ); ?></td>
+	                        <td><?php _e( 'Pet Policy:', 'bediq' ); ?></td>
 	                        <td><?php echo $pet_policy; ?></td>
 	                    </tr>
 	                <?php } ?>
