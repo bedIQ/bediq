@@ -1,5 +1,5 @@
 
-ul li{
+.tab-pane ul li,.table tbody tr td ul li{
     font-size: 14px;
     line-height: 18px;
     list-style: disc;
@@ -7,8 +7,10 @@ ul li{
 }
 .flexslider ul li{
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
-table tbody tr td{
+.table tbody tr td{
     min-width: 150px;
     padding: 5px;
     border-bottom: 1px solid #e1e1e1;
@@ -50,7 +52,7 @@ table tbody tr td{
     margin: 0;
     padding: 0;
 }
-.entry-title{
+.brdiq-entry-title{
     padding: 15px 0;
     margin-bottom: 1px !important;
 }
@@ -284,6 +286,7 @@ fieldset[disabled] .bediq-btn-default.active {
 }
 .ui-accordion .ui-accordion-content{
     padding: 0 20px;
+    min-height: 250px;
 }
 .ui-accordion-header{
     background-color: #F4F4F4;
@@ -314,4 +317,7 @@ fieldset[disabled] .bediq-btn-default.active {
 }
 .ui-tabs .ui-tabs-nav{
     overflow: hidden;
+}
+.bediq-accordion div p{
+    padding: 10px 20px;
 }

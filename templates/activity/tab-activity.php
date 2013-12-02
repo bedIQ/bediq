@@ -20,9 +20,11 @@ $owner = get_user_by( 'id', $user );
 
 	<h3><?php _e( 'Organizer', 'bediq' ); ?></h3>
 	<div>
+		<P>
 		<?php
 	    printf( __( 'This event is organized by: ', 'bediq' ) );
 	    printf( '<a href="%s">%s</a>', esc_attr( get_author_posts_url( $owner->ID ) ), $owner->display_name );
 	    ?>
+	    </P>
 	</div>
 </div>
