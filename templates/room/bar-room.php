@@ -17,13 +17,17 @@
 
                     if ( !empty( $occupancy_child ) ) {
                         printf( __( ' and %s kids', 'bediq' ), $occupancy_child );
-                    } 
+                    } ?>
+                <?php  
                 } ?>
                 </span>
-                <span class="bediq-separator">|</span>
-                <span class="room-type">
-               	    <?php echo $room_type; ?>
-                </span>
+
+                <?php if ( !empty( $room_type ) ) { ?>
+                    <span class="bediq-separator">|</span>
+                    <span class="room-type">
+                   	    <?php echo $room_type; ?>
+                    </span>
+                <?php } ?>
 
                 <?php if ( !empty( $room_size ) ) { ?>
                     <span class="bediq-separator">|</span>
@@ -34,7 +38,7 @@
 
         </div>
         <div align="right">
-            <a href="<?php echo esc_url( get_post_meta( $post->ID, 'ibe_room', true ) ); ?>" target="_blank" class="bediq-btn bediq-btn-default">
+            <a href="<?php the_permalink(); ?>" target="_blank" class="bediq-btn bediq-btn-default">
                 <?php _e( 'Book from', 'bediq' ); ?> <?php echo get_post_meta( $post->ID, 'min_price', true ); ?>
             </a>
         </div>

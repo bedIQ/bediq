@@ -61,6 +61,7 @@ class Bed_IQ {
      * @uses add_action()
      */
     public function __construct() {
+
         register_activation_hook( __FILE__, array( $this, 'activate' ) );
         register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
 
@@ -659,7 +660,48 @@ class Bed_IQ {
             $file   = 'single-services.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
-        }
+        } 
+
+
+        else if ( is_post_type_archive('room')) {
+            $file   = 'archive-room.php';
+            $find[] = $file;
+            $find[] = $this->theme_dir_path. $file;
+        }else if ( is_post_type_archive('event')) {
+            $file   = 'archive-event.php';
+            $find[] = $file;
+            $find[] = $this->theme_dir_path. $file;
+
+        } else if ( is_post_type_archive('offer')) {
+            $file   = 'archive-offer.php';
+            $find[] = $file;
+            $find[] = $this->theme_dir_path. $file;
+
+        } else if ( is_post_type_archive('outlet')) {
+            $file   = 'archive-outlet.php';
+            $find[] = $file;
+            $find[] = $this->theme_dir_path. $file;
+
+        } else if ( is_post_type_archive('facility')) {
+            $file   = 'archive-facility.php';
+            $find[] = $file;
+            $find[] = $this->theme_dir_path. $file;
+
+        } else if ( is_post_type_archive('activity')) {
+            $file   = 'archive-activity.php';
+            $find[] = $file;
+            $find[] = $this->theme_dir_path. $file;
+
+        } else if ( is_post_type_archive('leisure')) {
+            $file   = 'archive-leisure.php';
+            $find[] = $file;
+            $find[] = $this->theme_dir_path. $file;
+
+        } else if ( is_post_type_archive('services')) {
+            $file   = 'archive-services.php';
+            $find[] = $file;
+            $find[] = $this->theme_dir_path. $file;
+        } 
 
         if ( $file ) {
             $template = locate_template( $find );
