@@ -43,7 +43,11 @@ html[xmlns] .clearfix {
     width:100%;
 }
 /*----------------------common----------------*/
-
+.bediq-archive-title{
+    font-size: 20px !important;
+    color: #363636;
+    text-decoration: underline;
+}
 .bediq-hidden{
     display:none;
 }
@@ -182,7 +186,6 @@ fieldset[disabled] .bediq-btn-default.active {
   padding: 40px 15px;
   margin-right: auto;
   margin-left: auto;
-  border-bottom: 1px solid #e1e1e1;
 }
 
 .bediq-container:before,
