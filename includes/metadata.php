@@ -171,11 +171,11 @@ function bediq_metada_init() {
         );
 
         // Events and Activities
-        x_add_metadata_group( 'events', array('event', 'activity'), array(
+        x_add_metadata_group( 'events', array('bediq_event', 'bediq_activity'), array(
             'label' => __( 'Event', 'bediq' )
         ) );
 
-        x_add_metadata_field( 'owner', array('event', 'activity'), array(
+        x_add_metadata_field( 'owner', array('bediq_event', 'bediq_activity'), array(
             'group' => 'events',
             'field_type' => 'select',
             'values' => bediq_users_dropdown( 'delete_others_pages' ),
@@ -183,21 +183,21 @@ function bediq_metada_init() {
             'label' => __( 'Organizer', 'bediq' )
         ) );
 
-        x_add_metadata_field( 'start_time', array('event', 'activity'), array(
+        x_add_metadata_field( 'start_time', array('bediq_event', 'bediq_activity'), array(
             'group' => 'events',
             'field_type' => 'datepicker',
-            'description' => __( 'Please enter the start time of the event', 'bediq' ),
+            'description' => __( 'Please enter the start time of the bediq_event', 'bediq' ),
             'label' => __( 'Event Begins', 'bediq' )
         ) );
 
-        x_add_metadata_field( 'end_time', array('event', 'activity'), array(
+        x_add_metadata_field( 'end_time', array('bediq_event', 'bediq_activity'), array(
             'group' => 'events',
             'field_type' => 'datepicker',
-            'description' => __( 'Please enter the end time of the event', 'bediq' ),
+            'description' => __( 'Please enter the end time of the bediq_event', 'bediq' ),
             'label' => __( 'End Time', 'bediq' ),
         ) );
 
-        /*x_add_metadata_field( 'overlay', array('event'), array(
+        /*x_add_metadata_field( 'overlay', array('bediq_event'), array(
             'group' => 'events',
             'label' => __( 'Photo', 'bediq' ),
             'field_type' => 'upload',
@@ -205,18 +205,18 @@ function bediq_metada_init() {
         ) );*/
 
         //activity special
-        x_add_metadata_group( 'activity', array('activity'), array(
+        x_add_metadata_group( 'activity', array('bediq_activity'), array(
             'label' => 'Activity'
         ) );
 
-        x_add_metadata_field( 'occurance', array('activity'), array(
+        x_add_metadata_field( 'occurance', array('bediq_activity'), array(
             'group' => 'activity',
             'description' => 'please enter the date or occurence (e.g. Every other Monday) of this activity',
             'label' => 'Occurance',
         ) );
 
         //Offers
-        x_add_metadata_group( 'offers', 'offer', array(
+        x_add_metadata_group( 'offers', 'bediq_offer', array(
             'label' => 'Offers'
         ) );
 
@@ -244,45 +244,45 @@ function bediq_metada_init() {
         ) );
         */
 
-        x_add_metadata_field( 'url', 'offer', array(
+        x_add_metadata_field( 'url', 'bediq_offer', array(
             'group' => 'offers',
             'description' => 'Please enter the URL of where the Offer will be bookable (e.g. link to booking engine)',
             'label' => 'URL',
         ) );
 
-        x_add_metadata_field( 'availability', 'offer', array(
+        x_add_metadata_field( 'availability', 'bediq_offer', array(
             'group' => 'offers',
             'description' => 'Please enter the availability, eg the total number of room nights or 5 rooms per day',
             'label' => 'Availability',
         ) );
 
-        x_add_metadata_field( 'item_terms', 'offer', array(
+        x_add_metadata_field( 'item_terms', 'bediq_offer', array(
             'group' => 'offers',
             'description' => 'Please enter all conditions that apply',
             'label' => 'Conditions',
             'multiple' => true
         ) );
 
-        x_add_metadata_field( 'benefit', 'offer', array(
+        x_add_metadata_field( 'benefit', 'bediq_offer', array(
             'group' => 'offers',
             'description' => '',
             'label' => 'Inclusions',
             'multiple' => true
         ) );
 
-        x_add_metadata_field( 'price', 'offer', array(
+        x_add_metadata_field( 'price', 'bediq_offer', array(
             'group' => 'offers',
             'description' => 'Please enter the promotional price',
             'label' => 'Discounted Price',
         ) );
 
-        x_add_metadata_field( 'price_discount', 'offer', array(
+        x_add_metadata_field( 'price_discount', 'bediq_offer', array(
             'group' => 'offers',
             'description' => 'Please enter Original Price',
             'label' => 'Original Price',
         ) );
 
-        x_add_metadata_field( 'currency', 'offer', array(
+        x_add_metadata_field( 'currency', 'bediq_offer', array(
             'group' => 'offers',
             'field_type' => 'select',
             'description' => 'Please select the currency',
@@ -290,35 +290,35 @@ function bediq_metada_init() {
             'values' => $currency
         ) );
 
-        x_add_metadata_field( 'price_valid_from', 'offer', array(
+        x_add_metadata_field( 'price_valid_from', 'bediq_offer', array(
             'group' => 'offers',
             'field_type' => 'datepicker',
             'description' => 'Please enter the date from when the promotion is available',
             'label' => 'Promotion Begins'
         ) );
 
-        x_add_metadata_field( 'price_valid_to', 'offer', array(
+        x_add_metadata_field( 'price_valid_to', 'bediq_offer', array(
             'group' => 'offers',
             'field_type' => 'datepicker',
             'description' => 'Please select the date until which the promotion is available',
             'label' => 'Promotion Ends'
         ) );
 
-        x_add_metadata_field( 'stay_from', 'offer', array(
+        x_add_metadata_field( 'stay_from', 'bediq_offer', array(
             'group' => 'offers',
             'field_type' => 'datepicker',
             'description' => '',
             'label' => 'Stay From'
         ) );
 
-        x_add_metadata_field( 'stay_until', 'offer', array(
+        x_add_metadata_field( 'stay_until', 'bediq_offer', array(
             'group' => 'offers',
             'field_type' => 'datepicker',
             'description' => '',
             'label' => 'Stay Until'
         ) );
 
-        x_add_metadata_field( 'seller', 'offer', array(
+        x_add_metadata_field( 'seller', 'bediq_offer', array(
             'group' => 'offers',
             'field_type' => 'select',
             'label' => 'Seller',
@@ -326,68 +326,68 @@ function bediq_metada_init() {
         ) );
 
         //facility ,leisure and outlet
-        x_add_metadata_group( 'facility', array('facility', 'leisure', 'outlet'), array(
+        x_add_metadata_group( 'facility', array('bediq_facility', 'bediq_leisure', 'bediq_outlet'), array(
             'label' => 'Facilities'
         ) );
 
-        x_add_metadata_field( 'address', array('facility', 'leisure', 'outlet'), array(
+        x_add_metadata_field( 'address', array('bediq_facility', 'bediq_leisure', 'bediq_outlet'), array(
             'group' => 'facility',
             'label' => 'Address',
             'field_type' => 'textarea',
             'description' => 'Physical address of the item.'
         ) );
 
-        x_add_metadata_field( 'telephone', array('facility', 'leisure', 'outlet'), array(
+        x_add_metadata_field( 'telephone', array('bediq_facility', 'bediq_leisure', 'bediq_outlet'), array(
             'group' => 'facility',
             'label' => 'Telephone',
             'description' => 'The telephone number.'
         ) );
 
-        x_add_metadata_field( 'fax', array('facility', 'leisure', 'outlet'), array(
+        x_add_metadata_field( 'fax', array('bediq_facility', 'bediq_leisure', 'bediq_outlet'), array(
             'group' => 'facility',
             'label' => 'Fax Number',
             'description' => 'The fax number.'
         ) );
 
-        x_add_metadata_field( 'map', array('facility', 'leisure', 'outlet'), array(
+        x_add_metadata_field( 'map', array('bediq_facility', 'bediq_leisure', 'bediq_outlet'), array(
             'group' => 'facility',
             'label' => 'Map',
             'description' => 'A URL to a map of the place.'
         ) );
 
-        /*x_add_metadata_field( 'photo', array('facility', 'leisure', 'outlet'), array(
+        /*x_add_metadata_field( 'photo', array('facility', 'bediq_leisure', 'bediq_outlet'), array(
             'group' => 'facility',
             'label' => 'Photo',
             'field_type' => 'upload',
             'description' => 'A photograph of this place.'
         ) );*/
 
-        x_add_metadata_field( 'opening_hours', array('facility', 'leisure', 'outlet'), array(
+        x_add_metadata_field( 'opening_hours', array('bediq_facility', 'bediq_leisure', 'bediq_outlet'), array(
             'group' => 'facility',
             'label' => 'Opening Hours',
             'field_type' => 'textarea',
             'description' => 'The opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas \',\' separating each day. Day or time ranges are specified using a hyphen \'-\'.'
         ) );
 
-        x_add_metadata_field( 'opening_hours_schema', array('facility', 'leisure', 'outlet'), array(
+        x_add_metadata_field( 'opening_hours_schema', array('bediq_facility', 'bediq_leisure', 'bediq_outlet'), array(
             'group' => 'facility',
             'label' => 'Opening Hours (Schema.org)',
             'field_type' => 'textarea',
             'description' => 'The opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas \',\' separating each day. Day or time ranges are specified using a hyphen \'-\'.'
         ) );
 
-        x_add_metadata_field( 'style', array('facility', 'leisure', 'outlet'), array(
+        x_add_metadata_field( 'style', array('bediq_facility', 'bediq_leisure', 'bediq_outlet'), array(
             'group' => 'facility',
             'label' => 'Style',
             'description' => ''
         ) );
 
         //rooms
-        x_add_metadata_group( 'rooms', array('room'), array(
+        x_add_metadata_group( 'rooms', array('bediq_room'), array(
             'label' => 'Rooms'
         ) );
 
-        x_add_metadata_field( 'room_type', 'room', array(
+        x_add_metadata_field( 'room_type', 'bediq_room', array(
             'group' => 'rooms',
             'field_type' => 'select',
             'label' => 'Room Type',
@@ -406,37 +406,37 @@ function bediq_metada_init() {
             )
         ) );
 
-        x_add_metadata_field( 'room_size', 'room', array(
+        x_add_metadata_field( 'room_size', 'bediq_room', array(
             'group' => 'rooms',
             'label' => 'Room Size',
             'description' => 'Please enter the total size of the guest room'
         ) );
 
-        x_add_metadata_field( 'occupancy_adults', 'room', array(
+        x_add_metadata_field( 'occupancy_adults', 'bediq_room', array(
             'group' => 'rooms',
             'label' => 'Occupancy Adults',
             'description' => 'Please enter the regular number of adults for this room'
         ) );
 
-        x_add_metadata_field( 'occupancy_child', 'room', array(
+        x_add_metadata_field( 'occupancy_child', 'bediq_room', array(
             'group' => 'rooms',
             'label' => 'Occupancy Children',
             'description' => 'Please enter the regular number of children for this room'
         ) );
 
-        x_add_metadata_field( 'extra_beds', 'room', array(
+        x_add_metadata_field( 'extra_beds', 'bediq_room', array(
             'group' => 'rooms',
             'label' => 'Extrabeds',
             'description' => 'Please enter the max. allowable number of Extrabeds (e.g. 1 Extrabed for Adults and 2 Extrabeds for Children)'
         ) );
 
-        x_add_metadata_field( 'min_price', 'room', array(
+        x_add_metadata_field( 'min_price', 'bediq_room', array(
             'group' => 'rooms',
             'label' => 'Min. Price',
             'description' => 'Please enter the lowest BAR rate for this room, e.g. 1600 ฿'
         ) );
 
-        x_add_metadata_field( 'pet_policy', 'room', array(
+        x_add_metadata_field( 'pet_policy', 'bediq_room', array(
             'group' => 'rooms',
             'field_type' => 'select',
             'label' => 'Pets',
@@ -450,61 +450,61 @@ function bediq_metada_init() {
             )
         ) );
 
-        x_add_metadata_field( 'entertainment', 'room', array(
+        x_add_metadata_field( 'entertainment', 'bediq_room', array(
             'group' => 'rooms',
             'label' => 'Entertainment',
             'description' => 'Please add all items you would like to display on you website.',
             'multiple' => true
         ) );
 
-        x_add_metadata_field( 'facilities_room', 'room', array(
+        x_add_metadata_field( 'facilities_room', 'bediq_room', array(
             'group' => 'rooms',
             'label' => 'Room Features',
             'description' => 'Please add all items you would like to display on you website.',
             'multiple' => true
         ) );
 
-        x_add_metadata_field( 'bed_features', 'room', array(
+        x_add_metadata_field( 'bed_features', 'bediq_room', array(
             'group' => 'rooms',
             'label' => 'Bed Features',
             'description' => 'Please add all items you would like to display on you website.',
             'multiple' => true
         ) );
 
-        x_add_metadata_field( 'bath', 'room', array(
+        x_add_metadata_field( 'bath', 'bediq_room', array(
             'group' => 'rooms',
             'label' => 'Bathroom',
             'description' => 'Please add all items you would like to display on you website.',
             'multiple' => true
         ) );
 
-        x_add_metadata_field( 'communication', 'room', array(
+        x_add_metadata_field( 'communication', 'bediq_room', array(
             'group' => 'rooms',
             'label' => 'Communication',
             'description' => 'Please add all items you would like to display on you website.',
             'multiple' => true
         ) );
 
-        x_add_metadata_field( 'safety', 'room', array(
+        x_add_metadata_field( 'safety', 'bediq_room', array(
             'group' => 'rooms',
             'label' => 'Safety',
             'description' => 'Please add all items you would like to display on you website.',
             'multiple' => true
         ) );
 
-        x_add_metadata_field( 'on_request', 'room', array(
+        x_add_metadata_field( 'on_request', 'bediq_room', array(
             'group' => 'rooms',
             'label' => 'On Request',
             'description' => 'Please add all items you would like to display on you website.',
             'multiple' => true
         ) );
 
-        x_add_metadata_field( 'ibe_room', 'room', array(
+        x_add_metadata_field( 'ibe_room', 'bediq_room', array(
             'group' => 'rooms',
             'label' => 'Link to Booking Engine',
             'description' => 'Please enter the link to your Booking Engine, preferably straight to the Room Type'
         ) );
-        x_add_metadata_field( 'photo', array('room'), array(
+        x_add_metadata_field( 'photo', array('bediq_room'), array(
             'group' => 'facility',
             'label' => 'Photo',
             'field_type' => 'upload',

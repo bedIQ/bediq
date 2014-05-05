@@ -7,83 +7,83 @@ function bediq_p2p_register_connection() {
 
     p2p_register_connection_type( array(
         'name' => 'event_to_offer',
-        'from' => 'offer',
-        'to' => 'event'
+        'from' => 'bediq_offer',
+        'to' => 'bediq_event'
     ) );
 
     p2p_register_connection_type( array(
         'name' => 'event_to_outlet',
-        'from' => 'outlet',
-        'to' => 'event'
+        'from' => 'bediq_outlet',
+        'to' => 'bediq_event'
     ) );
 
     p2p_register_connection_type( array(
         'name' => 'event_to_leisure',
-        'from' => 'leisure',
-        'to' => 'event'
+        'from' => 'bediq_leisure',
+        'to' => 'bediq_event'
     ) );
 
     p2p_register_connection_type( array(
         'name' => 'event_to_facility',
-        'from' => 'event',
-        'to' => 'facility'
+        'from' => 'bediq_event',
+        'to' => 'bediq_facility'
     ) );
 
     p2p_register_connection_type( array(
         'name' => 'room_to_offer',
-        'from' => 'offer',
-        'to' => 'room'
+        'from' => 'bediq_offer',
+        'to' => 'bediq_room'
     ) );
 
     //activity
     p2p_register_connection_type( array(
         'name' => 'outlet_to_activity',
-        'from' => 'outlet',
-        'to' => 'activity'
+        'from' => 'bediq_outlet',
+        'to' => 'bediq_activity'
     ) );
 
     p2p_register_connection_type( array(
         'name' => 'leisure_to_activity',
-        'from' => 'leisure',
-        'to' => 'activity'
+        'from' => 'bediq_leisure',
+        'to' => 'bediq_activity'
     ) );
 
     p2p_register_connection_type( array(
         'name' => 'facility_to_activity',
-        'from' => 'facility',
-        'to' => 'activity'
+        'from' => 'bediq_facility',
+        'to' => 'bediq_activity'
     ) );
 
     p2p_register_connection_type( array(
         'name' => 'offer_to_activity',
-        'from' => 'offer',
-        'to' => 'activity'
+        'from' => 'bediq_offer',
+        'to' => 'bediq_activity'
     ) );
 
     //services
     p2p_register_connection_type( array(
         'name' => 'offer_to_services',
-        'from' => 'offer',
-        'to' => 'services'
+        'from' => 'bediq_offer',
+        'to' => 'bediq_services'
     ) );
 
     //offer
     p2p_register_connection_type( array(
         'name' => 'offer_to_facility',
-        'from' => 'offer',
-        'to' => 'facility'
+        'from' => 'bediq_offer',
+        'to' => 'bediq_facility'
     ) );
 
     p2p_register_connection_type( array(
         'name' => 'offer_to_outlet',
-        'from' => 'offer',
-        'to' => 'outlet'
+        'from' => 'bediq_offer',
+        'to' => 'bediq_outlet'
     ) );
 
     p2p_register_connection_type( array(
         'name' => 'offer_to_leisure',
-        'from' => 'offer',
-        'to' => 'leisure'
+        'from' => 'bediq_offer',
+        'to' => 'bediq_leisure'
     ) );
 }
 

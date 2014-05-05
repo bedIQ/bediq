@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Bed IQ - Responsive hotel websites
+Plugin Name: bedIQ - Responsive hotel websites
 Plugin URI: http://bediq.com/
 Description: Responsive hotel websites
 Version: 0.1
@@ -78,6 +78,8 @@ class Bed_IQ {
         add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
         add_filter( 'body_class', array($this, 'body_class') );
+
+        add_filter( 'parent_file', array($this, 'fix_parent_menu' ) );
     }
 
     /**
@@ -186,41 +188,14 @@ class Bed_IQ {
      */
     function init_post_types() {
 
-        register_post_type( 'slide', array(
-            'label' => __( 'Slides', 'bediq' ),
-            'description' => __( 'Description', 'bediq' ),
-            'public' => true,
-            'show_ui' => true,
-            'show_in_menu' => true,
-            'capability_type' => 'post',
-            'hierarchical' => false,
-            'rewrite' => array('slug' => 'slide'),
-            'query_var' => true,
-            'supports' => array('title', 'editor', 'thumbnail', 'page-attributes'),
-            'labels' => array(
-                'name' => __( 'Slides', 'bediq' ),
-                'singular_name' => __( 'Slide', 'bediq' ),
-                'menu_name' => __( 'Slide', 'bediq' ),
-                'add_new' => __( 'Add Slide', 'bediq' ),
-                'add_new_item' => __( 'Add New Slide', 'bediq' ),
-                'edit' => __( 'Edit', 'bediq' ),
-                'edit_item' => __( 'Edit Slide', 'bediq' ),
-                'new_item' => __( 'New Slide', 'bediq' ),
-                'view' => __( 'View Slide', 'bediq' ),
-                'view_item' => __( 'View Slide', 'bediq' ),
-                'search_items' => __( 'Search Slides', 'bediq' ),
-                'not_found' => __( 'No Slides Found', 'bediq' ),
-                'not_found_in_trash' => __( 'No Slides Found in Trash', 'bediq' ),
-                'parent' => __( 'Parent Slide', 'bediq' ),
-            ),
-        ) );
+        $show_in_menu = false;
 
-        register_post_type( 'room', array(
+        register_post_type( 'bediq_room', array(
             'label' => __( 'Rooms', 'bediq' ),
             'description' => __( '', 'bediq' ),
             'public' => true,
             'show_ui' => true,
-            'show_in_menu' => true,
+            'show_in_menu' => $show_in_menu,
             'capability_type' => 'post',
             'hierarchical' => false,
             'rewrite' => array('slug' => 'rooms'),
@@ -245,12 +220,12 @@ class Bed_IQ {
             ),
         ) );
 
-        register_post_type( 'event', array(
+        register_post_type( 'bediq_event', array(
             'label' => __( 'Events', 'bediq' ),
             'description' => __( '', 'bediq' ),
             'public' => true,
             'show_ui' => true,
-            'show_in_menu' => true,
+            'show_in_menu' => $show_in_menu,
             'capability_type' => 'post',
             'hierarchical' => false,
             'rewrite' => array('slug' => 'events'),
@@ -275,12 +250,12 @@ class Bed_IQ {
             ),
         ) );
 
-        register_post_type( 'offer', array(
+        register_post_type( 'bediq_offer', array(
             'label' => __( 'Offers', 'bediq' ),
             'description' => __( '', 'bediq' ),
             'public' => true,
             'show_ui' => true,
-            'show_in_menu' => true,
+            'show_in_menu' => $show_in_menu,
             'capability_type' => 'post',
             'hierarchical' => false,
             'rewrite' => array('slug' => 'offers'),
@@ -306,12 +281,12 @@ class Bed_IQ {
         ) );
 
 
-        register_post_type( 'outlet', array(
+        register_post_type( 'bediq_outlet', array(
             'label' => __( 'Outlets', 'bediq' ),
             'description' => __( '', 'bediq' ),
             'public' => true,
             'show_ui' => true,
-            'show_in_menu' => true,
+            'show_in_menu' => $show_in_menu,
             'capability_type' => 'post',
             'hierarchical' => false,
             'rewrite' => array('slug' => 'outlet'),
@@ -336,12 +311,12 @@ class Bed_IQ {
             ),
         ) );
 
-        register_post_type( 'facility', array(
+        register_post_type( 'bediq_facility', array(
             'label' => __( 'Facilities', 'bediq' ),
             'description' => __( '', 'bediq' ),
             'public' => true,
             'show_ui' => true,
-            'show_in_menu' => true,
+            'show_in_menu' => $show_in_menu,
             'capability_type' => 'post',
             'hierarchical' => false,
             'rewrite' => array('slug' => 'facility'),
@@ -366,12 +341,12 @@ class Bed_IQ {
             ),
         ) );
 
-        register_post_type( 'activity', array(
+        register_post_type( 'bediq_activity', array(
             'label' => __( 'Activities', 'bediq' ),
             'description' => __( '', 'bediq' ),
             'public' => true,
             'show_ui' => true,
-            'show_in_menu' => true,
+            'show_in_menu' => $show_in_menu,
             'capability_type' => 'post',
             'hierarchical' => false,
             'rewrite' => array('slug' => 'activity'),
@@ -396,12 +371,12 @@ class Bed_IQ {
             ),
         ) );
 
-        register_post_type( 'leisure', array(
+        register_post_type( 'bediq_leisure', array(
             'label' => __( 'Leisure', 'bediq' ),
             'description' => __( '', 'bediq' ),
             'public' => true,
             'show_ui' => true,
-            'show_in_menu' => true,
+            'show_in_menu' => $show_in_menu,
             'capability_type' => 'post',
             'hierarchical' => false,
             'rewrite' => array('slug' => 'leisure'),
@@ -426,12 +401,12 @@ class Bed_IQ {
             ),
         ) );
 
-        register_post_type( 'services', array(
+        register_post_type( 'bediq_services', array(
             'label' => __( 'Services', 'bediq' ),
             'description' => __( '', 'bediq' ),
             'public' => true,
             'show_ui' => true,
-            'show_in_menu' => true,
+            'show_in_menu' => $show_in_menu,
             'capability_type' => 'post',
             'hierarchical' => false,
             'rewrite' => array('slug' => 'services'),
@@ -457,7 +432,7 @@ class Bed_IQ {
         ) );
 
         //taxonomies
-        register_taxonomy( 'accommodation', array( 'room' ),
+        register_taxonomy( 'bediq_accommodation', array( 'room' ),
             array(
                 'hierarchical' => true,
                 'label' => __( 'Accommodation', 'bediq' ),
@@ -468,7 +443,7 @@ class Bed_IQ {
             )
         );
 
-        register_taxonomy( 'hotel_offers', array( 'offer' ),
+        register_taxonomy( 'bediq_hotel_offers', array( 'offer' ),
             array(
                 'hierarchical' => true,
                 'label' => __( 'Hotel Offers', 'bediq' ),
@@ -479,7 +454,7 @@ class Bed_IQ {
             )
         );
 
-        register_taxonomy( 'venues', array( 'facility' ),
+        register_taxonomy( 'bediq_venues', array( 'facility' ),
             array(
                 'hierarchical' => true,
                 'label' => __( 'Venues', 'bediq' ),
@@ -490,7 +465,7 @@ class Bed_IQ {
             )
         );
 
-        register_taxonomy( 'dining', array( 'outlet' ),
+        register_taxonomy( 'bediq_dining', array( 'outlet' ),
             array(
                 'hierarchical' => true,
                 'label' => __( 'Dining', 'bediq' ),
@@ -501,7 +476,7 @@ class Bed_IQ {
             )
         );
 
-        register_taxonomy( 'things-to-do', array( 'activity' ),
+        register_taxonomy( 'bediq_things_to_do', array( 'activity' ),
             array(
                 'hierarchical' => true,
                 'label' => __( 'Things To Do', 'bediq' ),
@@ -512,7 +487,7 @@ class Bed_IQ {
             )
         );
 
-        register_taxonomy( 'accommodation', array( 'room' ),
+        register_taxonomy( 'bediq_accommodation', array( 'room' ),
             array(
                 'hierarchical' => true,
                 'label' => __( 'Accommodation', 'bediq' ),
@@ -660,7 +635,7 @@ class Bed_IQ {
             $file   = 'single-services.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
-        } 
+        }
 
 
         else if ( is_post_type_archive('room')) {
@@ -701,7 +676,7 @@ class Bed_IQ {
             $file   = 'archive-services.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
-        } 
+        }
 
         if ( $file ) {
             $template = locate_template( $find );
@@ -719,6 +694,29 @@ class Bed_IQ {
         $classes[] = $current_theme->template;
 
         return $classes;
+    }
+
+    /**
+     * highlight the proper top level menu
+     *
+     * @link http://wordpress.org/support/topic/moving-taxonomy-ui-to-another-main-menu?replies=5#post-2432769
+     * @global obj $current_screen
+     * @param string $parent_file
+     * @return string
+     */
+    function fix_parent_menu( $parent_file ) {
+        global $current_screen;
+
+        $post_types = array(
+            'bediq_room', 'bediq_event', 'bediq_offer', 'bediq_outlet',
+            'bediq_facility', 'bediq_activity', 'bediq_leisure', 'bediq_services'
+        );
+
+        if ( in_array( $current_screen->post_type, $post_types ) ) {
+            $parent_file = 'bediq';
+        }
+
+        return $parent_file;
     }
 
 } // Bed_IQ
