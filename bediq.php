@@ -596,84 +596,84 @@ class Bed_IQ {
         $find = array( 'bediq.php' );
         $file = '';
 
-        if ( is_single() && get_post_type() == 'room' ) {
-            $file   = 'single-room.php';
+        if ( is_single() && get_post_type() == 'bediq_room' ) {
+            $file   = 'single-bediq_room.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
 
-        } else if ( is_single() && get_post_type() == 'event' ) {
-            $file   = 'single-event.php';
+        } else if ( is_single() && get_post_type() == 'bediq_event' ) {
+            $file   = 'single-bediq_event.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
 
-        } else if ( is_single() && get_post_type() == 'offer' ) {
-            $file   = 'single-offer.php';
+        } else if ( is_single() && get_post_type() == 'bediq_offer' ) {
+            $file   = 'single-bediq_offer.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
 
-        } else if ( is_single() && get_post_type() == 'outlet' ) {
-            $file   = 'single-outlet.php';
+        } else if ( is_single() && get_post_type() == 'bediq_outlet' ) {
+            $file   = 'single-bediq_outlet.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
 
-        } else if ( is_single() && get_post_type() == 'facility' ) {
-            $file   = 'single-facility.php';
+        } else if ( is_single() && get_post_type() == 'bediq_facility' ) {
+            $file   = 'single-bediq_facility.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
 
-        } else if ( is_single() && get_post_type() == 'activity' ) {
-            $file   = 'single-activity.php';
+        } else if ( is_single() && get_post_type() == 'bediq_activity' ) {
+            $file   = 'single-bediq_activity.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
 
-        } else if ( is_single() && get_post_type() == 'leisure' ) {
-            $file   = 'single-leisure.php';
+        } else if ( is_single() && get_post_type() == 'bediq_leisure' ) {
+            $file   = 'single-bediq_leisure.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
 
-        } else if ( is_single() && get_post_type() == 'services' ) {
-            $file   = 'single-services.php';
+        } else if ( is_single() && get_post_type() == 'bediq_services' ) {
+            $file   = 'single-bediq_services.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
         }
 
 
-        else if ( is_post_type_archive('room')) {
-            $file   = 'archive-room.php';
+        else if ( is_post_type_archive('bediq_room')) {
+            $file   = 'archive-bediq_room.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
-        }else if ( is_post_type_archive('event')) {
-            $file   = 'archive-event.php';
-            $find[] = $file;
-            $find[] = $this->theme_dir_path. $file;
-
-        } else if ( is_post_type_archive('offer')) {
-            $file   = 'archive-offer.php';
+        }else if ( is_post_type_archive('bediq_event')) {
+            $file   = 'archive-bediq_event.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
 
-        } else if ( is_post_type_archive('outlet')) {
-            $file   = 'archive-outlet.php';
+        } else if ( is_post_type_archive('bediq_offer')) {
+            $file   = 'archive-bediq_offer.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
 
-        } else if ( is_post_type_archive('facility')) {
-            $file   = 'archive-facility.php';
+        } else if ( is_post_type_archive('bediq_outlet')) {
+            $file   = 'archive-bediq_outlet.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
 
-        } else if ( is_post_type_archive('activity')) {
-            $file   = 'archive-activity.php';
+        } else if ( is_post_type_archive('bediq_facility')) {
+            $file   = 'archive-bediq_facility.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
 
-        } else if ( is_post_type_archive('leisure')) {
-            $file   = 'archive-leisure.php';
+        } else if ( is_post_type_archive('bediq_activity')) {
+            $file   = 'archive-bediq_activity.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
 
-        } else if ( is_post_type_archive('services')) {
-            $file   = 'archive-services.php';
+        } else if ( is_post_type_archive('bediq_leisure')) {
+            $file   = 'archive-bediq_leisure.php';
+            $find[] = $file;
+            $find[] = $this->theme_dir_path. $file;
+
+        } else if ( is_post_type_archive('bediq_services')) {
+            $file   = 'archive-bediq_services.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
         }
