@@ -513,20 +513,10 @@ class Bed_IQ {
 
         $required_plugins = array(
             array(
-                'function' => 'x_add_metadata_field',
-                'name' => 'Custom Metadata Manager',
-                'url' => 'http://wordpress.org/plugins/custom-metadata/'
-            ),
-            array(
-                'function' => 'p2p_register_connection_type',
-                'name' => 'Posts 2 Posts',
-                'url' => 'http://wordpress.org/plugins/posts-to-posts/'
-            ),
-            array(
-                'function' => 'wpthumb',
-                'name' => 'WP Thumb',
-                'url' => 'http://wordpress.org/plugins/wp-thumb/'
-            ),
+                'function' => 'cmb_init',
+                'name' => 'Custom Meta Boxes',
+                'url' => 'https://github.com/humanmade/Custom-Meta-Boxes'
+            )
         );
 
         $not_installed = array();

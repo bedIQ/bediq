@@ -1,36 +1,25 @@
 <?php
 global $post;
 
-$image = ( get_post_meta( $post->ID, 'photo') );
+$photos = get_post_meta( $post->ID, 'photo');
 ?>
 
-<div class="flexslider">
-  <ul class="slides">
-  <!--<img src="slide3.jpg" />-->
-  	
-  	<?php
-  	if ( has_post_thumbnail() ) { ?>
-  	<li>
-       <?php if ( function_exists( 'wpthumb') ) {
-            $args = apply_filters( 'bediq_wpthumb_featured_image', 'width=990&height=300&crop=1' );
-            the_post_thumbnail( $args);
-        } else {
-            $args = array('class' => 'flex-container', 'itemprop' => 'image');
-            the_post_thumbnail( 'full', apply_filters( 'bediq_featured_image', $args ));
-        } ?>
+<?php
+if ( ! $photos && has_post_thumbnail() ) {
+    the_post_thumbnail( 'weslider-slide-image', apply_filters( 'bediq_featured_image', array() ) );
+}
+?>
 
-    </li>
-    <?php } ?>
+<div class="room-slider flexslider">
+    <ul class="slides">
     <?php
-    foreach ($image as $img) { ?>
-	    <?php if ( function_exists( 'wpthumb' ) && !empty( $image ) ) {
-	        $args = array('width' => 990, 'height' => 300, 'crop' => true);
-	        $img = wpthumb( $img, apply_filters( 'bediq_wpthumb_image', $args ) );
-	    }
-	    if ( $img ) {
+    foreach ($photos as $attachment_id) {
+        $image_url = wp_get_attachment_image( $attachment_id, 'weslider-slide-image' );
+
+	    if ( $image_url ) {
 	        ?>
-	       <li> <img src="<?php echo $img; ?>" /> </li>
-	    <?php } 
+	       <li><?php echo $image_url; ?></li>
+	    <?php }
 	}?>
-  </ul>
+    </ul>
 </div>

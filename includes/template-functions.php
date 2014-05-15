@@ -532,6 +532,9 @@ add_action( 'bediq_before_archive_services_summary', 'bediq_template_services_sc
 -------------------------------------------------- */
 
 function bediq_template_archive_title() {
+    if ( !is_archive() ) {
+        return;
+    }
     $object = get_queried_object();
 ?>
 <h1 class="bediq-archive-title">
