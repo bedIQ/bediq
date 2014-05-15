@@ -23,6 +23,4 @@ get_header( 'bediq' ); ?>
 
 	<?php do_action( 'bediq_after_main_content' ); ?>
 
-	<?php do_action( 'bediq_sidebar' ); ?>
-
 <?php get_footer( 'bediq' ); ?>

@@ -16,8 +16,8 @@
 :: Single Room template Hooks
 -------------------------------------------------- */
 
-add_action( 'bediq_before_single_room', 'bediq_template_room_thumbnail_image', 10 );
-add_action( 'bediq_before_single_room', 'bediq_template_post_title', 15 );
+add_action( 'bediq_before_single_room', 'bediq_template_post_title', 10 );
+add_action( 'bediq_before_single_room', 'bediq_template_room_thumbnail_image', 15 );
 
 add_action( 'bediq_before_single_room_summary', 'bediq_template_room_schema', 15 );
 add_action( 'bediq_before_single_room_summary', 'bediq_template_room_book_now', 20 );
@@ -156,7 +156,7 @@ add_action( 'bediq_after_single_services_summary', 'bediq_template_services_tab'
 function bediq_template_post_title() {
     ?>
     <header>
-        <h1 class="brdiq-entry-title" itemprop="name"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+        <h2 class="page-title" itemprop="name"><?php the_title(); ?></h2>
     </header><!-- .entry-header -->
     <?php
 }
