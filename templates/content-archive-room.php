@@ -1,35 +1,19 @@
-<div class="bediq-container">
-    <div class="bediq-row">
-        <div class="bediq-full">
-            <?php do_action( 'bediq_before_archive_room' ); ?>
-        </div>
-    </div>
+<?php
+/**
+ * bediq_template_room_book_now - 10
+ */
+do_action( 'bediq_before_archive_room' ); ?>
 
     <article itemscope itemtype="http://schema.org/Product" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-        <div class="bediq-row bg">
-            <div class="bediq-full">
-                <?php do_action( 'bediq_before_archive_room_summary' ); ?>
-            </div>
-        </div>
-
-        <div class="bediq-row">
-            <div class="bediq-full">
-                <?php do_action( 'bediq_archive_room_summary' ); ?>
-            </div>
-        </div>
-
-        <div class="bediq-row">
-            <div class="bediq-full">
-                <?php do_action( 'bediq_after_archive_room_summary' ); ?>
-            </div>
-        </div>
+        <?php
+        /**
+         * bediq_template_featured_image - 10
+         * bediq_template_archive_post_title - 15
+         * bediq_template_post_content - 20
+         */
+        do_action( 'bediq_archive_room' ); ?>
 
     </article>
 
-    <div class="bediq-row">
-        <div class="bediq-full">
-            <?php do_action( 'bediq_after_archive_room' ); ?>
-        </div>
-    </div>
-</div>
+<?php do_action( 'bediq_after_archive_room' ); ?>

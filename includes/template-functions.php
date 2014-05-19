@@ -161,26 +161,50 @@ function bediq_template_post_title() {
     <?php
 }
 
+function bediq_template_archive_post_title() {
+    ?>
+    <header>
+        <h1 class="entry-title" itemprop="name"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+    </header><!-- .entry-header -->
+    <?php
+}
+
 function bediq_template_post_content() {
     ?>
-    <div itemprop="description" class="bediq-description">
+    <div itemprop="description" class="bediq-description entry-excerpt">
         <?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'bediq' ) ); ?>
     </div>
     <?php
 }
+
+function bediq_template_archive_post_content() {
+    ?>
+    <div itemprop="description" class="bediq-description entry-excerpt">
+        <?php the_excerpt(); ?>
+    </div>
+    <?php
+}
+
+/**
+ * Featured image
+ *
+ * @return void
+ */
 function bediq_template_featured_image() {
+
     if ( has_post_thumbnail() ) {
 
-        echo '<div class="bediq-image-wrap">';
-        if ( function_exists( 'wpthumb') ) {
+        echo '<div class="bediq-image-wrap entry-thumb">';
 
-            $args = apply_filters( 'bediq_wpthumb_featured_image', 'width=990&height=300&crop=1' );
-            the_post_thumbnail( $args);
+        if ( !is_single() ) {
+            printf( '<a href="%s">', get_permalink() );
+        }
 
-        } else {
+        $args = array('class' => 'flex-container', 'itemprop' => 'image');
+        the_post_thumbnail( 'full', apply_filters( 'bediq_featured_image', $args ));
 
-            $args = array('class' => 'flex-container', 'itemprop' => 'image');
-            the_post_thumbnail( 'full', apply_filters( 'bediq_featured_image', $args ));
+        if ( !is_single() ) {
+            echo '</a>';
         }
 
         echo '</div>';
@@ -394,13 +418,10 @@ add_action( 'bediq_before_main_content', 'bediq_template_archive_title', 10 );
 :: Archive Room template Hooks
 -------------------------------------------------- */
 
-add_action( 'bediq_before_archive_room', 'bediq_template_featured_image', 10 );
-add_action( 'bediq_before_archive_room', 'bediq_template_post_title', 15 );
-
-add_action( 'bediq_before_archive_room_summary', 'bediq_template_room_book_now', 10 );
-
-add_action( 'bediq_archive_room_summary', 'bediq_template_post_content', 10 );
-
+add_action( 'bediq_archive_room', 'bediq_template_featured_image', 10 );
+add_action( 'bediq_archive_room', 'bediq_template_archive_post_title', 15 );
+add_action( 'bediq_archive_room', 'bediq_template_room_book_now', 20 );
+add_action( 'bediq_archive_room', 'bediq_template_archive_post_content', 25 );
 
 /*  --------------------------------------------------
 :: Archive Event template Hooks

@@ -15,14 +15,22 @@ get_header( 'bediq' ); ?>
 
     <?php do_action( 'bediq_before_main_content' ); ?>
 
-        <?php while ( have_posts() ) : the_post(); ?>
+        <div class="bediq-container">
 
-            <?php bediq_get_template_part( 'content', 'archive-room' ); ?>
+            <div class="bediq-col-9">
+                <?php while ( have_posts() ) : the_post(); ?>
 
-        <?php endwhile; // end of the loop. ?>
+                    <?php bediq_get_template_part( 'content', 'archive-room' ); ?>
+
+                <?php endwhile; // end of the loop. ?>
+            </div> <!-- .bediq-col-9 -->
+
+            <div class="bediq-col-3 sidebar">
+                <?php dynamic_sidebar( 'bediq-archive-room' ); ?>
+            </div> <!-- .sidebar -->
+
+        </div> <!-- .bediq-container -->
 
     <?php do_action( 'bediq_after_main_content' ); ?>
-
-    <?php do_action( 'bediq_sidebar' ); ?>
 
 <?php get_footer( 'bediq' ); ?>
