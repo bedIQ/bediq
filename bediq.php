@@ -65,10 +65,11 @@ class Bed_IQ {
         register_activation_hook( __FILE__, array( $this, 'activate' ) );
         register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
 
+        $this->file_includes();
+
         // Localize our plugin
         add_action( 'init', array( $this, 'localization_setup' ) );
         add_action( 'init', array( $this, 'init_post_types' ) );
-        add_action( 'init', array( $this, 'file_includes' ) );
         add_action( 'init', array( $this, 'init' ) );
         add_action( 'admin_notices', array( $this, 'required_plugin_notice' ) );
 
