@@ -1,4 +1,4 @@
-# Bed IQ
+# bedIQ
 
 Responsive hotel websites
 
