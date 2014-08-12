@@ -1,0 +1,880 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: bedIQ\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-12 22:26+0600\n"
+"PO-Revision-Date: 2014-08-12 22:27+0600\n"
+"Last-Translator: Tareq Hasan <tareq@wedevs.com>\n"
+"Language-Team: Your Name <you@example.com>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _e;__;gettext_noop;esc_attr_e;_n:1,2;_n\n"
+"X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.5.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../bediq.php:195 ../bediq.php:206 ../bediq.php:208 ../admin/settings.php:14
+msgid "Rooms"
+msgstr ""
+
+#: ../bediq.php:207 ../templates/room/tab-room.php:32
+msgid "Room"
+msgstr ""
+
+#: ../bediq.php:209
+msgid "Add Room"
+msgstr ""
+
+#: ../bediq.php:210
+msgid "Add New Room"
+msgstr ""
+
+#: ../bediq.php:211 ../bediq.php:240 ../bediq.php:269 ../bediq.php:299
+#: ../bediq.php:328 ../bediq.php:357 ../bediq.php:386 ../bediq.php:415
+msgid "Edit"
+msgstr ""
+
+#: ../bediq.php:212
+msgid "Edit Room"
+msgstr ""
+
+#: ../bediq.php:213
+msgid "New Room"
+msgstr ""
+
+#: ../bediq.php:214 ../bediq.php:215
+msgid "View Room"
+msgstr ""
+
+#: ../bediq.php:216
+msgid "Search Rooms"
+msgstr ""
+
+#: ../bediq.php:217
+msgid "No Rooms Found"
+msgstr ""
+
+#: ../bediq.php:218
+msgid "No Rooms Found in Trash"
+msgstr ""
+
+#: ../bediq.php:219
+msgid "Parent Room"
+msgstr ""
+
+#: ../bediq.php:224 ../bediq.php:235 ../admin/settings.php:15
+msgid "Events"
+msgstr ""
+
+#: ../bediq.php:236 ../bediq.php:237
+msgid "Event"
+msgstr ""
+
+#: ../bediq.php:238
+msgid "Add Event"
+msgstr ""
+
+#: ../bediq.php:239
+msgid "Add New Event"
+msgstr ""
+
+#: ../bediq.php:241
+msgid "Edit Event"
+msgstr ""
+
+#: ../bediq.php:242
+msgid "New Event"
+msgstr ""
+
+#: ../bediq.php:243 ../bediq.php:244
+msgid "View Event"
+msgstr ""
+
+#: ../bediq.php:245
+msgid "Search Events"
+msgstr ""
+
+#: ../bediq.php:246
+msgid "No Events Found"
+msgstr ""
+
+#: ../bediq.php:247
+msgid "No Events Found in Trash"
+msgstr ""
+
+#: ../bediq.php:248
+msgid "Parent Event"
+msgstr ""
+
+#: ../bediq.php:253 ../bediq.php:264 ../bediq.php:446 ../admin/settings.php:16
+#: ../includes/metadata.php:565 ../includes/metadata.php:603
+msgid "Offers"
+msgstr ""
+
+#: ../bediq.php:265 ../bediq.php:266
+msgid "Offer"
+msgstr ""
+
+#: ../bediq.php:267
+msgid "Add Offer"
+msgstr ""
+
+#: ../bediq.php:268
+msgid "Add New Offer"
+msgstr ""
+
+#: ../bediq.php:270
+msgid "Edit Offer"
+msgstr ""
+
+#: ../bediq.php:271
+msgid "New Offer"
+msgstr ""
+
+#: ../bediq.php:272 ../bediq.php:273
+msgid "View Offer"
+msgstr ""
+
+#: ../bediq.php:274
+msgid "Search Offers"
+msgstr ""
+
+#: ../bediq.php:275
+msgid "No Offers Found"
+msgstr ""
+
+#: ../bediq.php:276
+msgid "No Offers Found in Trash"
+msgstr ""
+
+#: ../bediq.php:277
+msgid "Parent Offer"
+msgstr ""
+
+#: ../bediq.php:283 ../bediq.php:294 ../admin/settings.php:17
+#: ../includes/metadata.php:630
+msgid "Outlets"
+msgstr ""
+
+#: ../bediq.php:295 ../bediq.php:296 ../admin/settings.php:17
+msgid "Outlet"
+msgstr ""
+
+#: ../bediq.php:297
+msgid "Add Outlet"
+msgstr ""
+
+#: ../bediq.php:298
+msgid "Add New Outlet"
+msgstr ""
+
+#: ../bediq.php:300
+msgid "Edit Outlet"
+msgstr ""
+
+#: ../bediq.php:301
+msgid "New Outlet"
+msgstr ""
+
+#: ../bediq.php:302 ../bediq.php:303
+msgid "View Outlet"
+msgstr ""
+
+#: ../bediq.php:304
+msgid "Search Outlet"
+msgstr ""
+
+#: ../bediq.php:305
+msgid "No Outlet Found"
+msgstr ""
+
+#: ../bediq.php:306
+msgid "No Outlet Found in Trash"
+msgstr ""
+
+#: ../bediq.php:307
+msgid "Parent Outlet"
+msgstr ""
+
+#: ../bediq.php:312 ../bediq.php:323 ../admin/settings.php:18
+#: ../includes/metadata.php:612 ../includes/metadata.php:810
+#: ../templates/room/tab-room.php:28
+msgid "Facilities"
+msgstr ""
+
+#: ../bediq.php:324 ../bediq.php:325
+msgid "Facility"
+msgstr ""
+
+#: ../bediq.php:326
+msgid "Add Facility"
+msgstr ""
+
+#: ../bediq.php:327
+msgid "Add New Facility"
+msgstr ""
+
+#: ../bediq.php:329
+msgid "Edit Facility"
+msgstr ""
+
+#: ../bediq.php:330
+msgid "New Facility"
+msgstr ""
+
+#: ../bediq.php:331 ../bediq.php:332
+msgid "View Facility"
+msgstr ""
+
+#: ../bediq.php:333
+msgid "Search Facilities"
+msgstr ""
+
+#: ../bediq.php:334
+msgid "No Facilities Found"
+msgstr ""
+
+#: ../bediq.php:335
+msgid "No Facilities Found in Trash"
+msgstr ""
+
+#: ../bediq.php:336
+msgid "Parent Facility"
+msgstr ""
+
+#: ../bediq.php:341 ../bediq.php:352 ../admin/settings.php:19
+msgid "Activities"
+msgstr ""
+
+#: ../bediq.php:353 ../bediq.php:354
+msgid "Activity"
+msgstr ""
+
+#: ../bediq.php:355
+msgid "Add Activity"
+msgstr ""
+
+#: ../bediq.php:356
+msgid "Add New Activity"
+msgstr ""
+
+#: ../bediq.php:358
+msgid "Edit Activity"
+msgstr ""
+
+#: ../bediq.php:359
+msgid "New Activity"
+msgstr ""
+
+#: ../bediq.php:360 ../bediq.php:361
+msgid "View Activity"
+msgstr ""
+
+#: ../bediq.php:362
+msgid "Search Activities"
+msgstr ""
+
+#: ../bediq.php:363
+msgid "No Activities Found"
+msgstr ""
+
+#: ../bediq.php:364
+msgid "No Activities Found in Trash"
+msgstr ""
+
+#: ../bediq.php:365
+msgid "Parent Activity"
+msgstr ""
+
+#: ../bediq.php:370 ../bediq.php:381 ../bediq.php:382 ../bediq.php:383
+#: ../admin/settings.php:20
+msgid "Leisure"
+msgstr ""
+
+#: ../bediq.php:384
+msgid "Add Leisure"
+msgstr ""
+
+#: ../bediq.php:385
+msgid "Add New Leisure"
+msgstr ""
+
+#: ../bediq.php:387
+msgid "Edit Leisure"
+msgstr ""
+
+#: ../bediq.php:388
+msgid "New Leisure"
+msgstr ""
+
+#: ../bediq.php:389 ../bediq.php:390
+msgid "View Leisure"
+msgstr ""
+
+#: ../bediq.php:391
+msgid "Search Leisure"
+msgstr ""
+
+#: ../bediq.php:392
+msgid "No Leisure Found"
+msgstr ""
+
+#: ../bediq.php:393
+msgid "No Leisure Found in Trash"
+msgstr ""
+
+#: ../bediq.php:394
+msgid "Parent Leisure"
+msgstr ""
+
+#: ../bediq.php:399 ../bediq.php:410 ../admin/settings.php:21
+#: ../includes/metadata.php:816
+msgid "Services"
+msgstr ""
+
+#: ../bediq.php:411 ../bediq.php:412
+msgid "Service"
+msgstr ""
+
+#: ../bediq.php:413
+msgid "Add Service"
+msgstr ""
+
+#: ../bediq.php:414
+msgid "Add New Service"
+msgstr ""
+
+#: ../bediq.php:416
+msgid "Edit Service"
+msgstr ""
+
+#: ../bediq.php:417
+msgid "New Service"
+msgstr ""
+
+#: ../bediq.php:418 ../bediq.php:419
+msgid "View Service"
+msgstr ""
+
+#: ../bediq.php:420
+msgid "Search Services"
+msgstr ""
+
+#: ../bediq.php:421
+msgid "No Services Found"
+msgstr ""
+
+#: ../bediq.php:422
+msgid "No Services Found in Trash"
+msgstr ""
+
+#: ../bediq.php:423
+msgid "Parent Service"
+msgstr ""
+
+#: ../bediq.php:431 ../bediq.php:435 ../bediq.php:486 ../bediq.php:490
+msgid "Accommodation"
+msgstr ""
+
+#: ../bediq.php:442
+msgid "Hotel Offers"
+msgstr ""
+
+#: ../bediq.php:453 ../bediq.php:457
+msgid "Venues"
+msgstr ""
+
+#: ../bediq.php:464 ../bediq.php:468
+msgid "Dining"
+msgstr ""
+
+#: ../bediq.php:475 ../bediq.php:479
+msgid "Things To Do"
+msgstr ""
+
+#: ../bediq.php:526
+#, php-format
+msgid ""
+"Please install %s plugin(s) for <strong>Bed IQ</strong> to work properly"
+msgstr ""
+
+#: ../admin/settings.php:13
+msgid "bedIQ"
+msgstr ""
+
+#: ../includes/metadata.php:451
+msgid "Room Type"
+msgstr ""
+
+#: ../includes/metadata.php:468 ../templates/room/room-archive.php:21
+msgid "Room Size"
+msgstr ""
+
+#: ../includes/metadata.php:470
+msgid "Please enter the total size of the guest room"
+msgstr ""
+
+#: ../includes/metadata.php:474
+msgid "Occupancy Adults"
+msgstr ""
+
+#: ../includes/metadata.php:476
+msgid "Please enter the regular number of adults for this room"
+msgstr ""
+
+#: ../includes/metadata.php:480
+msgid "Occupancy Children"
+msgstr ""
+
+#: ../includes/metadata.php:482
+msgid "Please enter the regular number of children for this room"
+msgstr ""
+
+#: ../includes/metadata.php:486 ../templates/room/tab-room.php:89
+msgid "Extrabeds"
+msgstr ""
+
+#: ../includes/metadata.php:488
+msgid ""
+"Please enter the max. allowable number of Extrabeds (e.g. 1 Extrabed for "
+"Adults and 2 Extrabeds for Children)"
+msgstr ""
+
+#: ../includes/metadata.php:492
+msgid "Min. Price"
+msgstr ""
+
+#: ../includes/metadata.php:494
+msgid "Please enter the lowest BAR rate for this room, e.g. $1600"
+msgstr ""
+
+#: ../includes/metadata.php:498
+msgid "Please select your pet policy"
+msgstr ""
+
+#: ../includes/metadata.php:510 ../templates/room/tab-room.php:35
+msgid "Entertainment"
+msgstr ""
+
+#: ../includes/metadata.php:512 ../includes/metadata.php:519
+#: ../includes/metadata.php:526 ../includes/metadata.php:533
+#: ../includes/metadata.php:540 ../includes/metadata.php:547
+#: ../includes/metadata.php:554
+msgid "Please add all items you would like to display on your website."
+msgstr ""
+
+#: ../includes/metadata.php:517 ../includes/metadata.php:786
+msgid "Room Features"
+msgstr ""
+
+#: ../includes/metadata.php:524
+msgid "Bed Features"
+msgstr ""
+
+#: ../includes/metadata.php:531 ../templates/room/tab-room.php:44
+msgid "Bathroom"
+msgstr ""
+
+#: ../includes/metadata.php:538 ../templates/room/tab-room.php:49
+msgid "Communication"
+msgstr ""
+
+#: ../includes/metadata.php:545 ../templates/room/tab-room.php:53
+msgid "Safety"
+msgstr ""
+
+#: ../includes/metadata.php:552
+msgid "On Request"
+msgstr ""
+
+#: ../includes/metadata.php:559
+msgid "Link to Booking Engine"
+msgstr ""
+
+#: ../includes/metadata.php:561
+msgid ""
+"Please enter the link to your Booking Engine, preferably straight to the "
+"Room Type"
+msgstr ""
+
+#: ../includes/metadata.php:570 ../includes/metadata.php:608
+#, php-format
+msgid ""
+"Add offers to this room. You have to <a href=\"%s\" target=\"_blank\">create "
+"some offers</a> first!"
+msgstr ""
+
+#: ../includes/metadata.php:574
+msgid "Photographs of this room"
+msgstr ""
+
+#: ../includes/metadata.php:576
+msgid "Some photographs of this room."
+msgstr ""
+
+#: ../includes/metadata.php:584
+msgid "Event Begins"
+msgstr ""
+
+#: ../includes/metadata.php:586
+msgid "Please enter the start time of the event"
+msgstr ""
+
+#: ../includes/metadata.php:590
+msgid "Event Ends"
+msgstr ""
+
+#: ../includes/metadata.php:592
+msgid "Please enter the end time of the event"
+msgstr ""
+
+#: ../includes/metadata.php:596 ../templates/activity/tab-activity.php:21
+#: ../templates/event/tab-event.php:21
+msgid "Organizer"
+msgstr ""
+
+#: ../includes/metadata.php:598
+msgid ""
+"Please choose organizer or set one up under <a href=\"users.php\">Users</a>"
+msgstr ""
+
+#: ../includes/metadata.php:617
+#, php-format
+msgid ""
+"Add facilities here. You have to <a href=\"%s\" target=\"_blank\">create "
+"some facilities</a> first!"
+msgstr ""
+
+#: ../includes/metadata.php:621
+msgid "Leisures"
+msgstr ""
+
+#: ../includes/metadata.php:626
+#, php-format
+msgid ""
+"Add Leisures here. You have to <a href=\"%s\" target=\"_blank\">create some "
+"leisures</a> first!"
+msgstr ""
+
+#: ../includes/metadata.php:635
+#, php-format
+msgid ""
+"Add outlets here. You have to <a href=\"%s\" target=\"_blank\">create some "
+"outlets</a> first!"
+msgstr ""
+
+#: ../includes/metadata.php:642
+msgid "Occurance"
+msgstr ""
+
+#: ../includes/metadata.php:644
+msgid ""
+"please enter the date or occurence (e.g. Every other Monday) of this activity"
+msgstr ""
+
+#: ../includes/metadata.php:650
+msgid "URL"
+msgstr ""
+
+#: ../includes/metadata.php:652
+msgid ""
+"Please enter the URL of where the Offer will be bookable (e.g. link to "
+"booking engine)"
+msgstr ""
+
+#: ../includes/metadata.php:656 ../templates/offers/tab-offer.php:41
+msgid "Availability"
+msgstr ""
+
+#: ../includes/metadata.php:658
+msgid ""
+"Please enter the availability, eg the total number of room nights or 5 rooms "
+"per day"
+msgstr ""
+
+#: ../includes/metadata.php:662 ../templates/offers/tab-offer.php:13
+msgid "Conditions"
+msgstr ""
+
+#: ../includes/metadata.php:664
+msgid "Please enter all conditions that apply"
+msgstr ""
+
+#: ../includes/metadata.php:669
+msgid "Inclusions"
+msgstr ""
+
+#: ../includes/metadata.php:675
+msgid "Discounted Price"
+msgstr ""
+
+#: ../includes/metadata.php:677
+msgid "Please enter the promotional price"
+msgstr ""
+
+#: ../includes/metadata.php:681
+msgid "Original Price"
+msgstr ""
+
+#: ../includes/metadata.php:683
+msgid "Please enter Original Price"
+msgstr ""
+
+#: ../includes/metadata.php:687
+msgid "Currency"
+msgstr ""
+
+#: ../includes/metadata.php:689
+msgid "Please select the currency"
+msgstr ""
+
+#: ../includes/metadata.php:694
+msgid "Promotion Begins"
+msgstr ""
+
+#: ../includes/metadata.php:696
+msgid "Please enter the date from when the promotion is available"
+msgstr ""
+
+#: ../includes/metadata.php:700
+msgid "Promotion Ends"
+msgstr ""
+
+#: ../includes/metadata.php:702
+msgid "Please select the date until which the promotion is available"
+msgstr ""
+
+#: ../includes/metadata.php:706
+msgid "Stay From"
+msgstr ""
+
+#: ../includes/metadata.php:712
+msgid "Stay Until"
+msgstr ""
+
+#: ../includes/metadata.php:718
+msgid "Seller"
+msgstr ""
+
+#: ../includes/metadata.php:728 ../includes/metadata.php:773
+msgid "Address"
+msgstr ""
+
+#: ../includes/metadata.php:730
+msgid "Physical address of the item."
+msgstr ""
+
+#: ../includes/metadata.php:734
+msgid "Telephone"
+msgstr ""
+
+#: ../includes/metadata.php:736
+msgid "The telephone number."
+msgstr ""
+
+#: ../includes/metadata.php:740
+msgid "Fax Number"
+msgstr ""
+
+#: ../includes/metadata.php:742
+msgid "The fax number."
+msgstr ""
+
+#: ../includes/metadata.php:746
+msgid "Map"
+msgstr ""
+
+#: ../includes/metadata.php:748
+msgid "A URL to a map of the place."
+msgstr ""
+
+#: ../includes/metadata.php:752 ../templates/facility/tab-facility.php:67
+#: ../templates/leisure/tab-leisure.php:67
+#: ../templates/outlet/tab-outlet.php:85
+msgid "Opening Hours"
+msgstr ""
+
+#: ../includes/metadata.php:754 ../includes/metadata.php:760
+msgid ""
+"The opening hours for a business. Opening hours can be specified as a weekly "
+"time range, starting with days, then times per day. Multiple days can be "
+"listed with commas ',' separating each day. Day or time ranges are specified "
+"using a hyphen '-'."
+msgstr ""
+
+#: ../includes/metadata.php:758
+msgid "Opening Hours (Schema.org)"
+msgstr ""
+
+#: ../includes/metadata.php:764 ../templates/facility/tab-facility.php:66
+#: ../templates/leisure/tab-leisure.php:66
+#: ../templates/outlet/tab-outlet.php:84
+msgid "Style"
+msgstr ""
+
+#: ../includes/metadata.php:779
+msgid "Place"
+msgstr ""
+
+#: ../includes/metadata.php:792
+msgid "Event Information"
+msgstr ""
+
+#: ../includes/metadata.php:798
+msgid "Activity Information"
+msgstr ""
+
+#: ../includes/metadata.php:804
+msgid "Offer Details"
+msgstr ""
+
+#: ../includes/template-functions.php:175
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../includes/template-functions.php:227
+msgid "Join Now!"
+msgstr ""
+
+#: ../includes/template-functions.php:238
+msgid "Book Now!"
+msgstr ""
+
+#: ../templates/activity/tab-activity.php:11
+#: ../templates/event/tab-event.php:11
+msgid "Details of"
+msgstr ""
+
+#: ../templates/activity/tab-activity.php:13
+#: ../templates/event/tab-event.php:13
+msgid "Begins:"
+msgstr ""
+
+#: ../templates/activity/tab-activity.php:14
+#: ../templates/event/tab-event.php:14
+msgid "Ends:"
+msgstr ""
+
+#: ../templates/activity/tab-activity.php:17
+#: ../templates/event/tab-event.php:17
+msgid "Location:"
+msgstr ""
+
+#: ../templates/activity/tab-activity.php:25
+#: ../templates/event/tab-event.php:24
+msgid "This event is organized by: "
+msgstr ""
+
+#: ../templates/facility/tab-facility.php:16
+#: ../templates/leisure/tab-leisure.php:16
+#: ../templates/outlet/tab-outlet.php:30
+#: ../templates/services/tab-services.php:8
+msgid "Current Offers at"
+msgstr ""
+
+#: ../templates/facility/tab-facility.php:32
+#: ../templates/leisure/tab-leisure.php:32
+msgid "Events at"
+msgstr ""
+
+#: ../templates/facility/tab-facility.php:48
+#: ../templates/leisure/tab-leisure.php:48
+msgid "Activities at"
+msgstr ""
+
+#: ../templates/facility/tab-facility.php:68
+#: ../templates/leisure/tab-leisure.php:68
+#: ../templates/outlet/tab-outlet.php:86
+msgid "Location & Contact"
+msgstr ""
+
+#: ../templates/offers/offer.php:14
+msgid "book by"
+msgstr ""
+
+#: ../templates/offers/offer.php:19
+msgid "from"
+msgstr ""
+
+#: ../templates/offers/tab-offer.php:8
+msgid "Benefits"
+msgstr ""
+
+#: ../templates/offers/tab-offer.php:10
+#, php-format
+msgid "Guests booking the %s can enjoy the following benefits:"
+msgstr ""
+
+#: ../templates/offers/tab-offer.php:36
+#, php-format
+msgid ""
+"This hotel deal is bookable in %s from %s until %s for stays %s until %s "
+"with the following conditions:"
+msgstr ""
+
+#: ../templates/outlet/tab-outlet.php:48
+msgid "Current Activity at"
+msgstr ""
+
+#: ../templates/outlet/tab-outlet.php:66
+msgid "Current Event at"
+msgstr ""
+
+#: ../templates/room/bar-room.php:15
+msgid "Max."
+msgstr ""
+
+#: ../templates/room/bar-room.php:18 ../templates/room/room-archive.php:31
+#: ../templates/room/tab-room.php:73
+#, php-format
+msgid "%s adults"
+msgstr ""
+
+#: ../templates/room/bar-room.php:22 ../templates/room/room-archive.php:35
+#: ../templates/room/tab-room.php:77
+#, php-format
+msgid " and %s kids"
+msgstr ""
+
+#: ../templates/room/bar-room.php:48 ../templates/room/room-archive.php:85
+msgid "Book from"
+msgstr ""
+
+#: ../templates/room/room-archive.php:28
+msgid "Suited for: max."
+msgstr ""
+
+#: ../templates/room/tab-room.php:39
+msgid "Bed"
+msgstr ""
+
+#: ../templates/room/tab-room.php:57
+msgid "on-request"
+msgstr ""
+
+#: ../templates/room/tab-room.php:64
+msgid "Room Size:"
+msgstr ""
+
+#: ../templates/room/tab-room.php:69
+msgid "Suited for: "
+msgstr ""
+
+#: ../templates/room/tab-room.php:87
+msgid "Offers space for:"
+msgstr ""
+
+#: ../templates/room/tab-room.php:95
+msgid "Pet Policy:"
+msgstr ""
+
+#: ../templates/room/tab-room.php:101
+msgid "Room Facilities:"
+msgstr ""
+
+#: ../templates/room/tab-room.php:139
+msgid "Current Offers for the"
+msgstr ""
