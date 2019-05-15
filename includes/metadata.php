@@ -578,72 +578,6 @@ function bediq_cmb_fields( $meta_boxes = array() ) {
         ),
     );
 
-    $event_fields = array(
-        array(
-              'id' => 'start_time',
-              'name' => __( 'Event Begins', 'bediq' ),
-              'type' => 'datetime_unix',
-              'desc' => __( 'Please enter the start time of the event', 'bediq' ),
-        ),
-        array(
-              'id' => 'end_time',
-              'name' => __( 'Event Ends', 'bediq' ),
-              'type' => 'datetime_unix',
-              'desc' => __( 'Please enter the end time of the event', 'bediq' ),
-        ),
-        array(
-              'id' => 'owner',
-              'name' => __( 'Organizer', 'bediq' ),
-              'type' => 'select',
-              'desc' => __( 'Please choose organizer or set one up under <a href="users.php">Users</a>', 'bediq' ),
-              'options' => $user_dropdown
-        ),
-        array(
-            'id' => 'offers',
-            'name' => __( 'Offers' ),
-            'type' => 'post_select',
-            'use_ajax' => true,
-            'query' => array( 'posts_per_page' => 8, 'post_type' => 'bediq_offer' ),
-            'repeatable' => true,
-            'desc' => sprintf( __( 'Add offers to this room. You have to <a href="%s" target="_blank">create some offers</a> first!', 'bediq' ), admin_url( 'post-new.php?post_type=bediq_offer' ) ),
-        ),
-        array(
-            'id' => 'facility',
-            'name' => __( 'Facilities' ),
-            'type' => 'post_select',
-            'use_ajax' => true,
-            'query' => array( 'posts_per_page' => 8, 'post_type' => 'bediq_facility' ),
-            'repeatable' => true,
-            'desc' => sprintf( __( 'Add facilities here. You have to <a href="%s" target="_blank">create some facilities</a> first!', 'bediq' ), admin_url( 'post-new.php?post_type=bediq_facility' ) ),
-        ),
-        array(
-            'id' => 'leisure',
-            'name' => __( 'Leisures' ),
-            'type' => 'post_select',
-            'use_ajax' => true,
-            'query' => array( 'posts_per_page' => 8, 'post_type' => 'bediq_leisure' ),
-            'repeatable' => true,
-            'desc' => sprintf( __( 'Add Leisures here. You have to <a href="%s" target="_blank">create some leisures</a> first!', 'bediq' ), admin_url( 'post-new.php?post_type=bediq_leisure' ) ),
-        ),
-        array(
-            'id' => 'outlet',
-            'name' => __( 'Outlets' ),
-            'type' => 'post_select',
-            'use_ajax' => true,
-            'query' => array( 'posts_per_page' => 8, 'post_type' => 'bediq_outlet' ),
-            'repeatable' => true,
-            'desc' => sprintf( __( 'Add outlets here. You have to <a href="%s" target="_blank">create some outlets</a> first!', 'bediq' ), admin_url( 'post-new.php?post_type=bediq_outlet' ) ),
-        ),
-    );
-
-    $activity_fields = $event_fields;
-    $activity_fields[] = array(
-        'id' => 'occurance',
-        'name' => __( 'Occurance', 'bediq' ),
-        'type' => 'text',
-        'desc' => __( 'please enter the date or occurence (e.g. Every other Monday) of this activity', 'bediq' ),
-    );
-
     $offer_fields = array(
         array(
               'id' => 'url',
@@ -722,100 +656,16 @@ function bediq_cmb_fields( $meta_boxes = array() ) {
         ),
     );
 
-    $facility_fields = array(
-        array(
-            'id' => 'address',
-            'name' => __( 'Address', 'bediq' ),
-            'type' => 'textarea',
-            'desc' => __( 'Physical address of the item.', 'bediq' ),
-        ),
-        array(
-            'id' => 'telephone',
-            'name' => __( 'Telephone', 'bediq' ),
-            'type' => 'text',
-            'desc' => __( 'The telephone number.', 'bediq' ),
-        ),
-        array(
-            'id' => 'fax',
-            'name' => __( 'Fax Number', 'bediq' ),
-            'type' => 'text',
-            'desc' => __( 'The fax number.', 'bediq' ),
-        ),
-        array(
-            'id' => 'map',
-            'name' => __( 'Map', 'bediq' ),
-            'type' => 'url',
-            'desc' => __( 'A URL to a map of the place.', 'bediq' ),
-        ),
-        array(
-            'id' => 'opening_hours',
-            'name' => __( 'Opening Hours', 'bediq' ),
-            'type' => 'textarea',
-            'desc' => __( 'The opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas \',\' separating each day. Day or time ranges are specified using a hyphen \'-\'.', 'bediq' ),
-        ),
-        array(
-            'id' => 'opening_hours_schema',
-            'name' => __( 'Opening Hours (Schema.org)', 'bediq' ),
-            'type' => 'textarea',
-            'desc' => __( 'The opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas \',\' separating each day. Day or time ranges are specified using a hyphen \'-\'.', 'bediq' ),
-        ),
-        array(
-            'id' => 'style',
-            'name' => __( 'Style', 'bediq' ),
-            'type' => 'text',
-            'desc' => ''
-        ),
-    );
-
-    $services_fields = array(
-        array(
-            'id' => 'address',
-            'name' => __( 'Address', 'bediq' ),
-            'type' => 'textarea',
-            'desc' => '',
-        ),
-        array(
-            'id' => 'place',
-            'name' => __( 'Place', 'bediq' ),
-            'type' => 'text',
-            'desc' => ''
-        ),
-    );
-
     $meta_boxes[] = array(
-        'title' => __( 'Room Features', 'beidq' ),
-        'pages' => 'bediq_room',
+        'title' => __( 'Room Features', 'bediq' ),
+        'pages' => 'room',
         'fields' => $room_fields
     );
 
     $meta_boxes[] = array(
-        'title' => __( 'Event Information', 'beidq' ),
-        'pages' => 'bediq_event',
-        'fields' => $event_fields
-    );
-
-    $meta_boxes[] = array(
-        'title' => __( 'Activity Information', 'beidq' ),
-        'pages' => 'bediq_activity',
-        'fields' => $activity_fields
-    );
-
-    $meta_boxes[] = array(
-        'title' => __( 'Offer Details', 'beidq' ),
-        'pages' => 'bediq_offer',
+        'title' => __( 'Offer Details', 'bediq' ),
+        'pages' => 'offer',
         'fields' => $offer_fields
-    );
-
-    $meta_boxes[] = array(
-        'title' => __( 'Facilities', 'beidq' ),
-        'pages' => array( 'bediq_facility', 'bediq_leisure', 'bediq_outlet' ),
-        'fields' => $facility_fields
-    );
-
-    $meta_boxes[] = array(
-        'title' => __( 'Services', 'beidq' ),
-        'pages' => array( 'bediq_services' ),
-        'fields' => $services_fields
     );
 
     return $meta_boxes;

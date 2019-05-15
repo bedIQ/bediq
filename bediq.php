@@ -80,7 +80,7 @@ class Bed_IQ {
 
         add_filter( 'body_class', array($this, 'body_class') );
 
-        add_filter( 'parent_file', array($this, 'fix_parent_menu' ) );
+        // add_filter( 'parent_file', array($this, 'fix_parent_menu' ) );
     }
 
     /**
@@ -107,7 +107,6 @@ class Bed_IQ {
 
         if ( is_admin() ) {
             require_once dirname( __FILE__ ) . '/includes/metadata.php';
-            require_once dirname( __FILE__ ) . '/admin/settings.php';
         } else {
             require_once dirname( __FILE__ ) . '/includes/core-functions.php';
             require_once dirname( __FILE__ ) . '/includes/template-functions.php';
@@ -189,19 +188,22 @@ class Bed_IQ {
      */
     function init_post_types() {
 
-        $show_in_menu = false;
+        $show_in_menu = true;
 
-        register_post_type( 'bediq_room', array(
+        register_post_type( 'room', array(
             'label'           => __( 'Rooms', 'bediq' ),
             'public'          => true,
             'show_ui'         => true,
             'show_in_menu'    => $show_in_menu,
+            'menu_position'   => 5,
             'capability_type' => 'post',
             'hierarchical'    => false,
             'rewrite'         => array('slug' => 'rooms'),
             'query_var'       => true,
             'has_archive'     => true,
             'supports'        => array('title', 'editor', 'thumbnail'),
+            'taxonomies'      => [ 'room_types' ],
+            'menu_icon'       => 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE3LjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDM5MC41NTcgMzkwLjU1NyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzkwLjU1NyAzOTAuNTU3OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8Zz4NCgk8cGF0aCBzdHlsZT0iZmlsbDojMjMxRjIwOyIgZD0iTTM4OS43NzIsMjQ4LjI5NmwtNDIuOTkxLTY4LjA2M1Y1NS4wMjhsLTE3LjUtMTcuNUg2MS4yNzVsLTE3LjUsMTcuNXYxMjUuMjA0TDAuNzg0LDI0OC4yOTYNCgkJSDM4OS43NzJ6IE0zMTEuNzgxLDcyLjUyOHY4Ny4zNjJjLTIyLjU1My01LjgzNC02MS41MTQtMTMuMDI4LTExNi41MDMtMTMuMDI4cy05My45NSw3LjE5NC0xMTYuNTAzLDEzLjAyOFY3Mi41MjhIMzExLjc4MXoiLz4NCgk8cG9seWdvbiBzdHlsZT0iZmlsbDojMjMxRjIwOyIgcG9pbnRzPSIwLDI2OS44MzEgMCwzMDQuODMxIDQwLjc3OCwzMDQuODMxIDQwLjc3OCwzNTMuMDI4IDc1Ljc3OCwzNTMuMDI4IDc1Ljc3OCwzMDQuODMxIA0KCQkzMTQuNzc4LDMwNC44MzEgMzE0Ljc3OCwzNTMuMDI4IDM0OS43NzgsMzUzLjAyOCAzNDkuNzc4LDMwNC44MzEgMzkwLjU1NywzMDQuODMxIDM5MC41NTcsMjY5LjgzMSAJIi8+DQoJPHBhdGggc3R5bGU9ImZpbGw6IzIzMUYyMDsiIGQ9Ik0xODEuMDc1LDEyOC42NTN2LTIwLjM4OWMwLTEyLjEwMi0xNy41NjQtMjEuOTE2LTM5LjIzLTIxLjkxNnMtMzkuMjI5LDkuODE0LTM5LjIyOSwyMS45MTZ2MzAuNjA0DQoJCWMwLDAsMjMuMTQtNS44MjYsMzkuMDQ1LTcuMzMyQzE1NS45OCwxMzAuMTc5LDE4MS4wNzUsMTI4LjY1MywxODEuMDc1LDEyOC42NTN6Ii8+DQoJPHBhdGggc3R5bGU9ImZpbGw6IzIzMUYyMDsiIGQ9Ik0yODcuOTQxLDEzOC44Njh2LTMwLjYwNGMwLTEyLjEwMi0xNy41NjQtMjEuOTE2LTM5LjIzLTIxLjkxNnMtMzkuMjMsOS44MTQtMzkuMjMsMjEuOTE2djIwLjM4OQ0KCQljMCwwLDI1LjA5NiwxLjUyNSwzOS40MTUsMi44ODNDMjY0LjgwMiwxMzMuMDQyLDI4Ny45NDEsMTM4Ljg2OCwyODcuOTQxLDEzOC44Njh6Ii8+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg==',
             'labels'          => array(
                 'name'               => __( 'Rooms', 'bediq' ),
                 'singular_name'      => __( 'Room', 'bediq' ),
@@ -220,50 +222,24 @@ class Bed_IQ {
             ),
         ) );
 
-        register_post_type( 'bediq_event', array(
-            'label'           => __( 'Events', 'bediq' ),
-            'public'          => true,
-            'show_ui'         => true,
-            'show_in_menu'    => $show_in_menu,
-            'capability_type' => 'post',
-            'hierarchical'    => false,
-            'rewrite'         => array('slug' => 'events'),
-            'query_var'       => true,
-            'has_archive'     => true,
-            'supports'        => array('title', 'editor', 'thumbnail'),
-            'labels'          => array(
-                'name'               => __( 'Events', 'bediq' ),
-                'singular_name'      => __( 'Event', 'bediq' ),
-                'menu_name'          => __( 'Event', 'bediq' ),
-                'add_new'            => __( 'Add Event', 'bediq' ),
-                'add_new_item'       => __( 'Add New Event', 'bediq' ),
-                'edit'               => __( 'Edit', 'bediq' ),
-                'edit_item'          => __( 'Edit Event', 'bediq' ),
-                'new_item'           => __( 'New Event', 'bediq' ),
-                'view'               => __( 'View Event', 'bediq' ),
-                'view_item'          => __( 'View Event', 'bediq' ),
-                'search_items'       => __( 'Search Events', 'bediq' ),
-                'not_found'          => __( 'No Events Found', 'bediq' ),
-                'not_found_in_trash' => __( 'No Events Found in Trash', 'bediq' ),
-                'parent'             => __( 'Parent Event', 'bediq' ),
-            ),
-        ) );
-
-        register_post_type( 'bediq_offer', array(
+        register_post_type( 'offer', array(
             'label'           => __( 'Offers', 'bediq' ),
             'public'          => true,
             'show_ui'         => true,
             'show_in_menu'    => $show_in_menu,
+            'menu_position'   => 6,
             'capability_type' => 'post',
             'hierarchical'    => false,
             'rewrite'         => array('slug' => 'offers'),
             'query_var'       => true,
             'has_archive'     => true,
             'supports'        => array('title', 'editor', 'thumbnail'),
+            'menu_icon'       => 'dashicons-tickets-alt',
+            'taxonomies'      => [ 'hotel_offers' ],
             'labels'          => array(
                 'name'               => __( 'Offers', 'bediq' ),
                 'singular_name'      => __( 'Offer', 'bediq' ),
-                'menu_name'          => __( 'Offer', 'bediq' ),
+                'menu_name'          => __( 'Offers', 'bediq' ),
                 'add_new'            => __( 'Add Offer', 'bediq' ),
                 'add_new_item'       => __( 'Add New Offer', 'bediq' ),
                 'edit'               => __( 'Edit', 'bediq' ),
@@ -278,18 +254,19 @@ class Bed_IQ {
             ),
         ) );
 
-
-        register_post_type( 'bediq_outlet', array(
+        register_post_type( 'outlet', array(
             'label'           => __( 'Outlets', 'bediq' ),
             'public'          => true,
             'show_ui'         => true,
             'show_in_menu'    => $show_in_menu,
+            'menu_position'   => 7,
             'capability_type' => 'post',
             'hierarchical'    => false,
             'rewrite'         => array('slug' => 'outlet'),
             'query_var'       => true,
             'has_archive'     => true,
             'supports'        => array('title', 'editor', 'thumbnail'),
+            'menu_icon'       => 'dashicons-store',
             'labels'          => array(
                 'name'               => __( 'Outlets', 'bediq' ),
                 'singular_name'      => __( 'Outlet', 'bediq' ),
@@ -308,186 +285,26 @@ class Bed_IQ {
             ),
         ) );
 
-        register_post_type( 'bediq_facility', array(
-            'label'           => __( 'Facilities', 'bediq' ),
-            'public'          => true,
-            'show_ui'         => true,
-            'show_in_menu'    => $show_in_menu,
-            'capability_type' => 'post',
-            'hierarchical'    => false,
-            'rewrite'         => array('slug' => 'facility'),
-            'query_var'       => true,
-            'has_archive'     => true,
-            'supports'        => array('title', 'editor', 'thumbnail'),
-            'labels'          => array(
-                'name'               => __( 'Facilities', 'bediq' ),
-                'singular_name'      => __( 'Facility', 'bediq' ),
-                'menu_name'          => __( 'Facility', 'bediq' ),
-                'add_new'            => __( 'Add Facility', 'bediq' ),
-                'add_new_item'       => __( 'Add New Facility', 'bediq' ),
-                'edit'               => __( 'Edit', 'bediq' ),
-                'edit_item'          => __( 'Edit Facility', 'bediq' ),
-                'new_item'           => __( 'New Facility', 'bediq' ),
-                'view'               => __( 'View Facility', 'bediq' ),
-                'view_item'          => __( 'View Facility', 'bediq' ),
-                'search_items'       => __( 'Search Facilities', 'bediq' ),
-                'not_found'          => __( 'No Facilities Found', 'bediq' ),
-                'not_found_in_trash' => __( 'No Facilities Found in Trash', 'bediq' ),
-                'parent'             => __( 'Parent Facility', 'bediq' ),
-            ),
-        ) );
-
-        register_post_type( 'bediq_activity', array(
-            'label'           => __( 'Activities', 'bediq' ),
-            'public'          => true,
-            'show_ui'         => true,
-            'show_in_menu'    => $show_in_menu,
-            'capability_type' => 'post',
-            'hierarchical'    => false,
-            'rewrite'         => array('slug' => 'activity'),
-            'query_var'       => true,
-            'has_archive'     => true,
-            'supports'        => array('title', 'editor', 'thumbnail'),
-            'labels'          => array(
-                'name'               => __( 'Activities', 'bediq' ),
-                'singular_name'      => __( 'Activity', 'bediq' ),
-                'menu_name'          => __( 'Activity', 'bediq' ),
-                'add_new'            => __( 'Add Activity', 'bediq' ),
-                'add_new_item'       => __( 'Add New Activity', 'bediq' ),
-                'edit'               => __( 'Edit', 'bediq' ),
-                'edit_item'          => __( 'Edit Activity', 'bediq' ),
-                'new_item'           => __( 'New Activity', 'bediq' ),
-                'view'               => __( 'View Activity', 'bediq' ),
-                'view_item'          => __( 'View Activity', 'bediq' ),
-                'search_items'       => __( 'Search Activities', 'bediq' ),
-                'not_found'          => __( 'No Activities Found', 'bediq' ),
-                'not_found_in_trash' => __( 'No Activities Found in Trash', 'bediq' ),
-                'parent'             => __( 'Parent Activity', 'bediq' ),
-            ),
-        ) );
-
-        register_post_type( 'bediq_leisure', array(
-            'label'           => __( 'Leisure', 'bediq' ),
-            'public'          => true,
-            'show_ui'         => true,
-            'show_in_menu'    => $show_in_menu,
-            'capability_type' => 'post',
-            'hierarchical'    => false,
-            'rewrite'         => array('slug' => 'leisure'),
-            'query_var'       => true,
-            'has_archive'     => true,
-            'supports'        => array('title', 'editor', 'thumbnail'),
-            'labels'          => array(
-                'name'               => __( 'Leisure', 'bediq' ),
-                'singular_name'      => __( 'Leisure', 'bediq' ),
-                'menu_name'          => __( 'Leisure', 'bediq' ),
-                'add_new'            => __( 'Add Leisure', 'bediq' ),
-                'add_new_item'       => __( 'Add New Leisure', 'bediq' ),
-                'edit'               => __( 'Edit', 'bediq' ),
-                'edit_item'          => __( 'Edit Leisure', 'bediq' ),
-                'new_item'           => __( 'New Leisure', 'bediq' ),
-                'view'               => __( 'View Leisure', 'bediq' ),
-                'view_item'          => __( 'View Leisure', 'bediq' ),
-                'search_items'       => __( 'Search Leisure', 'bediq' ),
-                'not_found'          => __( 'No Leisure Found', 'bediq' ),
-                'not_found_in_trash' => __( 'No Leisure Found in Trash', 'bediq' ),
-                'parent'             => __( 'Parent Leisure', 'bediq' ),
-            ),
-        ) );
-
-        register_post_type( 'bediq_services', array(
-            'label'           => __( 'Services', 'bediq' ),
-            'public'          => true,
-            'show_ui'         => true,
-            'show_in_menu'    => $show_in_menu,
-            'capability_type' => 'post',
-            'hierarchical'    => false,
-            'rewrite'         => array('slug' => 'services'),
-            'query_var'       => true,
-            'has_archive'     => true,
-            'supports'        => array('title', 'editor', 'thumbnail'),
-            'labels' => array(
-                'name'               => __( 'Services', 'bediq' ),
-                'singular_name'      => __( 'Service', 'bediq' ),
-                'menu_name'          => __( 'Service', 'bediq' ),
-                'add_new'            => __( 'Add Service', 'bediq' ),
-                'add_new_item'       => __( 'Add New Service', 'bediq' ),
-                'edit'               => __( 'Edit', 'bediq' ),
-                'edit_item'          => __( 'Edit Service', 'bediq' ),
-                'new_item'           => __( 'New Service', 'bediq' ),
-                'view'               => __( 'View Service', 'bediq' ),
-                'view_item'          => __( 'View Service', 'bediq' ),
-                'search_items'       => __( 'Search Services', 'bediq' ),
-                'not_found'          => __( 'No Services Found', 'bediq' ),
-                'not_found_in_trash' => __( 'No Services Found in Trash', 'bediq' ),
-                'parent'             => __( 'Parent Service', 'bediq' ),
-            ),
-        ) );
-
         //taxonomies
-        register_taxonomy( 'bediq_accommodation', array( 'room' ),
+        register_taxonomy( 'room_types', [ 'room' ],
             array(
                 'hierarchical'   => true,
-                'label'          => __( 'Accommodation', 'bediq' ),
+                'label'          => __( 'Room Types', 'bediq' ),
                 'show_ui'        => true,
                 'query_var'      => true,
                 'rewrite'        => array('slug' => ''),
-                'singular_label' => __( 'Accommodation', 'bediq' )
+                'singular_label' => __( 'Room Type', 'bediq' )
             )
         );
 
-        register_taxonomy( 'bediq_hotel_offers', array( 'offer' ),
+        register_taxonomy( 'offer_types', array( 'offer' ),
             array(
                 'hierarchical'   => true,
-                'label'          => __( 'Hotel Offers', 'bediq' ),
+                'label'          => __( 'Offer Types', 'bediq' ),
                 'show_ui'        => true,
                 'query_var'      => true,
                 'rewrite'        => array('slug' => 'hotel-offers'),
                 'singular_label' => __( 'Offers', 'bediq' )
-            )
-        );
-
-        register_taxonomy( 'bediq_venues', array( 'facility' ),
-            array(
-                'hierarchical'   => true,
-                'label'          => __( 'Venues', 'bediq' ),
-                'show_ui'        => true,
-                'query_var'      => true,
-                'rewrite'        => array('slug' => ''),
-                'singular_label' => __( 'Venues', 'bediq' )
-            )
-        );
-
-        register_taxonomy( 'bediq_dining', array( 'outlet' ),
-            array(
-                'hierarchical'   => true,
-                'label'          => __( 'Dining', 'bediq' ),
-                'show_ui'        => true,
-                'query_var'      => true,
-                'rewrite'        => array('slug' => ''),
-                'singular_label' => __( 'Dining', 'bediq' )
-            )
-        );
-
-        register_taxonomy( 'bediq_things_to_do', array( 'activity' ),
-            array(
-                'hierarchical'   => true,
-                'label'          => __( 'Things To Do', 'bediq' ),
-                'show_ui'        => true,
-                'query_var'      => true,
-                'rewrite'        => array('slug' => ''),
-                'singular_label' => __( 'Things To Do', 'bediq' )
-            )
-        );
-
-        register_taxonomy( 'bediq_accommodation', array( 'room' ),
-            array(
-                'hierarchical'   => true,
-                'label'          => __( 'Accommodation', 'bediq' ),
-                'show_ui'        => true,
-                'query_var'      => true,
-                'rewrite'        => array('slug' => ''),
-                'singular_label' => __( 'Accommodation', 'bediq' )
             )
         );
     }
@@ -584,86 +401,38 @@ class Bed_IQ {
         $find = array( 'bediq.php' );
         $file = '';
 
-        if ( is_single() && get_post_type() == 'bediq_room' ) {
-            $file   = 'single-bediq_room.php';
+        if ( is_single() && get_post_type() == 'room' ) {
+            $file   = 'single-room.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
 
-        } else if ( is_single() && get_post_type() == 'bediq_event' ) {
-            $file   = 'single-bediq_event.php';
+        } else if ( is_single() && get_post_type() == 'offer' ) {
+            $file   = 'single-offer.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
 
-        } else if ( is_single() && get_post_type() == 'bediq_offer' ) {
-            $file   = 'single-bediq_offer.php';
+        } else if ( is_single() && get_post_type() == 'outlet' ) {
+            $file   = 'single-outlet.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
 
-        } else if ( is_single() && get_post_type() == 'bediq_outlet' ) {
-            $file   = 'single-bediq_outlet.php';
-            $find[] = $file;
-            $find[] = $this->theme_dir_path. $file;
-
-        } else if ( is_single() && get_post_type() == 'bediq_facility' ) {
-            $file   = 'single-bediq_facility.php';
-            $find[] = $file;
-            $find[] = $this->theme_dir_path. $file;
-
-        } else if ( is_single() && get_post_type() == 'bediq_activity' ) {
-            $file   = 'single-bediq_activity.php';
-            $find[] = $file;
-            $find[] = $this->theme_dir_path. $file;
-
-        } else if ( is_single() && get_post_type() == 'bediq_leisure' ) {
-            $file   = 'single-bediq_leisure.php';
-            $find[] = $file;
-            $find[] = $this->theme_dir_path. $file;
-
-        } else if ( is_single() && get_post_type() == 'bediq_services' ) {
-            $file   = 'single-bediq_services.php';
-            $find[] = $file;
-            $find[] = $this->theme_dir_path. $file;
         }
 
-
-        else if ( is_post_type_archive('bediq_room')) {
-            $file   = 'archive-bediq_room.php';
-            $find[] = $file;
-            $find[] = $this->theme_dir_path. $file;
-        }else if ( is_post_type_archive('bediq_event')) {
-            $file   = 'archive-bediq_event.php';
+        else if ( is_post_type_archive('room')) {
+            $file   = 'archive-room.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
 
-        } else if ( is_post_type_archive('bediq_offer')) {
-            $file   = 'archive-bediq_offer.php';
+        } else if ( is_post_type_archive('offer')) {
+            $file   = 'archive-offer.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
 
-        } else if ( is_post_type_archive('bediq_outlet')) {
-            $file   = 'archive-bediq_outlet.php';
+        } else if ( is_post_type_archive('outlet')) {
+            $file   = 'archive-outlet.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
 
-        } else if ( is_post_type_archive('bediq_facility')) {
-            $file   = 'archive-bediq_facility.php';
-            $find[] = $file;
-            $find[] = $this->theme_dir_path. $file;
-
-        } else if ( is_post_type_archive('bediq_activity')) {
-            $file   = 'archive-bediq_activity.php';
-            $find[] = $file;
-            $find[] = $this->theme_dir_path. $file;
-
-        } else if ( is_post_type_archive('bediq_leisure')) {
-            $file   = 'archive-bediq_leisure.php';
-            $find[] = $file;
-            $find[] = $this->theme_dir_path. $file;
-
-        } else if ( is_post_type_archive('bediq_services')) {
-            $file   = 'archive-bediq_services.php';
-            $find[] = $file;
-            $find[] = $this->theme_dir_path. $file;
         }
 
         if ( $file ) {
