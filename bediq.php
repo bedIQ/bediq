@@ -1,16 +1,16 @@
 <?php
 /*
 Plugin Name: bedIQ - Responsive hotel websites
-Plugin URI: http://bediq.com/
+Plugin URI: https://bediq.com/
 Description: Responsive hotel websites
 Version: 0.1
 Author: Tareq Hasan
-Author URI: http://tareq.weDevs.com/
+Author URI: https://bediq.com
 License: GPL2
 */
 
 /**
- * Copyright (c) 2013 Tareq (email: tareq@wedevs.com). All rights reserved.
+ * Copyright (c) 2019 Tareq (email: info@bediq.com). All rights reserved.
  *
  * Released under the GPL license
  * http://www.opensource.org/licenses/gpl-license.php
@@ -39,18 +39,18 @@ License: GPL2
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
- * Bed_IQ class
+ * bedIQ_Plugin class
  *
- * @class Bed_IQ The class that holds the entire Bed_IQ plugin
+ * @class bedIQ_Plugin The class that holds the entire bedIQ_Plugin plugin
  */
-class Bed_IQ {
+class bedIQ_Plugin {
 
     public $plugin_url;
     public $plugin_path;
     public $theme_dir_path;
 
     /**
-     * Constructor for the Bed_IQ class
+     * Constructor for the bedIQ_Plugin class
      *
      * Sets up all the appropriate hooks and actions
      * within our plugin.
@@ -84,16 +84,16 @@ class Bed_IQ {
     }
 
     /**
-     * Initializes the Bed_IQ() class
+     * Initializes the bedIQ_Plugin() class
      *
-     * Checks for an existing Bed_IQ() instance
+     * Checks for an existing bedIQ_Plugin() instance
      * and if it doesn't find one, creates it.
      */
-    public static function get_instance() {
+    public static function instance() {
         static $instance = false;
 
         if ( ! $instance ) {
-            $instance = new Bed_IQ();
+            $instance = new self();
         }
 
         return $instance;
@@ -203,7 +203,7 @@ class Bed_IQ {
             'has_archive'     => true,
             'supports'        => array('title', 'editor', 'thumbnail'),
             'taxonomies'      => [ 'room_types' ],
-            'menu_icon'       => 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE3LjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDM5MC41NTcgMzkwLjU1NyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzkwLjU1NyAzOTAuNTU3OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8Zz4NCgk8cGF0aCBzdHlsZT0iZmlsbDojMjMxRjIwOyIgZD0iTTM4OS43NzIsMjQ4LjI5NmwtNDIuOTkxLTY4LjA2M1Y1NS4wMjhsLTE3LjUtMTcuNUg2MS4yNzVsLTE3LjUsMTcuNXYxMjUuMjA0TDAuNzg0LDI0OC4yOTYNCgkJSDM4OS43NzJ6IE0zMTEuNzgxLDcyLjUyOHY4Ny4zNjJjLTIyLjU1My01LjgzNC02MS41MTQtMTMuMDI4LTExNi41MDMtMTMuMDI4cy05My45NSw3LjE5NC0xMTYuNTAzLDEzLjAyOFY3Mi41MjhIMzExLjc4MXoiLz4NCgk8cG9seWdvbiBzdHlsZT0iZmlsbDojMjMxRjIwOyIgcG9pbnRzPSIwLDI2OS44MzEgMCwzMDQuODMxIDQwLjc3OCwzMDQuODMxIDQwLjc3OCwzNTMuMDI4IDc1Ljc3OCwzNTMuMDI4IDc1Ljc3OCwzMDQuODMxIA0KCQkzMTQuNzc4LDMwNC44MzEgMzE0Ljc3OCwzNTMuMDI4IDM0OS43NzgsMzUzLjAyOCAzNDkuNzc4LDMwNC44MzEgMzkwLjU1NywzMDQuODMxIDM5MC41NTcsMjY5LjgzMSAJIi8+DQoJPHBhdGggc3R5bGU9ImZpbGw6IzIzMUYyMDsiIGQ9Ik0xODEuMDc1LDEyOC42NTN2LTIwLjM4OWMwLTEyLjEwMi0xNy41NjQtMjEuOTE2LTM5LjIzLTIxLjkxNnMtMzkuMjI5LDkuODE0LTM5LjIyOSwyMS45MTZ2MzAuNjA0DQoJCWMwLDAsMjMuMTQtNS44MjYsMzkuMDQ1LTcuMzMyQzE1NS45OCwxMzAuMTc5LDE4MS4wNzUsMTI4LjY1MywxODEuMDc1LDEyOC42NTN6Ii8+DQoJPHBhdGggc3R5bGU9ImZpbGw6IzIzMUYyMDsiIGQ9Ik0yODcuOTQxLDEzOC44Njh2LTMwLjYwNGMwLTEyLjEwMi0xNy41NjQtMjEuOTE2LTM5LjIzLTIxLjkxNnMtMzkuMjMsOS44MTQtMzkuMjMsMjEuOTE2djIwLjM4OQ0KCQljMCwwLDI1LjA5NiwxLjUyNSwzOS40MTUsMi44ODNDMjY0LjgwMiwxMzMuMDQyLDI4Ny45NDEsMTM4Ljg2OCwyODcuOTQxLDEzOC44Njh6Ii8+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg==',
+            'menu_icon'       => 'dashicons-admin-home',
             'labels'          => array(
                 'name'               => __( 'Rooms', 'bediq' ),
                 'singular_name'      => __( 'Room', 'bediq' ),
@@ -476,7 +476,16 @@ class Bed_IQ {
         return $parent_file;
     }
 
-} // Bed_IQ
+} // bedIQ_Plugin
 
-global $bediq;
-$bediq = Bed_IQ::get_instance();
+/**
+ * Returns the bedIQ instance
+ *
+ * @return \bedIQ_Plugin
+ */
+function bediq() {
+    return bedIQ_Plugin::instance();
+}
+
+// kickoff the plugin
+bediq();

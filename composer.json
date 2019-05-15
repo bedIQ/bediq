@@ -1,0 +1,14 @@
+{
+    "name": "bediq/bediq",
+    "description": "Responsive hotel websites",
+    "type": "wordpress-plugin",
+    "license": "GPLv3",
+    "authors": [
+        {
+            "name": "Tareq Hasan",
+            "email": "tareq@bediq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
