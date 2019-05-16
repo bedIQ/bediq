@@ -5,7 +5,7 @@
  * Looks at the theme directory first
  */
 function bediq_get_template_part( $slug, $name = '' ) {
-    global $bediq;
+    $bediq = bediq();
 
     $templates = array();
     $name = (string) $name;
@@ -39,7 +39,7 @@ function bediq_get_template_part( $slug, $name = '' ) {
 }
 
 function bediq_get_template( $template_name, $args = array() ) {
-    global $bediq;
+    $bediq = bediq();
 
     if ( $args && is_array($args) ) {
         extract( $args );
