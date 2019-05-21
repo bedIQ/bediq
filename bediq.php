@@ -66,6 +66,7 @@ class bedIQ_Plugin {
         register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
 
         $this->file_includes();
+        $this->init_classes();
 
         // Localize our plugin
         add_action( 'init', array( $this, 'localization_setup' ) );
@@ -112,9 +113,13 @@ class bedIQ_Plugin {
             require_once dirname( __FILE__ ) . '/includes/template-functions.php';
         }
 
+        require_once dirname( __FILE__ ) . '/includes/class-advanced-custom-fields.php';
         require_once dirname( __FILE__ ) . '/includes/posts-to-posts.php';
     }
 
+    public function init_classes() {
+        new \bedIQ\Advanced_Custom_Fields();
+    }
     /**
      * Placeholder for activation function
      *
@@ -323,9 +328,9 @@ class bedIQ_Plugin {
 
         $required_plugins = array(
             array(
-                'function' => 'cmb_init',
-                'name'     => 'Custom Meta Boxes',
-                'url'      => 'https://github.com/humanmade/Custom-Meta-Boxes'
+                'function' => 'acf',
+                'name'     => 'Advanced Custom Fields',
+                'url'      => 'https://wordpress.org/plugins/advanced-custom-fields'
             )
         );
 
