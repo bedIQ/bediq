@@ -107,13 +107,11 @@ class bedIQ_Plugin {
     function file_includes() {
 
         if ( is_admin() ) {
-            require_once dirname( __FILE__ ) . '/includes/metadata.php';
+            require_once dirname( __FILE__ ) . '/includes/class-advanced-custom-fields.php';
         } else {
             require_once dirname( __FILE__ ) . '/includes/core-functions.php';
             require_once dirname( __FILE__ ) . '/includes/template-functions.php';
         }
-
-        require_once dirname( __FILE__ ) . '/includes/class-advanced-custom-fields.php';
         require_once dirname( __FILE__ ) . '/includes/posts-to-posts.php';
     }
 
