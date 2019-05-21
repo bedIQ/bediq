@@ -116,7 +116,9 @@ class bedIQ_Plugin {
     }
 
     public function init_classes() {
-        new \bedIQ\Advanced_Custom_Fields();
+        if ( is_admin() ) {
+            new \bedIQ\Advanced_Custom_Fields();
+        }
     }
     /**
      * Placeholder for activation function
