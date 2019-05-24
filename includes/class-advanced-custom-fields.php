@@ -28,29 +28,29 @@ class Advanced_Custom_Fields {
         if ( function_exists( 'acf_add_local_field_group' ) ) {
             acf_add_local_field_group( array(
                 'key' => 'room_features',
-                'title' => 'Room Features',
+                'title' => __( 'Room Features', 'bediq' ),
                 'fields' => array(
                     array(
                         'key' => 'room_type',
-                        'label' => 'Room Type',
+                        'label' => __( 'Room Type', 'bediq' ),
                         'name' => 'room_type',
                         'type' => 'select',
                         'ui' => 1,
                         'choices'  => array(
-                            'Single'    => 'Single',
-                            'Double'    => 'Double',
-                            'Twin'      => 'Twin',
-                            'Triple'    => 'Triple',
-                            'Quad'      => 'Quad',
-                            'Family'    => 'Family',
-                            'Suit'      => 'Suit',
-                            'Villa'     => 'Villa',
-                            'Bungalow'  => 'Bungalow'
+                            'Single'    => __( 'Single', 'bediq' ),
+                            'Double'    => __( 'Double', 'bediq' ),
+                            'Twin'      => __( 'Twin', 'bediq' ),
+                            'Triple'    => __( 'Triple', 'bediq' ),
+                            'Quad'      => __( 'Quad', 'bediq' ),
+                            'Family'    => __( 'Family', 'bediq' ),
+                            'Suit'      => __( 'Suit', 'bediq' ),
+                            'Villa'     => __( 'Villa', 'bediq' ),
+                            'Bungalow'  => __( 'Bungalow', 'bediq' )
                         ),
                     ),
                     array(
                         'key' => 'room_size',
-                        'label' => 'Room Size',
+                        'label' => __( 'Room Size', 'bediq' ),
                         'name' => 'room_size',
                         'type' => 'text',
                         'instructions' => __( 'Please enter the total size of the guest room', 'bediq' ),
@@ -58,7 +58,7 @@ class Advanced_Custom_Fields {
                     ),
                     array(
                         'key' => 'occupancy_adults',
-                        'label' => 'Occupancy Adults',
+                        'label' => __( 'Occupancy Adults', 'bediq' ),
                         'name' => 'occupancy_adults',
                         'type' => 'text',
                         'instructions' => __( 'Please enter the regular number of adults for this room', 'bediq' ),
@@ -66,7 +66,7 @@ class Advanced_Custom_Fields {
                     ),
                     array(
                         'key' => 'occupancy_child',
-                        'label' => 'Occupancy Children',
+                        'label' => __( 'Occupancy Children', 'bediq' ),
                         'name' => 'occupancy_child',
                         'type' => 'text',
                         'instructions' => __( 'Please enter the regular number of children for this room', 'bediq' ),
@@ -74,7 +74,7 @@ class Advanced_Custom_Fields {
                     ),
                     array(
                         'key' => 'extra_beds',
-                        'label' => 'Extrabeds',
+                        'label' => __( 'Extrabeds', 'bediq' ),
                         'name' => 'extra_beds',
                         'type' => 'text',
                         'instructions' => __( 'Please enter the max. allowable number of Extrabeds (e.g. 1 Extrabed for Adults and 2 Extrabeds for Children)', 'bediq' ),
@@ -82,7 +82,7 @@ class Advanced_Custom_Fields {
                     ),
                     array(
                         'key' => 'min_price',
-                        'label' => 'Min. Price',
+                        'label' => __( 'Min. Price', 'bediq' ),
                         'name' => 'min_price',
                         'type' => 'text',
                         'instructions' => __( 'Please enter the lowest BAR rate for this room, e.g. $1600', 'bediq' ),
@@ -90,15 +90,15 @@ class Advanced_Custom_Fields {
                     ),
                     array(
                         'key'     => 'pet_policy',
-                        'label'   => 'Please select your pet policy',
+                        'label'   => __( 'Please select your pet policy', 'bediq' ),
                         'name'    => 'pet_policy',
                         'type'    => 'select',
                         'choices' => array(
-                            'not allowed'                      => 'not allowed',
-                            'not allowed (guide animals only)' => 'not allowed (guide animals only)',
-                            'small pets free of charge'        => 'small pets free of charge',
-                            'free of charge'                   => 'free of charge',
-                            'at a charge'                      => 'at a charge'
+                            'not allowed'                      => __( 'not allowed', 'bediq' ),
+                            'not allowed (guide animals only)' => __( 'not allowed (guide animals only)', 'bediq' ),
+                            'small pets free of charge'        => __( 'small pets free of charge', 'bediq' ),
+                            'free of charge'                   => __( 'free of charge', 'bediq' ),
+                            'at a charge'                      => __( 'at a charge', 'bediq' )
                         ),
                         'ui' => 1,
                         'instructions' => __( 'Please add all items you would like to display on your websit.', 'bediq' ),
@@ -106,7 +106,7 @@ class Advanced_Custom_Fields {
                     ),
                     array(
                         'key' => 'entertainments',
-                        'label' => 'Entertainment',
+                        'label' => __( 'Entertainment', 'bediq' ),
                         'name' => 'entertainments',
                         'type' => 'repeater',
                         'instructions' => __( 'Please add all items you would like to display on your websit.', 'bediq' ),
@@ -123,12 +123,12 @@ class Advanced_Custom_Fields {
                     ),
                     array(
                         'key'   => 'facilities_room',
-                        'label' => 'Room Features',
+                        'label' => __( 'Room Features', 'bediq' ),
                         'name'  => 'facilities_room',
                         'type'  => 'repeater',
                         'instructions' => __( 'Please add all items you would like to display on your website.', 'bediq' ),
                         'layout'       => 'row',
-                        'button_label' => 'Add New',
+                        'button_label' => __( 'Add New', 'bediq' ),
                         'sub_fields'   => array(
                             array(
                                 'key' => 'room_feature',
@@ -140,12 +140,12 @@ class Advanced_Custom_Fields {
                     ),
                     array(
                         'key'   => 'bed_features',
-                        'label' => 'Bed Features',
+                        'label' => __( 'Bed Features', 'bediq' ),
                         'name'  => 'bed_features',
                         'type'  => 'repeater',
                         'instructions' => __( 'Please add all items you would like to display on your website.', 'bediq' ),
                         'layout'       => 'row',
-                        'button_label' => 'Add New',
+                        'button_label' => __( 'Add New', 'bediq' ),
                         'sub_fields'   => array(
                             array(
                                 'key' => 'bed_feature',
@@ -157,12 +157,12 @@ class Advanced_Custom_Fields {
                     ),
                     array(
                         'key'   => 'bath',
-                        'label' => 'Bathroom',
+                        'label' => __( 'Bathroom', 'bediq' ),
                         'name'  => 'bath',
                         'type'  => 'repeater',
                         'instructions' => __( 'Please add all items you would like to display on your website.', 'bediq' ),
                         'layout'       => 'row',
-                        'button_label' => 'Add New',
+                        'button_label' => __( 'Add New', 'bediq' ),
                         'sub_fields'   => array(
                             array(
                                 'key' => 'bathroom',
@@ -174,12 +174,12 @@ class Advanced_Custom_Fields {
                     ),
                     array(
                         'key'   => 'communication',
-                        'label' => 'Communication',
+                        'label' => __( 'Communication', 'bediq' ),
                         'name'  => 'communication',
                         'type'  => 'repeater',
                         'instructions' => __( 'Please add all items you would like to display on your website.', 'bediq' ),
                         'layout'       => 'row',
-                        'button_label' => 'Add New',
+                        'button_label' => __( 'Add New', 'bediq' ),
                         'sub_fields'   => array(
                             array(
                                 'key' => 'communication_field',
@@ -196,7 +196,7 @@ class Advanced_Custom_Fields {
                         'type'  => 'repeater',
                         'instructions' => __( 'Please add all items you would like to display on your website.', 'bediq' ),
                         'layout'       => 'row',
-                        'button_label' => 'Add New',
+                        'button_label' => __( 'Add New', 'bediq' ),
                         'sub_fields'   => array(
                             array(
                                 'key' => 'safety_field',
@@ -213,7 +213,7 @@ class Advanced_Custom_Fields {
                         'type'  => 'repeater',
                         'instructions' => __( 'Please add all items you would like to display on your website.', 'bediq' ),
                         'layout'       => 'row',
-                        'button_label' => 'Add New',
+                        'button_label' => __( 'Add New', 'bediq' ),
                         'sub_fields'   => array(
                             array(
                                 'key' => 'on_request_field',
@@ -225,14 +225,14 @@ class Advanced_Custom_Fields {
                     ),
                     array(
                         'key'   =>  'ibe_room',
-                        'label' =>  'Link to Booking Engine',
+                        'label' =>  __( 'Link to Booking Engine', 'bediq' ),
                         'name'  =>  'ibe_room',
                         'type'  =>  'text',
                         'instructions'  =>  __( 'Please enter the link to your Booking Engine, preferably straight to the Room Type', 'bediq' ),
                     ),
                     array(
                         'key' => 'offers',
-                        'label' => 'Offers',
+                        'label' => __( 'Offers', 'bediq' ),
                         'name' => 'offers',
                         'type' => 'post_object',
                         'instructions' => sprintf( __( 'Add offers to this room. You have to <a href="%s" target="_blank">create some offers</a> first!', 'bediq' ), admin_url( 'post-new.php?post_type=offer' ) ),
@@ -245,7 +245,7 @@ class Advanced_Custom_Fields {
                     ),
                     array(
                         'key' => 'photo',
-                        'label' => 'Photographs of this room',
+                        'label' => __( 'Photographs of this room', 'bediq' ),
                         'name' => 'photo',
                         'type' => 'gallery',
                         'instructions' => __( 'Some photographs of this room.', 'bediq' ),
@@ -281,7 +281,7 @@ class Advanced_Custom_Fields {
 
             acf_add_local_field_group( array(
                 'key' => 'offer_details',
-                'title' => 'Offer Details',
+                'title' => __( 'Offer Details', 'bediq' ),
                 'fields' => array(
                     array(
                         'key' => 'url',
@@ -292,14 +292,14 @@ class Advanced_Custom_Fields {
                     ),
                     array(
                         'key' => 'availability',
-                        'label' => 'Availability',
+                        'label' => __( 'Availability', 'bediq' ),
                         'name' => 'availability',
                         'type' => 'text',
                         'instructions' => __( 'Please enter the availability, eg the total number of room nights or 5 rooms per day', 'bediq' ),
                     ),
                     array(
                         'key' => 'item_terms',
-                        'label' => 'Conditions',
+                        'label' => __( 'Conditions', 'bediq' ),
                         'name' => 'item_terms',
                         'type' => 'repeater',
                         'instructions' => __( 'Please enter all conditions that apply', 'bediq' ),
@@ -317,11 +317,11 @@ class Advanced_Custom_Fields {
                     ),
                     array(
                         'key' => 'benefit',
-                        'label' => 'Inclusions',
+                        'label' => __( 'Inclusions', 'bediq' ),
                         'name' => 'inclusions',
                         'type' => 'repeater',
                         'layout' => 'row',
-                        'button_label' => 'Add New',
+                        'button_label' => __( 'Add New', 'bediq' ),
                         'sub_fields' => array(
                             array(
                                 'key' => 'inclusion',
@@ -333,21 +333,21 @@ class Advanced_Custom_Fields {
                     ),
                     array(
                         'key' => 'price',
-                        'label' => 'Discounted Price',
+                        'label' => __( 'Discounted Price', 'bediq' ),
                         'name' => 'price',
                         'type' => 'text',
                         'instructions' => __( 'Please enter the promotional price', 'bediq' ),
                     ),
                     array(
                         'key' => 'price_discount',
-                        'label' => 'Original Price',
+                        'label' => __( 'Original Price', 'bediq' ),
                         'name' => 'price_discount',
                         'type' => 'text',
                         'instructions' => __( 'Please enter Original Price', 'bediq' ),
                     ),
                     array(
                         'key' => 'currency',
-                        'label' => 'Currency',
+                        'label' => __( 'Currency', 'bediq' ),
                         'name' => 'currency',
                         'type' => 'select',
                         'ui' => 1,
@@ -356,7 +356,7 @@ class Advanced_Custom_Fields {
                     ),
                     array(
                         'key' => 'price_valid_from',
-                        'label' => 'Promotion Begins',
+                        'label' => __( 'Promotion Begins', 'bediq' ),
                         'name' => 'price_valid_from',
                         'type' => 'date_picker',
                         'display_format' => 'd-m-Y',
@@ -366,7 +366,7 @@ class Advanced_Custom_Fields {
                     ),
                     array(
                         'key' => 'price_valid_to',
-                        'label' => 'Promotion Ends',
+                        'label' => __( 'Promotion Ends', 'bediq' ),
                         'name' => 'price_valid_to',
                         'type' => 'date_picker',
                         'display_format' => 'd-m-Y',
@@ -376,7 +376,7 @@ class Advanced_Custom_Fields {
                     ),
                     array(
                         'key' => 'stay_from',
-                        'label' => 'Stay From',
+                        'label' => __( 'Stay From', 'bediq' ),
                         'name' => 'stay_from',
                         'type' => 'date_picker',
                         'display_format' => 'd-m-Y',
@@ -385,7 +385,7 @@ class Advanced_Custom_Fields {
                     ),
                     array(
                         'key' => 'stay_until',
-                        'label' => 'Stay Until',
+                        'label' => __( 'Stay Until', 'bediq' ),
                         'name' => 'stay_until',
                         'type' => 'date_picker',
                         'display_format' => 'd-m-Y',
@@ -394,7 +394,7 @@ class Advanced_Custom_Fields {
                     ),
                     array(
                         'key' => 'seller',
-                        'label' => 'Seller',
+                        'label' => __( 'Seller', 'bediq' ),
                         'name' => 'seller',
                         'type' => 'select',
                         'choices'   => $user_dropdown,

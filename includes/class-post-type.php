@@ -4,7 +4,7 @@ namespace bedIQ;
 /**
  * Class Registger Post type
  */
-class Register_Post_Type {
+class Post_Type {
 
     /**
      * Constructor for Register Post Type class
@@ -19,8 +19,8 @@ class Register_Post_Type {
      * @return void
      */
     function init_post_types() {
-
         $show_in_menu = true;
+        $post = get_posts( 'post_type=room' );
 
         register_post_type( 'room', array(
             'label'           => __( 'Rooms', 'bediq' ),
@@ -51,7 +51,7 @@ class Register_Post_Type {
                 'not_found'          => __( 'No Rooms Found', 'bediq' ),
                 'not_found_in_trash' => __( 'No Rooms Found in Trash', 'bediq' ),
                 'parent'             => __( 'Parent Room', 'bediq' ),
-            ),
+            )
         ) );
 
         register_post_type( 'offer', array(

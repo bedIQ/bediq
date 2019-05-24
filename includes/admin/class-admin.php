@@ -1,23 +1,19 @@
 <?php
-namespace bedIQ;
+namespace bedIQ\Admin;
 
 /**
  *  Class Admin
  */
-class Admin_Menu {
+class Admin {
 
     /**
      *  Constructor for Admin class
      */
     function __construct() {
-        add_action( 'wp_dashboard_setup', array( $this, 'replace_dashboard_widgets' ), 9999 );
-
         add_filter( 'custom_menu_order', array( $this, 'custom_menu_order' ), 10, 1 );
         add_filter( 'menu_order', array( $this, 'custom_menu_order' ), 10, 1 );
 
         add_action( 'admin_menu', array( $this, 'set_admin_menu_separator' ) );
-
-        add_action( 'load-index.php', array( $this, 'remove_welcome_panel' ) );
 
         // add_filter( 'parent_file', array($this, 'fix_parent_menu' ) );
     }
@@ -56,26 +52,6 @@ class Admin_Menu {
             'edit.php?post_type=outlet',
             'separator3',
         );
-    }
-
-    /**
-     * Replace dashboard widgets
-     *
-     * @return void
-     */
-    public function replace_dashboard_widgets() {
-       global $wp_meta_boxes;
-        $wp_meta_boxes['dashboard']['normal']['core'] = array();
-        $wp_meta_boxes['dashboard']['side']['core'] = array();
-    }
-
-    /**
-     * Remove wp dashboard welcome panel
-     *
-     * @return void
-     */
-    public function remove_welcome_panel() {
-        remove_action('welcome_panel', 'wp_welcome_panel');
     }
 
     /**

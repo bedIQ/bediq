@@ -64,7 +64,6 @@ class bedIQ_Plugin {
 
         register_activation_hook( __FILE__, array( $this, 'activate' ) );
         register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
-
         $this->file_includes();
         $this->init_classes();
 
@@ -105,21 +104,23 @@ class bedIQ_Plugin {
 
         if ( is_admin() ) {
             require_once dirname( __FILE__ ) . '/includes/class-advanced-custom-fields.php';
-            require_once dirname( __FILE__ ) . '/includes/class-admin-menu.php';
+            require_once dirname( __FILE__ ) . '/includes/admin/class-admin.php';
+            require_once dirname( __FILE__ ) . '/includes/admin/class-cleanup.php';
         } else {
             require_once dirname( __FILE__ ) . '/includes/core-functions.php';
             require_once dirname( __FILE__ ) . '/includes/template-functions.php';
         }
         require_once dirname( __FILE__ ) . '/includes/posts-to-posts.php';
-        require_once dirname( __FILE__ ) . '/includes/class-register-post-type.php';
+        require_once dirname( __FILE__ ) . '/includes/class-post-type.php';
     }
 
     public function init_classes() {
         if ( is_admin() ) {
             new \bedIQ\Advanced_Custom_Fields();
-            new \bedIQ\Admin_Menu();
+            new \bedIQ\Admin\Admin();
+            new \bedIQ\Admin\Cleanup();
         }
-        new \bedIQ\Register_Post_Type();
+        new \bedIQ\Post_Type();
     }
     /**
      * Placeholder for activation function
