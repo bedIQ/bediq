@@ -105,7 +105,6 @@ class bedIQ_Plugin {
         if ( is_admin() ) {
             require_once dirname( __FILE__ ) . '/includes/class-advanced-custom-fields.php';
             require_once dirname( __FILE__ ) . '/includes/admin/class-admin.php';
-            require_once dirname( __FILE__ ) . '/includes/admin/class-cleanup.php';
         } else {
             require_once dirname( __FILE__ ) . '/includes/core-functions.php';
             require_once dirname( __FILE__ ) . '/includes/template-functions.php';
@@ -118,7 +117,6 @@ class bedIQ_Plugin {
         if ( is_admin() ) {
             new \bedIQ\Advanced_Custom_Fields();
             new \bedIQ\Admin\Admin();
-            new \bedIQ\Admin\Cleanup();
         }
         new \bedIQ\Post_Type();
     }
