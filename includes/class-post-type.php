@@ -20,7 +20,6 @@ class Post_Type {
      */
     function init_post_types() {
         $show_in_menu = true;
-        $post = get_posts( 'post_type=room' );
 
         register_post_type( 'room', array(
             'label'           => __( 'Rooms', 'bediq' ),
@@ -51,7 +50,17 @@ class Post_Type {
                 'not_found'          => __( 'No Rooms Found', 'bediq' ),
                 'not_found_in_trash' => __( 'No Rooms Found in Trash', 'bediq' ),
                 'parent'             => __( 'Parent Room', 'bediq' ),
-            )
+            ),
+            'capabilities'    => array(
+                'edit_post'          => 'edit_room',
+                'read_post'          => 'read_room',
+                'delete_post'        => 'delete_room',
+                'edit_others_posts'  => 'edit_others_rooms',
+                'publish_posts'      => 'publish_rooms',
+                'read_private_posts' => 'read_private_rooms',
+                'create_posts'       => 'create_rooms',
+            ),
+            'map_meta_cap' => true
         ) );
 
         register_post_type( 'offer', array(
