@@ -5,13 +5,6 @@ namespace bedIQ\Admin;
  */
 class Insert_Term {
     /**
-     * Constructor for Insert_Term
-     */
-    function __construct() {
-        add_action( 'init', array( $this, 'create_new_term' ), 9999 );
-    }
-
-    /**
      * Create term
      *
      * @return void
@@ -45,7 +38,11 @@ class Insert_Term {
             if ( ! term_exists( $term['name'], $taxonomy ) ) {
                 wp_insert_term(
                     $term['name'],
-                    $taxonomy
+                    $taxonomy,
+                    array(
+                        'slug'          =>  $term['slug'],
+                        'description'   =>  $term['description']
+                    )
                 );
             }
         }

@@ -128,7 +128,11 @@ class bedIQ_Plugin {
      * Nothing being called here yet.
      */
     public function activate() {
+        $term       = new \bedIQ\Admin\Insert_Term();
+        $post_type  = new \bedIQ\Post_Type();
 
+        $post_type->init_post_types();
+        $term->create_new_term();
     }
 
     /**

@@ -51,6 +51,12 @@ class Post_Type {
                 'not_found_in_trash' => __( 'No Accommodations Found in Trash', 'bediq' ),
                 'parent'             => __( 'Parent Accommodation', 'bediq' ),
             ),
+            'rewrite'          =>  array(
+                'slug'               => 'accommodations',
+                'with_front'         => true,
+                'pages'              => true,
+                'feeds'              => true,
+            ),
             'capabilities'    => array(
                 'edit_post'          => 'edit_accommodation',
                 'read_post'          => 'read_accommodation',
@@ -93,6 +99,12 @@ class Post_Type {
                 'not_found_in_trash' => __( 'No Offers Found in Trash', 'bediq' ),
                 'parent'             => __( 'Parent Offer', 'bediq' ),
             ),
+            'rewrite'          =>  array(
+                'slug'               => 'offers',
+                'with_front'         => true,
+                'pages'              => true,
+                'feeds'              => true,
+            ),
         ) );
 
         register_post_type( 'outlet', array(
@@ -123,6 +135,12 @@ class Post_Type {
                 'not_found'          => __( 'No Outlet Found', 'bediq' ),
                 'not_found_in_trash' => __( 'No Outlet Found in Trash', 'bediq' ),
                 'parent'             => __( 'Parent Outlet', 'bediq' ),
+            ),
+            'rewrite'          =>  array(
+                'slug'               => 'outlets',
+                'with_front'         => true,
+                'pages'              => true,
+                'feeds'              => true,
             ),
         ) );
 
