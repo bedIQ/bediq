@@ -104,6 +104,7 @@ class bedIQ_Plugin {
 
         if ( is_admin() ) {
             require_once dirname( __FILE__ ) . '/includes/class-advanced-custom-fields.php';
+            require_once dirname( __FILE__ ) . '/includes/admin/class-insert-term.php';
             require_once dirname( __FILE__ ) . '/includes/admin/class-admin.php';
         } else {
             require_once dirname( __FILE__ ) . '/includes/core-functions.php';
@@ -117,6 +118,7 @@ class bedIQ_Plugin {
         if ( is_admin() ) {
             new \bedIQ\Advanced_Custom_Fields();
             new \bedIQ\Admin\Admin();
+            new \bedIQ\Admin\Insert_Term();
         }
         new \bedIQ\Post_Type();
     }
@@ -126,7 +128,13 @@ class bedIQ_Plugin {
      * Nothing being called here yet.
      */
     public function activate() {
+        $term       = new \bedIQ\Admin\Insert_Term();
+        $post_type  = new \bedIQ\Post_Type();
 
+        $post_type->init_post_types();
+        $term->create_new_term();
+
+        flush_rewrite_rules();
     }
 
     /**
