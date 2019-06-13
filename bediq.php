@@ -133,6 +133,8 @@ class bedIQ_Plugin {
 
         $post_type->init_post_types();
         $term->create_new_term();
+
+        flush_rewrite_rules();
     }
 
     /**
