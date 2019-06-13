@@ -11,6 +11,8 @@ class Advanced_Custom_Fields {
      */
     function __construct() {
         $this->bediq_custom_fields();
+        $this->bediq_add_image();
+        $this->bediq_custom_taxonomy();
     }
 
     /**
@@ -27,239 +29,238 @@ class Advanced_Custom_Fields {
 
         if ( function_exists( 'acf_add_local_field_group' ) ) {
             acf_add_local_field_group( array(
-                'key' => 'room_features',
-                'title' => __( 'Room Features', 'bediq' ),
+                'key'    => 'room_features',
+                'title'  => __( 'Room Features', 'bediq' ),
                 'fields' => array(
                     array(
-                        'key' => 'room_type',
-                        'label' => __( 'Room Type', 'bediq' ),
-                        'name' => 'room_type',
-                        'type' => 'select',
-                        'ui' => 1,
-                        'choices'  => array(
-                            'Single'    => __( 'Single', 'bediq' ),
-                            'Double'    => __( 'Double', 'bediq' ),
-                            'Twin'      => __( 'Twin', 'bediq' ),
-                            'Triple'    => __( 'Triple', 'bediq' ),
-                            'Quad'      => __( 'Quad', 'bediq' ),
-                            'Family'    => __( 'Family', 'bediq' ),
-                            'Suit'      => __( 'Suit', 'bediq' ),
-                            'Villa'     => __( 'Villa', 'bediq' ),
-                            'Bungalow'  => __( 'Bungalow', 'bediq' )
-                        ),
-                    ),
-                    array(
-                        'key' => 'room_size',
-                        'label' => __( 'Room Size', 'bediq' ),
-                        'name' => 'room_size',
-                        'type' => 'text',
-                        'instructions' => __( 'Please enter the total size of the guest room', 'bediq' ),
-                        'placeholder' => '',
-                    ),
-                    array(
-                        'key' => 'occupancy_adults',
-                        'label' => __( 'Occupancy Adults', 'bediq' ),
-                        'name' => 'occupancy_adults',
-                        'type' => 'text',
-                        'instructions' => __( 'Please enter the regular number of adults for this room', 'bediq' ),
-                        'placeholder' => '',
-                    ),
-                    array(
-                        'key' => 'occupancy_child',
-                        'label' => __( 'Occupancy Children', 'bediq' ),
-                        'name' => 'occupancy_child',
-                        'type' => 'text',
-                        'instructions' => __( 'Please enter the regular number of children for this room', 'bediq' ),
-                        'placeholder' => '',
-                    ),
-                    array(
-                        'key' => 'extra_beds',
-                        'label' => __( 'Extrabeds', 'bediq' ),
-                        'name' => 'extra_beds',
-                        'type' => 'text',
-                        'instructions' => __( 'Please enter the max. allowable number of Extrabeds (e.g. 1 Extrabed for Adults and 2 Extrabeds for Children)', 'bediq' ),
-                        'placeholder' => '',
-                    ),
-                    array(
-                        'key' => 'min_price',
-                        'label' => __( 'Min. Price', 'bediq' ),
-                        'name' => 'min_price',
-                        'type' => 'text',
-                        'instructions' => __( 'Please enter the lowest BAR rate for this room, e.g. $1600', 'bediq' ),
-                        'placeholder' => '',
-                    ),
-                    array(
-                        'key'     => 'pet_policy',
-                        'label'   => __( 'Please select your pet policy', 'bediq' ),
-                        'name'    => 'pet_policy',
-                        'type'    => 'select',
-                        'choices' => array(
-                            'not allowed'                      => __( 'not allowed', 'bediq' ),
-                            'not allowed (guide animals only)' => __( 'not allowed (guide animals only)', 'bediq' ),
-                            'small pets free of charge'        => __( 'small pets free of charge', 'bediq' ),
-                            'free of charge'                   => __( 'free of charge', 'bediq' ),
-                            'at a charge'                      => __( 'at a charge', 'bediq' )
-                        ),
-                        'ui' => 1,
-                        'instructions' => __( 'Please add all items you would like to display on your websit.', 'bediq' ),
-                        'placeholder' => '',
-                    ),
-                    array(
-                        'key' => 'entertainments',
-                        'label' => __( 'Entertainment', 'bediq' ),
-                        'name' => 'entertainments',
-                        'type' => 'repeater',
-                        'instructions' => __( 'Please add all items you would like to display on your websit.', 'bediq' ),
+                        'key'    => 'offers',
+                        'label'  => __( 'Offers', 'bediq' ),
+                        'name'   => 'offers',
+                        'type'   => 'repeater',
                         'layout' => 'row',
-                        'button_label' => 'Add New',
+                        'button_label' => 'Add New Offer',
+                        'min'   =>  '1',
                         'sub_fields' => array(
                             array(
-                                'key' => 'entertainment',
+                                'key'   => 'offer',
                                 'label' => '',
-                                'name' => 'entertainment',
-                                'type' => 'text'
+                                'name'  => 'offer',
+                                'type' => 'post_object',
+                                'post_type' => array(
+                                    0 => 'offer',
+                                ),
+                                'multiple' => 1,
+                                'return_format' => 'object',
+                                'ui' => 1
                             ),
                         ),
                     ),
                     array(
-                        'key'   => 'facilities_room',
-                        'label' => __( 'Room Features', 'bediq' ),
-                        'name'  => 'facilities_room',
+                        'key'   => 'floor_size',
+                        'label' => __( 'Floor Size', 'bediq' ),
+                        'name'  => 'floor_size',
+                        'type'  => 'text',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '50',
+                        )
+                    ),
+                    array(
+                        'key'     => 'floor_size_unit',
+                        'label'   => __( 'Unit', 'bediq' ),
+                        'name'    => 'floor_size_unit',
+                        'type'    => 'select',
+                        'wrapper' => array(
+                            'width' => '30',
+                        ),
+                        'choices' => array(
+                            'sqm'   => __( 'SQM', 'bediq' ),
+                            'sqft'  => __( 'SQFT', 'bediq' ),
+                        )
+                    ),
+                    array(
+                        'key'   => 'field_5cfe21a576261',
+                        'label' => __( 'Bed Room', 'bediq' ),
+                        'name'  => 'bed_room',
                         'type'  => 'repeater',
-                        'instructions' => __( 'Please add all items you would like to display on your website.', 'bediq' ),
-                        'layout'       => 'row',
-                        'button_label' => __( 'Add New', 'bediq' ),
-                        'sub_fields'   => array(
+                        'min'   => 1,
+                        'max'   => 0,
+                        'layout' => 'block',
+                        'button_label' => __( 'Add Bedroom', 'bediq' ),
+                        'sub_fields' => array(
                             array(
-                                'key' => 'room_feature',
-                                'label' => '',
-                                'name' => 'room_feature',
-                                'type' => 'text'
+                                'key'   => 'field_5cfe223476262',
+                                'label' => __( 'Bed Room Name', 'bediq' ),
+                                'name'  => 'bed_room_name',
+                                'type'  => 'text',
+                            ),
+                            array(
+                                'key'   => 'field_5cff3f0101fc0',
+                                'label' => __( 'Beddings', 'bediq' ),
+                                'name'  => 'beddings',
+                                'type'  => 'repeater',
+                                'wrapper' => array(
+                                    'width' => '50',
+                                ),
+                                'collapsed' => 'field_5cff429301fc1',
+                                'min' => 1,
+                                'max' => 0,
+                                'layout' => 'block',
+                                'button_label' => __( 'Add Bedding', 'bediq' ),
+                                'sub_fields' => array(
+                                    array(
+                                        'key'     => 'field_5cff429301fc1',
+                                        'label'   => __( 'Bedding', 'bediq' ),
+                                        'name'    => 'bedding',
+                                        'type'    => 'select',
+                                        'wrapper' => array(
+                                            'width' => '50',
+                                        ),
+                                        'choices' => array(
+                                            'king_size'    => __( 'King Size', 'bediq' ),
+                                            'queen_size'   => __( 'Queen Size', 'bediq' ),
+                                            'double_king'  => __ ( 'Double King', 'bediq' ),
+                                            'double'       => __( 'Double', 'bediq' ),
+                                            'sofa'         => __( 'Sofa', 'bediq' ),
+                                        ),
+                                    ),
+                                ),
+                            ),
+                            array(
+                                'key'   => 'field_5cff43ba01fc2',
+                                'label' => __( 'Bothrooms', 'bediq' ),
+                                'name'  => 'bothrooms',
+                                'type'  => 'repeater',
+                                'wrapper' => array(
+                                    'width' => '50',
+                                ),
+                                'min' => 1,
+                                'max' => 0,
+                                'layout' => 'block',
+                                'button_label' => __( 'Add Bothroom', 'bediq' ),
+                                'sub_fields'   => array(
+                                    array(
+                                        'key'     => 'field_5cff43d501fc3',
+                                        'label'   => __( 'Bothroom', 'bediq' ),
+                                        'name'    => 'bothroom',
+                                        'type'    => 'select',
+                                        'choices' => array(
+                                            'guest_toilet'      => __( 'Guest Toilet', 'bediq' ),
+                                            'shower'            => __( 'Shower', 'bediq' ),
+                                            'bathtub'           => __( 'Bathtub', 'bediq' ),
+                                            'bathtub_shower'    => __( 'Bathtub & Shower', 'bediq' ),
+                                        ),
+                                    ),
+                                ),
+                            ),
+                            array(
+                                'key'     => 'field_5cff48dcf0fe9',
+                                'label'   => 'Occupancy',
+                                'name'    => 'occupancy',
+                                'type'    => 'number',
+                                'wrapper' => array(
+                                    'width' => '33',
+                                ),
+                            ),
+                            array(
+                                'key'     => 'field_5cff4955f0fea',
+                                'label'   => __( 'Adults', 'bediq' ),
+                                'name'    => 'adults',
+                                'type'    => 'number',
+                                'wrapper' => array(
+                                    'width' => '33',
+                                ),
+                            ),
+                            array(
+                                'key'     => 'field_5cff4967f0feb',
+                                'label'   => __( 'Children', 'bediq' ),
+                                'name'    => 'children',
+                                'type'    => 'number',
+                                'wrapper' => array(
+                                    'width' => '33',
+                                ),
+                            ),
+                            array(
+                                'key' => 'field_5cff4b681e373',
+                                'label' => __( 'View', 'bediq' ),
+                                'name' => 'view',
+                                'type' => 'select',
+                                'choices' => array(
+                                    'view' => __( 'View', 'bediq' ),
+                                ),
+                                'multiple' => 1,
+                                'ui' => 1,
+                                'ajax' => 1,
+                                'return_format' => 'value',
                             ),
                         ),
                     ),
                     array(
-                        'key'   => 'bed_features',
-                        'label' => __( 'Bed Features', 'bediq' ),
-                        'name'  => 'bed_features',
-                        'type'  => 'repeater',
-                        'instructions' => __( 'Please add all items you would like to display on your website.', 'bediq' ),
-                        'layout'       => 'row',
-                        'button_label' => __( 'Add New', 'bediq' ),
-                        'sub_fields'   => array(
-                            array(
-                                'key' => 'bed_feature',
-                                'label' => '',
-                                'name' => 'bed_feature',
-                                'type' => 'text'
-                            ),
-                        ),
-                    ),
-                    array(
-                        'key'   => 'bath',
-                        'label' => __( 'Bathroom', 'bediq' ),
-                        'name'  => 'bath',
-                        'type'  => 'repeater',
-                        'instructions' => __( 'Please add all items you would like to display on your website.', 'bediq' ),
-                        'layout'       => 'row',
-                        'button_label' => __( 'Add New', 'bediq' ),
-                        'sub_fields'   => array(
-                            array(
-                                'key' => 'bathroom',
-                                'label' => '',
-                                'name' => 'bathroom',
-                                'type' => 'text'
-                            ),
-                        ),
-                    ),
-                    array(
-                        'key'   => 'communication',
-                        'label' => __( 'Communication', 'bediq' ),
-                        'name'  => 'communication',
-                        'type'  => 'repeater',
-                        'instructions' => __( 'Please add all items you would like to display on your website.', 'bediq' ),
-                        'layout'       => 'row',
-                        'button_label' => __( 'Add New', 'bediq' ),
-                        'sub_fields'   => array(
-                            array(
-                                'key' => 'communication_field',
-                                'label' => '',
-                                'name' => 'communication_field',
-                                'type' => 'text'
-                            ),
-                        ),
-                    ),
-                    array(
-                        'key'   => 'safety',
-                        'label' => 'Safety',
-                        'name'  => 'safety',
-                        'type'  => 'repeater',
-                        'instructions' => __( 'Please add all items you would like to display on your website.', 'bediq' ),
-                        'layout'       => 'row',
-                        'button_label' => __( 'Add New', 'bediq' ),
-                        'sub_fields'   => array(
-                            array(
-                                'key' => 'safety_field',
-                                'label' => '',
-                                'name' => 'safety_field',
-                                'type' => 'text'
-                            ),
-                        ),
-                    ),
-                    array(
-                        'key'   => 'on_request',
-                        'label' => 'On Request',
-                        'name'  => 'on_request',
-                        'type'  => 'repeater',
-                        'instructions' => __( 'Please add all items you would like to display on your website.', 'bediq' ),
-                        'layout'       => 'row',
-                        'button_label' => __( 'Add New', 'bediq' ),
-                        'sub_fields'   => array(
-                            array(
-                                'key' => 'on_request_field',
-                                'label' => '',
-                                'name' => 'on_request_field',
-                                'type' => 'text'
-                            ),
-                        ),
-                    ),
-                    array(
-                        'key'   =>  'ibe_room',
-                        'label' =>  __( 'Link to Booking Engine', 'bediq' ),
-                        'name'  =>  'ibe_room',
-                        'type'  =>  'text',
-                        'instructions'  =>  __( 'Please enter the link to your Booking Engine, preferably straight to the Room Type', 'bediq' ),
-                    ),
-                    array(
-                        'key' => 'offers',
-                        'label' => __( 'Offers', 'bediq' ),
-                        'name' => 'offers',
-                        'type' => 'post_object',
-                        'instructions' => sprintf( __( 'Add offers to this room. You have to <a href="%s" target="_blank">create some offers</a> first!', 'bediq' ), admin_url( 'post-new.php?post_type=offer' ) ),
-                        'post_type' => array(
-                            0 => 'offer',
+                        'key'   => 'field_5cff64bdba408',
+                        'label' => 'Policies',
+                        'name'  => 'policies',
+                        'type'  => 'select',
+                        'choices' => array(
+                            'pets_allowed'      => __( 'Pets Allowed', 'bediq' ),
+                            'smoking_allowed'   => __( 'Smoking Allowed', 'bediq' ),
                         ),
                         'multiple' => 1,
-                        'return_format' => 'object',
-                        'ui' => 1
+                        'ui' => 1,
+                        'ajax' => 1,
+                        'return_format' => 'value',
                     ),
                     array(
-                        'key' => 'photo',
-                        'label' => __( 'Photographs of this room', 'bediq' ),
-                        'name' => 'photo',
-                        'type' => 'gallery',
-                        'instructions' => __( 'Some photographs of this room.', 'bediq' ),
-                        'min' => '',
-                        'max' => '',
-                        'insert' => 'append',
-                        'library' => 'all',
-                        'min_width' => '',
-                        'min_height' => '',
-                        'min_size' => '',
-                        'max_width' => '',
-                        'max_height' => '',
-                        'max_size' => '',
-                        'mime_types' => '',
+                        'key'    => 'field_5cff6575ba409',
+                        'label'  => __( 'Features and Amenities', 'bediq' ),
+                        'name'   => 'features_and_amenities',
+                        'type'   => 'repeater',
+                        'min'    => 1,
+                        'max'    => 0,
+                        'layout' => 'row',
+                        'button_label' => __( 'Add features and amenity group', 'bediq' ),
+                        'sub_fields' => array(
+                            array(
+                                'key'   => 'field_display_name',
+                                'label' =>  __( 'Display Name', 'bediq' ),
+                                'name'  =>  'display_name',
+                                'type'  =>  'text',
+                            ),
+                            array(
+                                'key' => 'field_5cff659aba40a',
+                                'label' => __( 'Features', 'bediq' ),
+                                'name' => 'features',
+                                'type' => 'select',
+                                'choices' => array(
+                                    'view' => __( 'View', 'bediq' ),
+                                ),
+                                'multiple' => 1,
+                                'ui' => 1,
+                                'ajax' => 1,
+                                'return_format' => 'value',
+                                'placeholder' => '',
+                            ),
+                        ),
+                    ),
+                    array(
+                        'key' => 'field_5cff6798e3404',
+                        'label' => __( 'Short Description', 'bediq' ),
+                        'name' => 'short_description',
+                        'type' => 'textarea',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'default_value' => '',
+                        'placeholder' => '',
+                        'maxlength' => '',
+                        'rows' => '',
+                        'new_lines' => '',
                     ),
                 ),
                 'location' => array(
@@ -267,7 +268,7 @@ class Advanced_Custom_Fields {
                         array(
                             'param' => 'post_type',
                             'operator' => '==',
-                            'value' => 'room',
+                            'value' => 'accommodation',
                         ),
                     ),
                 ),
@@ -277,6 +278,48 @@ class Advanced_Custom_Fields {
                 'label_placement' => 'top',
                 'instruction_placement' => 'label',
                 'hide_on_screen' => '',
+            ));
+
+            acf_add_local_field_group( array(
+                'key' => 'group_5cff819e50636',
+                'title' => 'Connectivity',
+                'fields' => array(
+                    array(
+                        'key'   => 'field_5cff81a4836bf',
+                        'label' => __( 'Roomtype Code', 'bediq' ),
+                        'name'  => 'room_type_code',
+                        'type'  => 'text',
+                    ),
+                    array(
+                        'key'   => 'field_5cff825c836c0',
+                        'label' => 'From Price',
+                        'name'  => 'from_price',
+                        'type'  => 'text',
+                    ),
+                    array(
+                        'key'   => 'field_5cff827b836c1',
+                        'label' => 'To Price',
+                        'name'  => 'to_price',
+                        'type'  => 'text',
+                    ),
+                ),
+                'location' => array(
+                    array(
+                        array(
+                            'param'     => 'post_type',
+                            'operator'  => '==',
+                            'value'     => 'accommodation',
+                        ),
+                    ),
+                ),
+                'menu_order'            => -1,
+                'position'              => 'side',
+                'style'                 => 'default',
+                'label_placement'       => 'top',
+                'instruction_placement' => 'label',
+                'hide_on_screen'        => '',
+                'active'                => true,
+                'description'           => '',
             ));
 
             acf_add_local_field_group( array(
@@ -332,10 +375,10 @@ class Advanced_Custom_Fields {
                         ),
                     ),
                     array(
-                        'key' => 'price',
+                        'key'   => 'price',
                         'label' => __( 'Discounted Price', 'bediq' ),
-                        'name' => 'price',
-                        'type' => 'text',
+                        'name'  => 'price',
+                        'type'  => 'text',
                         'instructions' => __( 'Please enter the promotional price', 'bediq' ),
                     ),
                     array(
@@ -365,40 +408,40 @@ class Advanced_Custom_Fields {
                         'instructions' => __( 'Please enter the date from when the promotion is available', 'bediq' )
                     ),
                     array(
-                        'key' => 'price_valid_to',
+                        'key'   => 'price_valid_to',
                         'label' => __( 'Promotion Ends', 'bediq' ),
-                        'name' => 'price_valid_to',
-                        'type' => 'date_picker',
-                        'display_format' => 'd-m-Y',
-                        'return_format' => 'd-m-Y',
-                        'first_day' => 1,
-                        'instructions' => __( 'Please select the date until which the promotion is available', 'bediq' )
+                        'name'  => 'price_valid_to',
+                        'type'  => 'date_picker',
+                        'display_format'    => 'd-m-Y',
+                        'return_format'     => 'd-m-Y',
+                        'first_day'         => 1,
+                        'instructions'      => __( 'Please select the date until which the promotion is available', 'bediq' )
                     ),
                     array(
-                        'key' => 'stay_from',
+                        'key'   => 'stay_from',
                         'label' => __( 'Stay From', 'bediq' ),
-                        'name' => 'stay_from',
-                        'type' => 'date_picker',
-                        'display_format' => 'd-m-Y',
-                        'return_format' => 'd-m-Y',
-                        'first_day' => 1
+                        'name'  => 'stay_from',
+                        'type'  => 'date_picker',
+                        'display_format'    =>  'd-m-Y',
+                        'return_format'     =>  'd-m-Y',
+                        'first_day'         =>  1
                     ),
                     array(
-                        'key' => 'stay_until',
+                        'key'   => 'stay_until',
                         'label' => __( 'Stay Until', 'bediq' ),
-                        'name' => 'stay_until',
-                        'type' => 'date_picker',
-                        'display_format' => 'd-m-Y',
-                        'return_format' => 'd-m-Y',
-                        'first_day' => 1
+                        'name'  => 'stay_until',
+                        'type'  => 'date_picker',
+                        'display_format'    => 'd-m-Y',
+                        'return_format'     => 'd-m-Y',
+                        'first_day'         => 1
                     ),
                     array(
-                        'key' => 'seller',
+                        'key'   => 'seller',
                         'label' => __( 'Seller', 'bediq' ),
-                        'name' => 'seller',
-                        'type' => 'select',
+                        'name'  => 'seller',
+                        'type'  => 'select',
                         'choices'   => $user_dropdown,
-                        'ui' => 1
+                        'ui'        => 1
                     ),
                 ),
                 'location' => array(
@@ -410,6 +453,212 @@ class Advanced_Custom_Fields {
                         ),
                     ),
                 )
+            ));
+        }
+    }
+
+    /**
+     * Add taxonomy fields
+     *
+     * @return void
+     */
+    public function bediq_custom_taxonomy() {
+        if ( function_exists('acf_add_local_field_group') ) {
+            acf_add_local_field_group( array(
+                'key' => 'group_5d009eb5f2f56',
+                'title' => __( 'Accommodation Types', 'bediq' ),
+                'fields' => array(
+                    array(
+                        'key' => 'field_5d00c6dfe11e3',
+                        'label' => '',
+                        'name' => 'accommodation_taxonomy_types',
+                        'type' => 'taxonomy',
+                        'taxonomy' => 'accommodation_types',
+                        'field_type' => 'radio',
+                        'allow_null' => 0,
+                        'add_term' => 1,
+                        'save_terms' => 0,
+                        'load_terms' => 0,
+                        'return_format' => 'id',
+                        'multiple' => 0,
+                    ),
+                ),
+                'location' => array(
+                    array(
+                        array(
+                            'param' => 'post_type',
+                            'operator' => '==',
+                            'value' => 'accommodation',
+                        ),
+                    ),
+                ),
+                'menu_order' => 0,
+                'position' => 'side',
+                'style' => 'default',
+                'label_placement' => 'top',
+                'instruction_placement' => 'label',
+                'hide_on_screen' => '',
+                'active' => true,
+                'description' => '',
+            ));
+        }
+    }
+
+    /**
+     * Add bediq image
+     *
+     * @return void
+     */
+    public function bediq_add_image() {
+        if ( function_exists('acf_add_local_field_group')  ) {
+            acf_add_local_field_group( array(
+                'key' => 'group_bed_room_image',
+                'title' => __( 'Bed Room Image', 'bediq' ),
+                'fields' => array(
+                    array(
+                        'key' => 'field_5d0086e7c2f19',
+                        'label' => '',
+                        'name' => 'bed_room_image',
+                        'type' => 'image',
+                        'return_format' => 'array',
+                        'preview_size' => 'post-thumbnail',
+                        'library' => 'all',
+                    ),
+                ),
+                'location' => array(
+                    array(
+                        array(
+                            'param' => 'post_type',
+                            'operator' => '==',
+                            'value' => 'accommodation',
+                        ),
+                    ),
+                ),
+                'menu_order' => 0,
+                'position' => 'side',
+                'style' => 'default',
+                'label_placement' => 'top',
+                'instruction_placement' => 'label',
+            ));
+
+            acf_add_local_field_group( array(
+                'key' => 'group_both_room_image',
+                'title' => __( 'Both Room Image', 'bediq' ),
+                'fields' => array(
+                    array(
+                        'key' => 'field_5d0086e7c2f19',
+                        'label' => '',
+                        'name' => 'both_room_image',
+                        'type' => 'image',
+                        'return_format' => 'array',
+                        'preview_size' => 'post-thumbnail',
+                        'library' => 'all',
+                    ),
+                ),
+                'location' => array(
+                    array(
+                        array(
+                            'param' => 'post_type',
+                            'operator' => '==',
+                            'value' => 'accommodation',
+                        ),
+                    ),
+                ),
+                'menu_order' => 0,
+                'position' => 'side',
+                'style' => 'default',
+                'label_placement' => 'top',
+                'instruction_placement' => 'label',
+            ));
+
+            acf_add_local_field_group( array(
+                'key' => 'group_view_image',
+                'title' => __( 'View Image', 'bediq' ),
+                'fields' => array(
+                    array(
+                        'key' => 'field_view_image',
+                        'label' => '',
+                        'name' => 'view_image',
+                        'type' => 'image',
+                        'return_format' => 'array',
+                        'preview_size' => 'post-thumbnail',
+                        'library' => 'all',
+                    ),
+                ),
+                'location' => array(
+                    array(
+                        array(
+                            'param' => 'post_type',
+                            'operator' => '==',
+                            'value' => 'accommodation',
+                        ),
+                    ),
+                ),
+                'menu_order' => 0,
+                'position' => 'side',
+                'style' => 'default',
+                'label_placement' => 'top',
+                'instruction_placement' => 'label',
+            ));
+
+            acf_add_local_field_group( array(
+                'key' => 'group_floor_plan_image',
+                'title' => __( 'Floor Plan Image', 'bediq' ),
+                'fields' => array(
+                    array(
+                        'key' => 'field_floor_plan_image',
+                        'label' => '',
+                        'name' => 'floor_plan_image',
+                        'type' => 'image',
+                        'return_format' => 'array',
+                        'preview_size' => 'post-thumbnail',
+                        'library' => 'all',
+                    ),
+                ),
+                'location' => array(
+                    array(
+                        array(
+                            'param' => 'post_type',
+                            'operator' => '==',
+                            'value' => 'accommodation',
+                        ),
+                    ),
+                ),
+                'menu_order' => 0,
+                'position' => 'side',
+                'style' => 'default',
+                'label_placement' => 'top',
+                'instruction_placement' => 'label',
+            ));
+
+            acf_add_local_field_group( array(
+                'key' => 'group_gallery_image',
+                'title' => __( 'Gallery Image', 'bediq' ),
+                'fields' => array(
+                    array(
+                        'key' => 'field_gallery_image',
+                        'label' => '',
+                        'name' => 'gallery_image',
+                        'type' => 'image',
+                        'return_format' => 'array',
+                        'preview_size' => 'post-thumbnail',
+                        'library' => 'all',
+                    ),
+                ),
+                'location' => array(
+                    array(
+                        array(
+                            'param' => 'post_type',
+                            'operator' => '==',
+                            'value' => 'accommodation',
+                        ),
+                    ),
+                ),
+                'menu_order' => 0,
+                'position' => 'side',
+                'style' => 'default',
+                'label_placement' => 'top',
+                'instruction_placement' => 'label',
             ));
         }
     }

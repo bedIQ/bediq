@@ -21,44 +21,44 @@ class Post_Type {
     function init_post_types() {
         $show_in_menu = true;
 
-        register_post_type( 'room', array(
-            'label'           => __( 'Rooms', 'bediq' ),
+        register_post_type( 'accommodation', array(
+            'label'           => __( 'Accommodations', 'bediq' ),
             'public'          => true,
             'show_ui'         => true,
             'show_in_menu'    => $show_in_menu,
             'menu_position'   => 5,
             'capability_type' => 'post',
             'hierarchical'    => false,
-            'rewrite'         => array('slug' => 'rooms'),
+            'rewrite'         => array('slug' => 'accommodations'),
             'query_var'       => true,
             'has_archive'     => true,
             'supports'        => array('title', 'editor', 'thumbnail'),
-            'taxonomies'      => [ 'room_types' ],
+            'taxonomies'      => [ 'accommodation_types' ],
             'menu_icon'       => 'dashicons-admin-home',
             'labels'          => array(
-                'name'               => __( 'Rooms', 'bediq' ),
-                'singular_name'      => __( 'Room', 'bediq' ),
-                'menu_name'          => __( 'Rooms', 'bediq' ),
-                'add_new'            => __( 'Add Room', 'bediq' ),
-                'add_new_item'       => __( 'Add New Room', 'bediq' ),
+                'name'               => __( 'Accommodations', 'bediq' ),
+                'singular_name'      => __( 'Accommodation', 'bediq' ),
+                'menu_name'          => __( 'Accommodations', 'bediq' ),
+                'add_new'            => __( 'Add New', 'bediq' ),
+                'add_new_item'       => __( 'Add New Accommodations', 'bediq' ),
                 'edit'               => __( 'Edit', 'bediq' ),
-                'edit_item'          => __( 'Edit Room', 'bediq' ),
-                'new_item'           => __( 'New Room', 'bediq' ),
-                'view'               => __( 'View Room', 'bediq' ),
-                'view_item'          => __( 'View Room', 'bediq' ),
-                'search_items'       => __( 'Search Rooms', 'bediq' ),
-                'not_found'          => __( 'No Rooms Found', 'bediq' ),
-                'not_found_in_trash' => __( 'No Rooms Found in Trash', 'bediq' ),
-                'parent'             => __( 'Parent Room', 'bediq' ),
+                'edit_item'          => __( 'Edit Accommodation', 'bediq' ),
+                'new_item'           => __( 'New Accommodation', 'bediq' ),
+                'view'               => __( 'View Accommodation', 'bediq' ),
+                'view_item'          => __( 'View Accommodation', 'bediq' ),
+                'search_items'       => __( 'Search Accommodations', 'bediq' ),
+                'not_found'          => __( 'No Accommodations Found', 'bediq' ),
+                'not_found_in_trash' => __( 'No Accommodations Found in Trash', 'bediq' ),
+                'parent'             => __( 'Parent Accommodation', 'bediq' ),
             ),
             'capabilities'    => array(
-                'edit_post'          => 'edit_room',
-                'read_post'          => 'read_room',
-                'delete_post'        => 'delete_room',
-                'edit_others_posts'  => 'edit_others_rooms',
-                'publish_posts'      => 'publish_rooms',
-                'read_private_posts' => 'read_private_rooms',
-                'create_posts'       => 'create_rooms',
+                'edit_post'          => 'edit_accommodation',
+                'read_post'          => 'read_accommodation',
+                'delete_post'        => 'delete_accommodation',
+                'edit_others_posts'  => 'edit_others_accommodations',
+                'publish_posts'      => 'publish_accommodations',
+                'read_private_posts' => 'read_private_accommodations',
+                'create_posts'       => 'create_accommodations',
             ),
             'map_meta_cap' => true
         ) );
@@ -127,14 +127,14 @@ class Post_Type {
         ) );
 
         //taxonomies
-        register_taxonomy( 'room_types', [ 'room' ],
+        register_taxonomy( 'accommodation_types', [],
             array(
                 'hierarchical'   => true,
-                'label'          => __( 'Room Types', 'bediq' ),
+                'label'          => __( 'Accommodation Types', 'bediq' ),
                 'show_ui'        => true,
                 'query_var'      => true,
                 'rewrite'        => array('slug' => ''),
-                'singular_label' => __( 'Room Type', 'bediq' )
+                'singular_label' => __( 'Accommodation Type', 'bediq' )
             )
         );
 

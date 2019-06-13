@@ -47,7 +47,7 @@ class Admin {
         return array(
             'index.php',
             'separator1',
-            'edit.php?post_type=room',
+            'edit.php?post_type=accommodation',
             'edit.php?post_type=offer',
             'edit.php?post_type=outlet',
             'separator3',
