@@ -76,6 +76,7 @@ class bedIQ_Plugin {
 
         // Loads frontend scripts and styles
         add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+        add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 
         add_filter( 'body_class', array($this, 'body_class') );
     }
@@ -103,24 +104,25 @@ class bedIQ_Plugin {
     function file_includes() {
 
         if ( is_admin() ) {
-            require_once dirname( __FILE__ ) . '/includes/class-advanced-custom-fields.php';
             require_once dirname( __FILE__ ) . '/includes/admin/class-insert-term.php';
             require_once dirname( __FILE__ ) . '/includes/admin/class-admin.php';
         } else {
-            require_once dirname( __FILE__ ) . '/includes/core-functions.php';
             require_once dirname( __FILE__ ) . '/includes/template-functions.php';
         }
+        require_once dirname( __FILE__ ) . '/includes/core-functions.php';
         require_once dirname( __FILE__ ) . '/includes/posts-to-posts.php';
-        require_once dirname( __FILE__ ) . '/includes/class-post-type.php';
+        require_once dirname( __FILE__ ) . '/includes/class-abstract-post-type.php';
+        require_once dirname( __FILE__ ) . '/includes/class-post-type-accommodation.php';
+        require_once dirname( __FILE__ ) . '/includes/class-post-type-offer.php';
     }
 
     public function init_classes() {
         if ( is_admin() ) {
-            new \bedIQ\Advanced_Custom_Fields();
             new \bedIQ\Admin\Admin();
             new \bedIQ\Admin\Insert_Term();
         }
-        new \bedIQ\Post_Type();
+        new \bedIQ\Post_Type_Accommodation();
+        new \bedIQ\Post_Type_Offer();
     }
     /**
      * Placeholder for activation function
@@ -129,9 +131,8 @@ class bedIQ_Plugin {
      */
     public function activate() {
         $term       = new \bedIQ\Admin\Insert_Term();
-        $post_type  = new \bedIQ\Post_Type();
 
-        $post_type->init_post_types();
+        $term->register_taxonomy();
         $term->create_new_term();
 
         flush_rewrite_rules();
@@ -192,6 +193,10 @@ class bedIQ_Plugin {
         // $translation_array = array( 'some_string' => __( 'Some string to translate', 'bediq' ), 'a_value' => '10' );
         // wp_localize_script( 'base-plugin-scripts', 'bediq', $translation_array ) );
 
+    }
+
+    public function admin_enqueue_scripts() {
+        wp_enqueue_style( 'bediq-admin-style', plugins_url( 'assets/css/admin.css', __FILE__ ), false, date( 'Ymd' ) );
     }
 
     /**

@@ -1,32 +1,99 @@
 <?php
 namespace bedIQ;
 /**
- * Class Advanced Custom fields
+ * Class Post_Type_Accommodation
  */
-
-class Advanced_Custom_Fields {
+class Post_Type_Accommodation extends Post_Type {
 
     /**
-     * Constructor for Advanced_Custom_Fields Class
+     * Construtor for Post_Type_Accommodation
      */
     function __construct() {
-        $this->bediq_custom_fields();
-        $this->bediq_add_image();
-        $this->bediq_custom_taxonomy();
+        add_action( 'init', array( $this, 'register_post_type' ) );
+        add_action( 'init', array( $this, 'register_taxonomy' ) );
+
+        $this->add_meta_box();
     }
 
     /**
-     * Get custom fields
+     * Register post type
      *
-     * @param  array $fields
-     *
-     * @param  integer $parent
-     *
-     * @return array
+     * @return void
      */
-    public function bediq_custom_fields() {
-        $user_dropdown = $this->bediq_users_dropdown();
+    public function register_post_type() {
+        $show_in_menu = true;
+        register_post_type( 'accommodation', array(
+            'label'           => __( 'Accommodations', 'bediq' ),
+            'public'          => true,
+            'show_ui'         => true,
+            'show_in_menu'    => $show_in_menu,
+            'menu_position'   => 5,
+            'capability_type' => 'post',
+            'hierarchical'    => false,
+            'rewrite'         => array('slug' => 'accommodations'),
+            'query_var'       => true,
+            'has_archive'     => true,
+            'supports'        => array('title', 'editor', 'thumbnail'),
+            'taxonomies'      => [ 'accommodation_types' ],
+            'menu_icon'       => 'dashicons-admin-home',
+            'labels'          => array(
+                'name'               => __( 'Accommodations', 'bediq' ),
+                'singular_name'      => __( 'Accommodation', 'bediq' ),
+                'menu_name'          => __( 'Accommodations', 'bediq' ),
+                'add_new'            => __( 'Add New', 'bediq' ),
+                'add_new_item'       => __( 'Add New Accommodations', 'bediq' ),
+                'edit'               => __( 'Edit', 'bediq' ),
+                'edit_item'          => __( 'Edit Accommodation', 'bediq' ),
+                'new_item'           => __( 'New Accommodation', 'bediq' ),
+                'view'               => __( 'View Accommodation', 'bediq' ),
+                'view_item'          => __( 'View Accommodation', 'bediq' ),
+                'search_items'       => __( 'Search Accommodations', 'bediq' ),
+                'not_found'          => __( 'No Accommodations Found', 'bediq' ),
+                'not_found_in_trash' => __( 'No Accommodations Found in Trash', 'bediq' ),
+                'parent'             => __( 'Parent Accommodation', 'bediq' ),
+            ),
+            'rewrite'          =>  array(
+                'slug'               => 'accommodations',
+                'with_front'         => true,
+                'pages'              => true,
+                'feeds'              => true,
+            ),
+            'capabilities'    => array(
+                'edit_post'          => 'edit_accommodation',
+                'read_post'          => 'read_accommodation',
+                'delete_post'        => 'delete_accommodation',
+                'edit_others_posts'  => 'edit_others_accommodations',
+                'publish_posts'      => 'publish_accommodations',
+                'read_private_posts' => 'read_private_accommodations',
+                'create_posts'       => 'create_accommodations',
+            ),
+            'map_meta_cap' => true
+        ) );
+    }
 
+    /**
+     * Register taxonomy
+     *
+     * @return void
+     */
+    public function register_taxonomy() {
+
+        register_taxonomy( 'accommodation_types', [],
+            array(
+                'hierarchical'   => true,
+                'label'          => __( 'Accommodation Types', 'bediq' ),
+                'show_ui'        => true,
+                'query_var'      => true,
+                'rewrite'        => array('slug' => ''),
+                'singular_label' => __( 'Accommodation Type', 'bediq' )
+            )
+        );
+    }
+
+    /**
+     * Add metabox using advanced custom field
+     */
+    public function add_meta_box() {
         if ( function_exists( 'acf_add_local_field_group' ) ) {
             acf_add_local_field_group( array(
                 'key'    => 'room_features',
@@ -323,148 +390,6 @@ class Advanced_Custom_Fields {
             ));
 
             acf_add_local_field_group( array(
-                'key' => 'offer_details',
-                'title' => __( 'Offer Details', 'bediq' ),
-                'fields' => array(
-                    array(
-                        'key' => 'url',
-                        'label' => 'Url',
-                        'name' => 'url',
-                        'type' => 'text',
-                        'instructions' => __( 'Please enter the URL of where the Offer will be bookable (e.g. link to booking engine)', 'bediq' ),
-                    ),
-                    array(
-                        'key' => 'availability',
-                        'label' => __( 'Availability', 'bediq' ),
-                        'name' => 'availability',
-                        'type' => 'text',
-                        'instructions' => __( 'Please enter the availability, eg the total number of room nights or 5 rooms per day', 'bediq' ),
-                    ),
-                    array(
-                        'key' => 'item_terms',
-                        'label' => __( 'Conditions', 'bediq' ),
-                        'name' => 'item_terms',
-                        'type' => 'repeater',
-                        'instructions' => __( 'Please enter all conditions that apply', 'bediq' ),
-                        'layout' => 'row',
-                        'button_label' => 'Add New',
-                        'sub_fields' => array(
-                            array(
-                                'key' => 'condition',
-                                'label' => '',
-                                'name' => 'condition',
-                                'type' => 'text',
-                                'instructions' => '',
-                            ),
-                        ),
-                    ),
-                    array(
-                        'key' => 'benefit',
-                        'label' => __( 'Inclusions', 'bediq' ),
-                        'name' => 'inclusions',
-                        'type' => 'repeater',
-                        'layout' => 'row',
-                        'button_label' => __( 'Add New', 'bediq' ),
-                        'sub_fields' => array(
-                            array(
-                                'key' => 'inclusion',
-                                'label' => '',
-                                'name' => 'inclusion',
-                                'type' => 'text'
-                            ),
-                        ),
-                    ),
-                    array(
-                        'key'   => 'price',
-                        'label' => __( 'Discounted Price', 'bediq' ),
-                        'name'  => 'price',
-                        'type'  => 'text',
-                        'instructions' => __( 'Please enter the promotional price', 'bediq' ),
-                    ),
-                    array(
-                        'key' => 'price_discount',
-                        'label' => __( 'Original Price', 'bediq' ),
-                        'name' => 'price_discount',
-                        'type' => 'text',
-                        'instructions' => __( 'Please enter Original Price', 'bediq' ),
-                    ),
-                    array(
-                        'key' => 'currency',
-                        'label' => __( 'Currency', 'bediq' ),
-                        'name' => 'currency',
-                        'type' => 'select',
-                        'ui' => 1,
-                        'instructions' => __( 'Please select the currency', 'bediq' ),
-                        'choices' => $this->bediq_get_currencies()
-                    ),
-                    array(
-                        'key' => 'price_valid_from',
-                        'label' => __( 'Promotion Begins', 'bediq' ),
-                        'name' => 'price_valid_from',
-                        'type' => 'date_picker',
-                        'display_format' => 'd-m-Y',
-                        'return_format' => 'd-m-Y',
-                        'first_day' => 1,
-                        'instructions' => __( 'Please enter the date from when the promotion is available', 'bediq' )
-                    ),
-                    array(
-                        'key'   => 'price_valid_to',
-                        'label' => __( 'Promotion Ends', 'bediq' ),
-                        'name'  => 'price_valid_to',
-                        'type'  => 'date_picker',
-                        'display_format'    => 'd-m-Y',
-                        'return_format'     => 'd-m-Y',
-                        'first_day'         => 1,
-                        'instructions'      => __( 'Please select the date until which the promotion is available', 'bediq' )
-                    ),
-                    array(
-                        'key'   => 'stay_from',
-                        'label' => __( 'Stay From', 'bediq' ),
-                        'name'  => 'stay_from',
-                        'type'  => 'date_picker',
-                        'display_format'    =>  'd-m-Y',
-                        'return_format'     =>  'd-m-Y',
-                        'first_day'         =>  1
-                    ),
-                    array(
-                        'key'   => 'stay_until',
-                        'label' => __( 'Stay Until', 'bediq' ),
-                        'name'  => 'stay_until',
-                        'type'  => 'date_picker',
-                        'display_format'    => 'd-m-Y',
-                        'return_format'     => 'd-m-Y',
-                        'first_day'         => 1
-                    ),
-                    array(
-                        'key'   => 'seller',
-                        'label' => __( 'Seller', 'bediq' ),
-                        'name'  => 'seller',
-                        'type'  => 'select',
-                        'choices'   => $user_dropdown,
-                        'ui'        => 1
-                    ),
-                ),
-                'location' => array(
-                    array(
-                        array(
-                            'param' => 'post_type',
-                            'operator' => '==',
-                            'value' => 'offer',
-                        ),
-                    ),
-                )
-            ));
-        }
-    }
-
-    /**
-     * Add taxonomy fields
-     *
-     * @return void
-     */
-    public function bediq_custom_taxonomy() {
-        if ( function_exists('acf_add_local_field_group') ) {
-            acf_add_local_field_group( array(
                 'key' => 'group_5d009eb5f2f56',
                 'title' => __( 'Accommodation Types', 'bediq' ),
                 'fields' => array(
@@ -501,16 +426,7 @@ class Advanced_Custom_Fields {
                 'active' => true,
                 'description' => '',
             ));
-        }
-    }
 
-    /**
-     * Add bediq image
-     *
-     * @return void
-     */
-    public function bediq_add_image() {
-        if ( function_exists('acf_add_local_field_group')  ) {
             acf_add_local_field_group( array(
                 'key' => 'group_bed_room_image',
                 'title' => __( 'Bed Room Image', 'bediq' ),
@@ -662,203 +578,4 @@ class Advanced_Custom_Fields {
             ));
         }
     }
-
-    /**
-     * Get currencies
-     *
-     * @return array
-     */
-    public function bediq_get_currencies() {
-        $currency = array(
-            'AED' => 'United Arab Emirates Dirham',
-            'AFN' => 'Afghanistan Afghani',
-            'ALL' => 'Albania Lek',
-            'AMD' => 'Armenia Dram',
-            'ANG' => 'Netherlands Antilles Guilder',
-            'AOA' => 'Angola Kwanza',
-            'ARS' => 'Argentina Peso',
-            'AUD' => 'Australia Dollar',
-            'AWG' => 'Aruba Guilder',
-            'AZN' => 'Azerbaijan New Manat',
-            'BAM' => 'Bosnia and Herzegovina Convertible Marka',
-            'BBD' => 'Barbados Dollar',
-            'BDT' => 'Bangladesh Taka',
-            'BGN' => 'Bulgaria Lev',
-            'BHD' => 'Bahrain Dinar',
-            'BIF' => 'Burundi Franc',
-            'BMD' => 'Bermuda Dollar',
-            'BND' => 'Brunei Darussalam Dollar',
-            'BOB' => 'Bolivia Boliviano',
-            'BRL' => 'Brazil Real',
-            'BSD' => 'Bahamas Dollar',
-            'BTN' => 'Bhutan Ngultrum',
-            'BWP' => 'Botswana Pula',
-            'BYR' => 'Belarus Ruble',
-            'BZD' => 'Belize Dollar',
-            'CAD' => 'Canada Dollar',
-            'CDF' => 'Congo/Kinshasa Franc',
-            'CHF' => 'Switzerland Franc',
-            'CLP' => 'Chile Peso',
-            'CNY' => 'China Yuan Renminbi',
-            'COP' => 'Colombia Peso',
-            'CRC' => 'Costa Rica Colon',
-            'CUC' => 'Cuba Convertible Peso',
-            'CUP' => 'Cuba Peso',
-            'CVE' => 'Cape Verde Escudo',
-            'CZK' => 'Czech Republic Koruna',
-            'DJF' => 'Djibouti Franc',
-            'DKK' => 'Denmark Krone',
-            'DOP' => 'Dominican Republic Peso',
-            'DZD' => 'Algeria Dinar',
-            'EGP' => 'Egypt Pound',
-            'ERN' => 'Eritrea Nakfa',
-            'ETB' => 'Ethiopia Birr',
-            'EUR' => 'Euro Member Countries',
-            'FJD' => 'Fiji Dollar',
-            'FKP' => 'Falkland Islands (Malvinas) Pound',
-            'GBP' => 'United Kingdom Pound',
-            'GEL' => 'Georgia Lari',
-            'GGP' => 'Guernsey Pound',
-            'GHS' => 'Ghana Cedi',
-            'GIP' => 'Gibraltar Pound',
-            'GMD' => 'Gambia Dalasi',
-            'GNF' => 'Guinea Franc',
-            'GTQ' => 'Guatemala Quetzal',
-            'GYD' => 'Guyana Dollar',
-            'HKD' => 'Hong Kong Dollar',
-            'HNL' => 'Honduras Lempira',
-            'HRK' => 'Croatia Kuna',
-            'HTG' => 'Haiti Gourde',
-            'HUF' => 'Hungary Forint',
-            'IDR' => 'Indonesia Rupiah',
-            'ILS' => 'Israel Shekel',
-            'IMP' => 'Isle of Man Pound',
-            'INR' => 'India Rupee',
-            'IQD' => 'Iraq Dinar',
-            'IRR' => 'Iran Rial',
-            'ISK' => 'Iceland Krona',
-            'JEP' => 'Jersey Pound',
-            'JMD' => 'Jamaica Dollar',
-            'JOD' => 'Jordan Dinar',
-            'JPY' => 'Japan Yen',
-            'KES' => 'Kenya Shilling',
-            'KGS' => 'Kyrgyzstan Som',
-            'KHR' => 'Cambodia Riel',
-            'KMF' => 'Comoros Franc',
-            'KPW' => 'Korea (North) Won',
-            'KRW' => 'Korea (South) Won',
-            'KWD' => 'Kuwait Dinar',
-            'KYD' => 'Cayman Islands Dollar',
-            'KZT' => 'Kazakhstan Tenge',
-            'LAK' => 'Laos Kip',
-            'LBP' => 'Lebanon Pound',
-            'LKR' => 'Sri Lanka Rupee',
-            'LRD' => 'Liberia Dollar',
-            'LSL' => 'Lesotho Loti',
-            'LTL' => 'Lithuania Litas',
-            'LVL' => 'Latvia Lat',
-            'LYD' => 'Libya Dinar',
-            'MAD' => 'Morocco Dirham',
-            'MDL' => 'Moldova Leu',
-            'MGA' => 'Madagascar Ariary',
-            'MKD' => 'Macedonia Denar',
-            'MMK' => 'Myanmar (Burma) Kyat',
-            'MNT' => 'Mongolia Tughrik',
-            'MOP' => 'Macau Pataca',
-            'MRO' => 'Mauritania Ouguiya',
-            'MUR' => 'Mauritius Rupee',
-            'MVR' => 'Maldives (Maldive Islands) Rufiyaa',
-            'MWK' => 'Malawi Kwacha',
-            'MXN' => 'Mexico Peso',
-            'MYR' => 'Malaysia Ringgit',
-            'MZN' => 'Mozambique Metical',
-            'NAD' => 'Namibia Dollar',
-            'NGN' => 'Nigeria Naira',
-            'NIO' => 'Nicaragua Cordoba',
-            'NOK' => 'Norway Krone',
-            'NPR' => 'Nepal Rupee',
-            'NZD' => 'New Zealand Dollar',
-            'OMR' => 'Oman Rial',
-            'PAB' => 'Panama Balboa',
-            'PEN' => 'Peru Nuevo Sol',
-            'PGK' => 'Papua New Guinea Kina',
-            'PHP' => 'Philippines Peso',
-            'PKR' => 'Pakistan Rupee',
-            'PLN' => 'Poland Zloty',
-            'PYG' => 'Paraguay Guarani',
-            'QAR' => 'Qatar Riyal',
-            'RON' => 'Romania New Leu',
-            'RSD' => 'Serbia Dinar',
-            'RUB' => 'Russia Ruble',
-            'RWF' => 'Rwanda Franc',
-            'SAR' => 'Saudi Arabia Riyal',
-            'SBD' => 'Solomon Islands Dollar',
-            'SCR' => 'Seychelles Rupee',
-            'SDG' => 'Sudan Pound',
-            'SEK' => 'Sweden Krona',
-            'SGD' => 'Singapore Dollar',
-            'SHP' => 'Saint Helena Pound',
-            'SLL' => 'Sierra Leone Leone',
-            'SOS' => 'Somalia Shilling',
-            'SPL*' => 'Seborga Luigino',
-            'SRD' => 'Suriname Dollar',
-            'STD' => 'São Tomé and Príncipe Dobra',
-            'SVC' => 'El Salvador Colon',
-            'SYP' => 'Syria Pound',
-            'SZL' => 'Swaziland Lilangeni',
-            'THB' => 'Thailand Baht',
-            'TJS' => 'Tajikistan Somoni',
-            'TMT' => 'Turkmenistan Manat',
-            'TND' => 'Tunisia Dinar',
-            'TOP' => 'Tonga Pa\'anga',
-            'TRY' => 'Turkey Lira',
-            'TTD' => 'Trinidad and Tobago Dollar',
-            'TVD' => 'Tuvalu Dollar',
-            'TWD' => 'Taiwan New Dollar',
-            'TZS' => 'Tanzania Shilling',
-            'UAH' => 'Ukraine Hryvna',
-            'UGX' => 'Uganda Shilling',
-            'USD' => 'United States Dollar',
-            'UYU' => 'Uruguay Peso',
-            'UZS' => 'Uzbekistan Som',
-            'VEF' => 'Venezuela Bolivar Fuerte',
-            'VND' => 'Viet Nam Dong',
-            'VUV' => 'Vanuatu Vatu',
-            'WST' => 'Samoa Tala',
-            'XAF' => 'Communauté Financière Africaine (BEAC) CFA Franc BEAC',
-            'XCD' => 'East Caribbean Dollar',
-            'XDR' => 'International Monetary Fund (IMF) Special Drawing Rights',
-            'XOF' => 'Communauté Financière Africaine (BCEAO) Franc',
-            'XPF' => 'Comptoirs Français du Pacifique (CFP) Franc',
-            'YER' => 'Yemen Rial',
-            'ZAR' => 'South Africa Rand',
-            'ZMK' => 'Zambia Kwacha',
-            'ZWD' => 'Zimbabwe Dollar'
-        );
-
-        return $currency;
-    }
-
-    /**
-     * User dropdown depending on a user role
-     *
-     * @param string $role user capability
-     * @return array
-     */
-    public function bediq_users_dropdown( $role = false ) {
-        $items = array();
-        $users = get_users();
-
-        foreach ( $users as $user ) {
-            //check role
-            if ( $role && user_can( $user->ID, $role ) ) {
-                $items[$user->ID] = $user->display_name;
-            } else if ( !$role ) {
-                $items[$user->ID] = $user->display_name;
-            }
-        }
-
-        return $items;
-    }
 }
-
