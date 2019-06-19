@@ -45,9 +45,33 @@ if ( !defined( 'ABSPATH' ) ) exit;
  */
 class bedIQ_Plugin {
 
+    /**
+     * Store plugin url
+     *
+     * @var string
+     */
     public $plugin_url;
+
+    /**
+     * Store plugin path
+     *
+     * @var string
+     */
     public $plugin_path;
+
+    /**
+     * Store theme directory path
+     *
+     * @var string
+     */
     public $theme_dir_path;
+
+    /**
+     * Store the intance of various classes
+     *
+     * @var array
+     */
+    private $container = [];
 
     /**
      * Constructor for the bedIQ_Plugin class
@@ -62,23 +86,27 @@ class bedIQ_Plugin {
      */
     public function __construct() {
 
-        register_activation_hook( __FILE__, array( $this, 'activate' ) );
-        register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
+        register_activation_hook( __FILE__, [ $this, 'activate' ] );
+        register_deactivation_hook( __FILE__, [ $this, 'deactivate' ] );
         $this->file_includes();
         $this->init_classes();
 
         // Localize our plugin
-        add_action( 'init', array( $this, 'localization_setup' ) );
-        add_action( 'init', array( $this, 'init' ) );
-        add_action( 'admin_notices', array( $this, 'required_plugin_notice' ) );
+        add_action( 'init', [ $this, 'localization_setup' ] );
+        add_action( 'init', [ $this, 'init' ] );
+        // Register Post Type and taxonomes
+        add_action( 'init', [ $this, 'register_post_types' ] );
+        add_action( 'init', [ $this, 'register_taxonomies' ] );
 
-        add_filter( 'template_include', array( $this, 'template_loader' ), 20 );
+        add_action( 'admin_notices', [ $this, 'required_plugin_notice' ] );
+
+        add_filter( 'template_include', [ $this, 'template_loader' ], 20 );
 
         // Loads frontend scripts and styles
-        add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-        add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+        add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+        add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue_scripts' ] );
 
-        add_filter( 'body_class', array($this, 'body_class') );
+        add_filter( 'body_class', [ $this, 'body_class' ] );
     }
 
     /**
@@ -97,11 +125,21 @@ class bedIQ_Plugin {
         return $instance;
     }
 
-    function init() {
+    /**
+     * Get theme directory path
+     *
+     * @return void
+     */
+    public function init() {
         $this->theme_dir_path = apply_filters( 'bediq_theme_dir_path', 'bediq/' );
     }
 
-    function file_includes() {
+    /**
+     * Included files
+     *
+     * @return void
+     */
+    public function file_includes() {
 
         if ( is_admin() ) {
             require_once dirname( __FILE__ ) . '/includes/admin/class-insert-term.php';
@@ -111,19 +149,26 @@ class bedIQ_Plugin {
         }
         require_once dirname( __FILE__ ) . '/includes/core-functions.php';
         require_once dirname( __FILE__ ) . '/includes/posts-to-posts.php';
-        require_once dirname( __FILE__ ) . '/includes/class-abstract-post-type.php';
-        require_once dirname( __FILE__ ) . '/includes/class-post-type-accommodation.php';
-        require_once dirname( __FILE__ ) . '/includes/class-post-type-offer.php';
+        require_once dirname( __FILE__ ) . '/includes/interface-post-type.php';
+        require_once dirname( __FILE__ ) . '/includes/post-types/class-post-type-accommodation.php';
+        require_once dirname( __FILE__ ) . '/includes/post-types/class-post-type-offer.php';
+        // require_once dirname( __FILE__ ) . '/includes/post-types/class-post-type-outlet.php';
     }
 
+    /**
+     * Instantiate classes
+     *
+     * @return void
+     */
     public function init_classes() {
         if ( is_admin() ) {
             new \bedIQ\Admin\Admin();
-            new \bedIQ\Admin\Insert_Term();
         }
-        new \bedIQ\Post_Type_Accommodation();
-        new \bedIQ\Post_Type_Offer();
+        $this->container['accommodation']   =   new \bedIQ\Post_Type\Post_Type_Accommodation();
+        $this->container['offer']           =   new \bedIQ\Post_Type\Post_Type_Offer();
+        // $this->container['outlet']          =   new \bedIQ\Post_Type\Post_Type_Outlet();
     }
+
     /**
      * Placeholder for activation function
      *
@@ -132,10 +177,35 @@ class bedIQ_Plugin {
     public function activate() {
         $term       = new \bedIQ\Admin\Insert_Term();
 
-        $term->register_taxonomy();
+        $this->register_taxonomies();
         $term->create_new_term();
 
         flush_rewrite_rules();
+    }
+
+    /**
+     * Register post type
+     *
+     * @return void
+     */
+    public function register_post_types() {
+        $containers = $this->container;
+        foreach( $containers as $container ) {
+            $container->register_post_type();
+        }
+    }
+
+    /**
+     * Register taxonomy
+     *
+     * @return void
+     */
+    public function register_taxonomies() {
+        $containers = $this->container;
+
+        foreach( $containers as $container ) {
+            $container->register_taxonomy();
+        }
     }
 
     /**
@@ -181,8 +251,8 @@ class bedIQ_Plugin {
         wp_enqueue_script( 'jquery-ui-core' );
         wp_enqueue_script( 'jquery-ui-accordion' );
         wp_enqueue_script( 'jquery-ui-tabs' );
-        wp_enqueue_script( 'flexslider', plugins_url( 'assets/js/jquery.flexslider.js', __FILE__ ), array( 'jquery' ), false, true );
-        wp_enqueue_script( 'bediq-scripts', plugins_url( 'assets/js/script.js', __FILE__ ), array( 'jquery' ), false, true );
+        wp_enqueue_script( 'flexslider', plugins_url( 'assets/js/jquery.flexslider.js', __FILE__ ), [ 'jquery' ], false, true );
+        wp_enqueue_script( 'bediq-scripts', plugins_url( 'assets/js/script.js', __FILE__ ), [ 'jquery' ], false, true );
 
 
         /**
@@ -211,15 +281,15 @@ class bedIQ_Plugin {
             return;
         }
 
-        $required_plugins = array(
-            array(
+        $required_plugins = [
+            [
                 'function' => 'acf',
                 'name'     => 'Advanced Custom Fields',
                 'url'      => 'https://wordpress.org/plugins/advanced-custom-fields'
-            )
-        );
+            ]
+        ];
 
-        $not_installed = array();
+        $not_installed = [];
         foreach ($required_plugins as $plugin) {
             if ( !function_exists( $plugin['function'] ) ) {
                 $not_installed[] = sprintf( '<a href="%s" target="_blank">%s</a>', esc_url( $plugin['url'] ), $plugin['name'] );
@@ -288,7 +358,7 @@ class bedIQ_Plugin {
     }
 
     function template_loader( $template ) {
-        $find = array( 'bediq.php' );
+        $find = [ 'bediq.php' ];
         $file = '';
 
         if ( is_single() && get_post_type() == 'room' ) {
