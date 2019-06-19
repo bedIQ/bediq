@@ -7,7 +7,7 @@
 function bediq_get_template_part( $slug, $name = '' ) {
     $bediq = bediq();
 
-    $templates = array();
+    $templates = [];
     $name = (string) $name;
 
     // lookup at theme/slug-name.php or bediq/slug-name.php
@@ -25,10 +25,10 @@ function bediq_get_template_part( $slug, $name = '' ) {
 
     // if not yet found, lookup in slug.php only
     if ( !$template ) {
-        $templates = array(
+        $templates = [
             "{$slug}.php",
             $bediq->theme_dir_path . "{$slug}.php"
-        );
+        ];
 
         $template = locate_template( $templates );
     }
@@ -38,17 +38,17 @@ function bediq_get_template_part( $slug, $name = '' ) {
     }
 }
 
-function bediq_get_template( $template_name, $args = array() ) {
+function bediq_get_template( $template_name, $args = [] ) {
     $bediq = bediq();
 
     if ( $args && is_array($args) ) {
         extract( $args );
     }
 
-    $template = locate_template( array(
+    $template = locate_template( [
         $bediq->theme_dir_path . $template_name,
         $template_name
-    ) );
+    ] );
 
     if ( ! $template ) {
         $template = $bediq->template_path() . $template_name;
