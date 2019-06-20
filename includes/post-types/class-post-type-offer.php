@@ -393,7 +393,7 @@ class Post_Type_Offer implements \bedIQ\Post_Type {
                 ],
                 [
                     'key'           => 'field_5d0311d0276a9',
-                    'label'         => 'Visibility',
+                    'label'         => __( 'Visibility', 'bediq' ),
                     'name'          => 'visibility',
                     'type'          => 'repeater',
                     'min'           => 1,
