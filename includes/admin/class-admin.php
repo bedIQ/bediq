@@ -50,6 +50,7 @@ class Admin {
             'edit.php?post_type=accommodation',
             'edit.php?post_type=offer',
             'edit.php?post_type=outlet',
+            'edit.php?post_type=interesting_point',
             'separator3',
         ];
     }
