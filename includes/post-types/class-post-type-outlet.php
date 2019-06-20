@@ -3,7 +3,7 @@ namespace bedIQ\Post_Type;
 /**
  * Class Post_Type_Outlet
  */
-class Post_Type_Outlet implements \bedIQ\Post_Type {
+class Outlet implements \bedIQ\Post_Type {
     /**
      * Constructor for Post_Type_OUtlet
      */

@@ -3,7 +3,7 @@ namespace bedIQ\Post_Type;
 /**
  * Class Point_Of_Interest
  */
-class Post_Type_Point_Of_Interest {
+class Point_Of_Interest {
     /**
      * Constructor for Point_Of_interest
      */
@@ -76,8 +76,6 @@ class Post_Type_Point_Of_Interest {
         if ( ! function_exists( 'acf_add_local_field_group' ) ) {
             return;
         }
-
-        error_log( print_r( 'kdhshsdljfjsdfjhl',true ) );
 
         acf_add_local_field_group( [
             'key'       => 'grout_interesting_point_booking',

@@ -165,10 +165,10 @@ class bedIQ_Plugin {
         if ( is_admin() ) {
             new \bedIQ\Admin\Admin();
         }
-        $this->container['accommodation']   =   new \bedIQ\Post_Type\Post_Type_Accommodation();
-        $this->container['offer']           =   new \bedIQ\Post_Type\Post_Type_Offer();
-        $this->container['outlet']          =   new \bedIQ\Post_Type\Post_Type_Outlet();
-        $this->container['interest']        =   new \bedIQ\Post_Type\Post_Type_Point_Of_Interest();
+        $this->container['accommodation']   =   new \bedIQ\Post_Type\Accommodation();
+        $this->container['offer']           =   new \bedIQ\Post_Type\Offer();
+        $this->container['outlet']          =   new \bedIQ\Post_Type\Outlet();
+        $this->container['interest']        =   new \bedIQ\Post_Type\Point_Of_Interest();
     }
 
     /**
