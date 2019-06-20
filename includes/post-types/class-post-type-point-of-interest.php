@@ -1,11 +1,11 @@
 <?php
 namespace bedIQ\Post_Type;
 /**
- * Class Post_Type_Outlet
+ * Class Point_Of_Interest
  */
-class Outlet implements \bedIQ\Post_Type {
+class Point_Of_Interest {
     /**
-     * Constructor for Post_Type_OUtlet
+     * Constructor for Point_Of_interest
      */
     function __construct() {
         $this->add_meta_box();
@@ -18,42 +18,43 @@ class Outlet implements \bedIQ\Post_Type {
      */
     public function register_post_type() {
         $show_in_menu = true;
-        register_post_type( 'outlet', [
-            'label'           => __( 'Outlets', 'bediq' ),
+        register_post_type( 'poi', [
+            'label'           => __( 'Point Of Interest', 'bediq' ),
             'public'          => true,
             'show_ui'         => true,
             'show_in_menu'    => $show_in_menu,
-            'menu_position'   => 6,
+            'menu_position'   => 5,
             'capability_type' => 'post',
             'hierarchical'    => false,
-            'rewrite'         => ['slug' => 'outlets'],
+            'rewrite'         => ['slug' => 'poi'],
             'query_var'       => true,
             'has_archive'     => true,
             'supports'        => ['title', 'editor', 'thumbnail'],
-            'menu_icon'       => 'dashicons-tickets-alt',
-            'taxonomies'      => [],
+            'taxonomies'      => [ 'poi_types' ],
+            'menu_icon'       => 'dashicons-admin-home',
             'labels'          => [
-                'name'               => __( 'Outlets', 'bediq' ),
-                'singular_name'      => __( 'Outlet', 'bediq' ),
-                'menu_name'          => __( 'Outlets', 'bediq' ),
-                'add_new'            => __( 'Add Outlet', 'bediq' ),
-                'add_new_item'       => __( 'Add New Outlet', 'bediq' ),
+                'name'               => __( 'Points of Interest', 'bediq' ),
+                'singular_name'      => __( 'Point of Interest', 'bediq' ),
+                'menu_name'          => __( 'Points of Interest', 'bediq' ),
+                'add_new'            => __( 'Add New', 'bediq' ),
+                'add_new_item'       => __( 'Add New Point of Interest', 'bediq' ),
                 'edit'               => __( 'Edit', 'bediq' ),
-                'edit_item'          => __( 'Edit Outlet', 'bediq' ),
-                'new_item'           => __( 'New Outlet', 'bediq' ),
-                'view'               => __( 'View Outlet', 'bediq' ),
-                'view_item'          => __( 'View Outlet', 'bediq' ),
-                'search_items'       => __( 'Search Outlets', 'bediq' ),
-                'not_found'          => __( 'No Outlets Found', 'bediq' ),
-                'not_found_in_trash' => __( 'No Outlets Found in Trash', 'bediq' ),
-                'parent'             => __( 'Parent Outlet', 'bediq' ),
+                'edit_item'          => __( 'Edit Point of Interest', 'bediq' ),
+                'new_item'           => __( 'New Points of Interest', 'bediq' ),
+                'view'               => __( 'View Points of Interest', 'bediq' ),
+                'view_item'          => __( 'View Points of Interest', 'bediq' ),
+                'search_items'       => __( 'Search Points of Interest', 'bediq' ),
+                'not_found'          => __( 'No Points of Interest Found', 'bediq' ),
+                'not_found_in_trash' => __( 'No Points of Interest Found in Trash', 'bediq' ),
+                'parent'             => __( 'Parent Points of Interest', 'bediq' ),
             ],
             'rewrite'          =>  [
-                'slug'               => 'outlets',
+                'slug'               => 'poi',
                 'with_front'         => true,
                 'pages'              => true,
                 'feeds'              => true,
             ],
+            'map_meta_cap' => true
         ] );
     }
 
@@ -77,7 +78,7 @@ class Outlet implements \bedIQ\Post_Type {
         }
 
         acf_add_local_field_group( [
-            'key'       => 'group_5d0a1178c04af',
+            'key'       => 'grout_interesting_point_booking',
             'title'     => __( 'Booking', 'bediq' ),
             'fields'    => [
                 [
@@ -87,9 +88,9 @@ class Outlet implements \bedIQ\Post_Type {
                     'type'  => 'text',
                 ],
                 [
-                    'key'       => 'field_5d0a11db36416',
+                    'key'       => 'field_interesting_typical_pricing',
                     'label'     => __( 'Typical Pricing', 'bediq' ),
-                    'name'      => 'outlet_typical_pricing',
+                    'name'      => 'interesting_poiint_typical_pricing',
                     'type'      => 'select',
                     'choices'   => [
                         '$' => '$',
@@ -103,7 +104,7 @@ class Outlet implements \bedIQ\Post_Type {
                     [
                         'param'     => 'post_type',
                         'operator'  => '==',
-                        'value'     => 'outlet',
+                        'value'     => 'poi',
                     ],
                 ],
             ],
@@ -118,13 +119,58 @@ class Outlet implements \bedIQ\Post_Type {
         ] );
 
         acf_add_local_field_group( [
-            'key'       => 'group_5d0a12963aebb',
+            'key'       => 'group_interesting_point_good_for',
+            'title'     => __( 'Good For', 'bediq' ),
+            'fields'    => [
+                [
+                    'key'           => 'field_interesting_audience_type',
+                    'label'         => '',
+                    'name'          => 'interesting_audience_type',
+                    'type'          => 'text',
+                    'placeholder'   =>  __( 'Audience Type', 'bediq' ),
+                ],
+                [
+                    'key'           => 'field_interesting_weather',
+                    'label'         => '',
+                    'name'          => 'interesting_weather',
+                    'type'          => 'text',
+                    'placeholder'   =>  __( 'Weather', 'bediq' ),
+                ],
+                [
+                    'key'           => 'field_interesting_activity_type',
+                    'label'         => '',
+                    'name'          => 'interesting_activity_type',
+                    'type'          => 'text',
+                    'placeholder'   =>  __( 'Activity Type', 'bediq' ),
+                ],
+            ],
+            'location' => [
+                [
+                    [
+                        'param'     => 'post_type',
+                        'operator'  => '==',
+                        'value'     => 'poi',
+                    ],
+                ],
+            ],
+            'menu_order'            => 0,
+            'position'              => 'side',
+            'style'                 => 'default',
+            'label_placement'       => 'top',
+            'instruction_placement' => 'label',
+            'hide_on_screen'        => '',
+            'active'                => true,
+            'description'           => '',
+        ] );
+
+        acf_add_local_field_group( [
+            'key'       => 'group_interesting_point_download',
             'title'     => __( 'Downloads', 'bediq' ),
             'fields'    => [
                 [
-                    'key'           => 'field_5d0a12a89b3db',
+                    'key'           => 'field_interesting_point_download_file_repeater',
                     'label'         => '',
-                    'name'          => 'outlet_download_file',
+                    'name'          => 'interesting_point_download_file',
                     'type'          => 'repeater',
                     'min'           => 1,
                     'max'           => 0,
@@ -132,15 +178,15 @@ class Outlet implements \bedIQ\Post_Type {
                     'button_label'  => __( 'Add new download', 'bediq' ),
                     'sub_fields'    => [
                         [
-                            'key'   => 'field_5d0a12cc9b3dc',
+                            'key'   => 'field_interesting_point_download_name',
                             'label' => __( 'Download Name', 'bediq' ),
-                            'name'  => 'outlet_download_name',
+                            'name'  => 'interesting_point_download_name',
                             'type'  => 'text',
                         ],
                         [
-                            'key'           => 'field_5d0a12eb9b3dd',
+                            'key'           => 'field_interesting_point_download_file',
                             'label'         => '',
-                            'name'          => 'outlet_download_file',
+                            'name'          => 'interesting_point_download_file',
                             'type'          => 'file',
                             'return_format' => 'array',
                             'library'       => 'all',
@@ -156,7 +202,7 @@ class Outlet implements \bedIQ\Post_Type {
                     [
                         'param'     => 'post_type',
                         'operator'  => '==',
-                        'value'     => 'outlet',
+                        'value'     => 'poi',
                     ],
                 ],
             ],
@@ -171,13 +217,13 @@ class Outlet implements \bedIQ\Post_Type {
         ] );
 
         acf_add_local_field_group( [
-            'key'       => 'group_5d0a139d7c415',
+            'key'       => 'group_point_of_interest_floor_plan_image',
             'title'     => __( 'Floor Plan Image', 'bediq' ),
             'fields'    => [
                 [
-                    'key'           => 'field_5d0a13abdf555',
+                    'key'           => 'field_point_of_interesting_floor_plan_image',
                     'label'         => '',
-                    'name'          => 'outlet_floor_plan_image',
+                    'name'          => 'point_of_interesting_floor_plan_image',
                     'type'          => 'image',
                     'return_format' => 'array',
                     'preview_size'  => 'post-thumbnail',
@@ -196,7 +242,7 @@ class Outlet implements \bedIQ\Post_Type {
                     [
                         'param'     => 'post_type',
                         'operator'  => '==',
-                        'value'     => 'outlet',
+                        'value'     => 'poi',
                     ],
                 ],
             ],
@@ -211,13 +257,13 @@ class Outlet implements \bedIQ\Post_Type {
         ] );
 
         acf_add_local_field_group( [
-            'key'       => 'group_5d0a146ec8466',
+            'key'       => 'group_point_of_interesting_gallery_image',
             'title'     => __( 'Gallery Image', 'bediq' ),
             'fields'    => [
                 [
-                    'key'           => 'field_5d0a1476197fd',
+                    'key'           => 'field_point_of_interesting_gallery_image',
                     'label'         => '',
-                    'name'          => 'outlet_gallery_image',
+                    'name'          => 'point_of_interesting_gallery_image',
                     'type'          => 'image',
                     'return_format' => 'array',
                     'preview_size'  => 'post-thumbnail',
@@ -236,7 +282,7 @@ class Outlet implements \bedIQ\Post_Type {
                     [
                         'param'     => 'post_type',
                         'operator'  => '==',
-                        'value'     => 'outlet',
+                        'value'     => 'poi',
                     ],
                 ],
             ],
@@ -251,7 +297,7 @@ class Outlet implements \bedIQ\Post_Type {
         ] );
 
         acf_add_local_field_group( [
-            'key'       => 'group_5d09fb316fe1b',
+            'key'       => 'group_point_of_interest',
             'title'     => __( 'Offers Available', 'bediq' ),
             'fields'    => [
                 [
@@ -282,85 +328,41 @@ class Outlet implements \bedIQ\Post_Type {
                         ],
                     ],
                 ],
-                [
-                    'key' => 'field_5d09fdbc894e9',
-                    'label' => 'Floor Size',
-                    'name' => 'floor_size',
-                    'type' => 'text',
-                ],
-                [
-                    'key'       => 'field_5d09fe94ec89e',
-                    'label'     => __( 'Unit', 'bediq' ),
-                    'name'      => 'floor_size_unit',
-                    'type'      => 'select',
-                    'wrapper'   => [
-                        'width' => '50',
-                    ],
-                    'choices' => [
-                        'sqft'  => __( 'SQFT', 'bediq' ),
-                        'SQM'   => __( 'SQM', 'bediq' ),
-                    ],
-                    'default_value' => [
-                    ],
-                    'allow_null'    => 0,
-                    'multiple'      => 0,
-                    'ui'            => 0,
-                    'return_format' => 'value',
-                    'ajax'          => 0,
-                    'placeholder'   => '',
-                ],
-                [
-                    'key'   => 'field_5d09ff299e7ba',
-                    'label' => __( 'Location', 'bediq' ),
-                    'name'  => 'outlet_location',
-                    'type'  => 'text',
-                ],
-                [
-                    'key'   => 'field_5d09ff3d9e7bb',
-                    'label' => __( 'Dress Code', 'bediq' ),
-                    'name'  => 'outlet_dress_code',
-                    'type'  => 'text',
-                ],
-                [
+                 [
                     'key'   => 'field_5d09ff5f9e7bc',
                     'label' => 'Style',
                     'name'  => 'outlet_style',
                     'type'  => 'text',
                 ],
                 [
-                    'key'           => 'field_5d09ff7c9e7bd',
-                    'label'         => '',
-                    'name'          => 'outlet_capacity',
-                    'type'          => 'repeater',
-                    'min'           => 1,
-                    'max'           => 0,
-                    'layout'        => 'block',
-                    'button_label'  => __( 'Add Capacity', 'bediq' ),
-                    'sub_fields'    => [
-                        [
-                            'key' => 'field_5d09ff939e7be',
-                            'label' => 'Capacity',
-                            'name' => 'capacity',
-                            'type' => 'text',
-                        ],
-                        [
-                            'key' => 'field_5d09ffce9e7bf',
-                            'label' => 'Adults',
-                            'name' => 'adults',
-                            'type' => 'select',
-                            'wrapper' => [
-                                'width' => '50',
-                            ],
-                            'choices' => [
-                                'boardroom' => __( 'Boardroom', 'bediq' ),
-                                'classroom' => __( 'Classroom', 'bediq' ),
-                                'cocktail'  => __( 'Cocktail', 'bediq' ),
-                                'theatre'   => __( 'Theatre', 'bediq' ),
-                                'u_Shape'   => __( 'U-Shape', 'bediq' ),
-                            ],
-                            'return_format' => 'value',
-                        ],
-                    ],
+                    'key'   => 'field_point_of_interest_dress_code',
+                    'label' => __( 'Dress Code', 'bediq' ),
+                    'name'  => 'point_of_interest_dress_code',
+                    'type'  => 'text',
+                ],
+                [
+                    'key'   => 'field_point_interest_address',
+                    'label' => __( 'Address', 'bediq' ),
+                    'name'  => 'point_of_interest_address_code',
+                    'type'  => 'text',
+                ],
+                [
+                    'key' => 'field_point_of_interest_gmap',
+                    'label' => '',
+                    'name' => 'google_map',
+                    'type' => 'google_map',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '100',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'center_lat' => '',
+                    'center_lng' => '',
+                    'zoom' => '',
+                    'height' => '',
                 ],
                 [
                     'key'       => 'field_5d0a00709e7c0',
@@ -676,7 +678,7 @@ class Outlet implements \bedIQ\Post_Type {
                     [
                         'param'     => 'post_type',
                         'operator'  => '==',
-                        'value'     => 'outlet',
+                        'value'     => 'poi',
                     ],
                 ],
             ],
@@ -779,7 +781,7 @@ class Outlet implements \bedIQ\Post_Type {
                     [
                         'param'     => 'post_type',
                         'operator'  => '==',
-                        'value'     => 'outlet',
+                        'value'     => 'poi',
                     ],
                 ],
             ],

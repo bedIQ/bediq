@@ -153,6 +153,7 @@ class bedIQ_Plugin {
         require_once dirname( __FILE__ ) . '/includes/post-types/class-post-type-accommodation.php';
         require_once dirname( __FILE__ ) . '/includes/post-types/class-post-type-offer.php';
         require_once dirname( __FILE__ ) . '/includes/post-types/class-post-type-outlet.php';
+        require_once dirname( __FILE__ ) . '/includes/post-types/class-post-type-point-of-interest.php';
     }
 
     /**
@@ -164,9 +165,10 @@ class bedIQ_Plugin {
         if ( is_admin() ) {
             new \bedIQ\Admin\Admin();
         }
-        $this->container['accommodation']   =   new \bedIQ\Post_Type\Post_Type_Accommodation();
-        $this->container['offer']           =   new \bedIQ\Post_Type\Post_Type_Offer();
-        $this->container['outlet']          =   new \bedIQ\Post_Type\Post_Type_Outlet();
+        $this->container['accommodation']   =   new \bedIQ\Post_Type\Accommodation();
+        $this->container['offer']           =   new \bedIQ\Post_Type\Offer();
+        $this->container['outlet']          =   new \bedIQ\Post_Type\Outlet();
+        $this->container['interest']        =   new \bedIQ\Post_Type\Point_Of_Interest();
     }
 
     /**

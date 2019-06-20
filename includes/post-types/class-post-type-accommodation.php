@@ -3,7 +3,7 @@ namespace bedIQ\Post_Type;
 /**
  * Class Post_Type_Accommodation
  */
-class Post_Type_Accommodation implements \bedIQ\Post_Type {
+class Accommodation implements \bedIQ\Post_Type {
 
     /**
      * Construtor for Post_Type_Accommodation

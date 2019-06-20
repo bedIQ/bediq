@@ -3,7 +3,7 @@ namespace bedIQ\Post_Type;
 /**
  * Class Post_Type_Offer
  */
-class Post_Type_Offer implements \bedIQ\Post_Type {
+class Offer implements \bedIQ\Post_Type {
     /**
      * Constructor for Post_Type_Offer
      */
