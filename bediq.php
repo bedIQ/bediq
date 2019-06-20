@@ -152,7 +152,7 @@ class bedIQ_Plugin {
         require_once dirname( __FILE__ ) . '/includes/interface-post-type.php';
         require_once dirname( __FILE__ ) . '/includes/post-types/class-post-type-accommodation.php';
         require_once dirname( __FILE__ ) . '/includes/post-types/class-post-type-offer.php';
-        // require_once dirname( __FILE__ ) . '/includes/post-types/class-post-type-outlet.php';
+        require_once dirname( __FILE__ ) . '/includes/post-types/class-post-type-outlet.php';
     }
 
     /**
@@ -166,7 +166,7 @@ class bedIQ_Plugin {
         }
         $this->container['accommodation']   =   new \bedIQ\Post_Type\Post_Type_Accommodation();
         $this->container['offer']           =   new \bedIQ\Post_Type\Post_Type_Offer();
-        // $this->container['outlet']          =   new \bedIQ\Post_Type\Post_Type_Outlet();
+        $this->container['outlet']          =   new \bedIQ\Post_Type\Post_Type_Outlet();
     }
 
     /**

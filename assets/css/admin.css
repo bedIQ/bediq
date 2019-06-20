@@ -1,5 +1,6 @@
 .bediq-time-picker {
     padding: 0px 12px !important;
+    border-top: 0px solid !important;
 }
 .bediq-time-picker:last-child {
     padding-bottom: 15px !important;
@@ -12,4 +13,11 @@
 }
 .bediq-visiblity-days .acf-bl>li {
     margin-bottom: 8px !important;
+}
+.bediq-outlet-types > .acf-label {
+    margin: 0 0 -15px !important;
+}
+
+.acf-fields.-border {
+    border: 0px solid !important;
 }
