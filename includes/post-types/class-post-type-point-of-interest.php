@@ -18,7 +18,7 @@ class Point_Of_Interest {
      */
     public function register_post_type() {
         $show_in_menu = true;
-        register_post_type( 'interesting_point', [
+        register_post_type( 'poi', [
             'label'           => __( 'Point Of Interest', 'bediq' ),
             'public'          => true,
             'show_ui'         => true,
@@ -26,11 +26,11 @@ class Point_Of_Interest {
             'menu_position'   => 5,
             'capability_type' => 'post',
             'hierarchical'    => false,
-            'rewrite'         => ['slug' => 'interesting-point'],
+            'rewrite'         => ['slug' => 'poi'],
             'query_var'       => true,
             'has_archive'     => true,
             'supports'        => ['title', 'editor', 'thumbnail'],
-            'taxonomies'      => [ 'interesting_point_types' ],
+            'taxonomies'      => [ 'poi_types' ],
             'menu_icon'       => 'dashicons-admin-home',
             'labels'          => [
                 'name'               => __( 'Points of Interest', 'bediq' ),
@@ -49,7 +49,7 @@ class Point_Of_Interest {
                 'parent'             => __( 'Parent Points of Interest', 'bediq' ),
             ],
             'rewrite'          =>  [
-                'slug'               => 'interesting-point',
+                'slug'               => 'poi',
                 'with_front'         => true,
                 'pages'              => true,
                 'feeds'              => true,
@@ -104,7 +104,7 @@ class Point_Of_Interest {
                     [
                         'param'     => 'post_type',
                         'operator'  => '==',
-                        'value'     => 'interesting_point',
+                        'value'     => 'poi',
                     ],
                 ],
             ],
@@ -149,7 +149,7 @@ class Point_Of_Interest {
                     [
                         'param'     => 'post_type',
                         'operator'  => '==',
-                        'value'     => 'interesting_point',
+                        'value'     => 'poi',
                     ],
                 ],
             ],
@@ -202,7 +202,7 @@ class Point_Of_Interest {
                     [
                         'param'     => 'post_type',
                         'operator'  => '==',
-                        'value'     => 'interesting_point',
+                        'value'     => 'poi',
                     ],
                 ],
             ],
@@ -242,7 +242,7 @@ class Point_Of_Interest {
                     [
                         'param'     => 'post_type',
                         'operator'  => '==',
-                        'value'     => 'interesting_point',
+                        'value'     => 'poi',
                     ],
                 ],
             ],
@@ -282,7 +282,7 @@ class Point_Of_Interest {
                     [
                         'param'     => 'post_type',
                         'operator'  => '==',
-                        'value'     => 'interesting_point',
+                        'value'     => 'poi',
                     ],
                 ],
             ],
@@ -678,7 +678,7 @@ class Point_Of_Interest {
                     [
                         'param'     => 'post_type',
                         'operator'  => '==',
-                        'value'     => 'interesting_point',
+                        'value'     => 'poi',
                     ],
                 ],
             ],
@@ -781,7 +781,7 @@ class Point_Of_Interest {
                     [
                         'param'     => 'post_type',
                         'operator'  => '==',
-                        'value'     => 'interesting_point',
+                        'value'     => 'poi',
                     ],
                 ],
             ],
