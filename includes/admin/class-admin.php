@@ -52,6 +52,7 @@ class Admin {
             'edit.php?post_type=outlet',
             'edit.php?post_type=poi',
             'edit.php?post_type=facility',
+            'edit.php?post_type=meeting',
             'separator3',
         ];
     }
