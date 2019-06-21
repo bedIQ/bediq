@@ -83,7 +83,7 @@ class Point_Of_Interest {
             'fields'    => [
                 [
                     'key'   => 'field_5d0a118736415',
-                    'label' => 'Booking URL',
+                    'label' => __( 'Booking URL', 'bediq' ),
                     'name'  => 'outlet_booking_url',
                     'type'  => 'text',
                 ],

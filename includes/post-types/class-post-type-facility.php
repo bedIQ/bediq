@@ -82,7 +82,7 @@ class Facility implements \bedIQ\Post_Type {
             'fields'    => [
                 [
                     'key'   => 'field_facility_booking',
-                    'label' => 'Booking URL',
+                    'label' => __( 'Booking URL', 'bediq' ),
                     'name'  => 'facility_booking_url',
                     'type'  => 'text',
                 ],
