@@ -74,6 +74,13 @@ class bedIQ_Plugin {
     private $container = [];
 
     /**
+     * Store the instances of schema classes
+     *
+     * @var array
+     */
+    private $schema = [];
+
+    /**
      * Constructor for the bedIQ_Plugin class
      *
      * Sets up all the appropriate hooks and actions
@@ -105,6 +112,9 @@ class bedIQ_Plugin {
         // Loads frontend scripts and styles
         add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
         add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue_scripts' ] );
+
+        // Schema
+        add_action( 'wp_head', [ $this, 'print_json' ] );
 
         add_filter( 'body_class', [ $this, 'body_class' ] );
     }
@@ -156,6 +166,10 @@ class bedIQ_Plugin {
         require_once dirname( __FILE__ ) . '/includes/post-types/class-post-type-point-of-interest.php';
         require_once dirname( __FILE__ ) . '/includes/post-types/class-post-type-facility.php';
         require_once dirname( __FILE__ ) . '/includes/post-types/class-post-type-meeting.php';
+
+        // Schema
+        require_once dirname( __FILE__ ) . '/includes/schema/class-schema-accommodation.php';
+        require_once dirname( __FILE__ ) . '/includes/schema/class-schema-offer.php';
     }
 
     /**
@@ -173,6 +187,11 @@ class bedIQ_Plugin {
         $this->container['interest']        =   new \bedIQ\Post_Type\Point_Of_Interest();
         $this->container['facility']        =   new \bedIQ\Post_Type\Facility();
         $this->container['meeting']         =   new \bedIQ\Post_Type\Meeting();
+
+        // Schema classes
+
+        $this->schema['accommodation']      =   new \bedIQ\Schema\Accommodation();
+        $this->schema['offer']              =   new \bedIQ\Schema\Offer();
     }
 
     /**
@@ -187,6 +206,31 @@ class bedIQ_Plugin {
         $term->create_new_term();
 
         flush_rewrite_rules();
+    }
+
+    /**
+     * Print json schema
+     *
+     * @return void
+     */
+    public function print_json() {
+        global $post;
+
+        foreach ( $this->schema as $post_type => $sh ) {
+            if ( $post->post_type != $post_type ) {
+                continue;
+            }
+
+            $output      = "\n\n";
+            $output     .= '<!-- This site is optimized with - https://schema.press -->';
+            $output     .= "\n";
+            $output     .= '<script type="application/ld+json">';
+            $output     .= json_encode( $sh->get_json(), JSON_UNESCAPED_UNICODE );
+            $output     .= '</script>';
+            $output     .= "\n\n";
+
+            echo $output;
+        }
     }
 
     /**
