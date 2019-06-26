@@ -309,7 +309,7 @@ class Offer implements \bedIQ\Post_Type {
                             'key'   => 'field_5d0217c862277',
                             'label' => '',
                             'name'  => 'available_offer',
-                            'type'  => 'select',
+                            'type' => 'post_object',
                             'conditional_logic' => [
                                 [
                                     [
@@ -317,6 +317,14 @@ class Offer implements \bedIQ\Post_Type {
                                         'operator' => '!=empty',
                                     ],
                                 ],
+                            ],
+                            'post_type' => [
+                                0 => 'accommodation',
+                                1 => 'outlet',
+                                2 => 'poi',
+                                3 => 'facility',
+                                4 => 'meeting',
+                                5 => 'offer'
                             ],
                             'allow_null'    => 0,
                             'multiple'      => 1,
