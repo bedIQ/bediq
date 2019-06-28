@@ -9,13 +9,7 @@ class Accommodation {
      *
      * @return array
      */
-    public function get_json() {
-        global $post;
-
-        if ( $post->post_type != 'accommodation' ) {
-            return;
-        }
-
+    public function get_json( $post ) {
         $post_title         =   $post->post_title;
         $post_description   =   $post->post_content;
         $floor_size         =   get_post_meta( $post->ID, 'acm_floor_size', true );
@@ -23,10 +17,10 @@ class Accommodation {
         $occupancy          =   get_post_meta( $post->ID, 'acm_occupancy', true );
         $acm_types          =   get_post_meta( $post->ID, 'accommodation_taxonomy_types', true );
         $from_price         =   get_post_meta( $post->ID, 'acm_from_price', true );
-        $amenity_feature    =   bediq_get_sub_field( 'acm_features_and_amenities', 'acm_features' );
-        $occupancy          =   bediq_get_sub_field( 'acm_bed_room', 'acm_occupancy' );
+        $amenity_feature    =   bediq_get_sub_field( 'acm_features_and_amenities', 'acm_features', $post->ID );
+        $occupancy          =   bediq_get_sub_field( 'acm_bed_room', 'acm_occupancy', $post->ID );
         $pet_allowed        =   get_post_meta( $post->ID, 'acm_policies', true );
-        $bed                =   $this->get_bed_room();
+        $bed                =   $this->get_bed_room( $post->ID );
 
         $json   =   [
             '@context'          =>  'http://schema.org',
@@ -49,13 +43,13 @@ class Accommodation {
      *
      * @return array
      */
-    public function get_bed_room() {
+    public function get_bed_room( $post_id ) {
 
         if ( ! function_exists( 'get_field' ) ) {
             return;
         }
-        $sub_filed_values     =     [];
-        $fields               =     get_field( 'acm_bed_room' );
+        $sub_filed_values   =   [];
+        $fields             =   get_field( 'acm_bed_room', $post_id );
 
         if ( count( $fields ) ) {
             foreach ( $fields as $field ) {

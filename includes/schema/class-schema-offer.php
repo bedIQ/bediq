@@ -9,13 +9,7 @@ class Offer {
      *
      * @return array;
      */
-    public function get_json() {
-        global $post;
-
-        if ( $post->post_type != 'offer' ) {
-            return;
-        }
-
+    public function get_json( $post ) {
         $post_title     =   $post->post_title;
         $post_content   =   $post->post_content;
         $availabl_from  =   $this->get_post_type();

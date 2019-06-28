@@ -10,18 +10,12 @@ class Outlet {
      *
      * @return array;
      */
-    public function get_json() {
-        global $post;
-
-        if ( $post->post_type != 'outlet' ) {
-            return;
-        }
-
+    public function get_json( $post ) {
         $post_title     =   $post->post_title;
         $post_content   =   $post->post_content;
         $price_range    =   get_post_meta( $post->ID, 'outlet_typical_pricing', true );
         $outlet_types   =   get_post_meta( $post->ID, 'outlet_types', true );
-        $opening_days   =   bediq_get_sub_field( 'outlet_visibility', 'outlet_opening_days' );
+        $opening_days   =   bediq_get_sub_field( 'outlet_visibility', 'outlet_opening_days', $post->ID );
         $types          =   ( $outlet_types == 'food_establishment' ) ? 'FoodEstablishment' : 'HealthAndBeautyBusiness';
 
         $json   =   [

@@ -11,13 +11,7 @@ class Meeting {
      *
      * @return array
      */
-    public function get_json() {
-        global $post;
-
-        if ( $post->post_type != 'meeting' ) {
-            return;
-        }
-
+    public function get_json( $post ) {
         $post_title     =   $post->post_title;
         $post_content   =   $post->post_content;
         $floor_size     =   get_post_meta( $post->ID, 'floor_size', true );
