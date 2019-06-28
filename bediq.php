@@ -172,6 +172,8 @@ class bedIQ_Plugin {
         require_once dirname( __FILE__ ) . '/includes/schema/class-schema-offer.php';
         require_once dirname( __FILE__ ) . '/includes/schema/class-schema-outlet.php';
         require_once dirname( __FILE__ ) . '/includes/schema/class-schema-poi.php';
+        require_once dirname( __FILE__ ) . '/includes/schema/class-schema-facility.php';
+        require_once dirname( __FILE__ ) . '/includes/schema/class-schema-meeting.php';
     }
 
     /**
@@ -191,11 +193,12 @@ class bedIQ_Plugin {
         $this->container['meeting']         =   new \bedIQ\Post_Type\Meeting();
 
         // Schema classes
-
         $this->schema['accommodation']      =   new \bedIQ\Schema\Accommodation();
         $this->schema['offer']              =   new \bedIQ\Schema\Offer();
         $this->schema['outlet']             =   new \bedIQ\Schema\Outlet();
         $this->schema['poi']                =   new \bedIQ\Schema\Point_Of_Interest();
+        $this->schema['facility']           =   new \bedIQ\Schema\Facility();
+        $this->schema['meeting']            =   new \bedIQ\Schema\Meeting();
     }
 
     /**
