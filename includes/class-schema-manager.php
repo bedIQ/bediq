@@ -49,12 +49,12 @@ class Schema_Manager {
             global $post;
 
             $schema_object = new $schema();
-            $output      = "\n\n";
-            $output     .= "\n";
-            $output     .= '<script type="application/ld+json">';
-            $output     .= json_encode( $schema_object->get_json( $post ), JSON_UNESCAPED_UNICODE );
-            $output     .= '</script>';
-            $output     .= "\n\n";
+            $output        = "\n\n";
+            $output        .= "\n";
+            $output        .= '<script type="application/ld+json">';
+            $output        .= json_encode( $schema_object->get_json( $post ), JSON_UNESCAPED_UNICODE );
+            $output        .= '</script>';
+            $output        .= "\n\n";
 
             echo $output;
         }

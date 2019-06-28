@@ -110,28 +110,27 @@ function bediq_print_tax_link( $taxonomy ) {
 }
 
 /**
-     * Get amenities and features
-     *
-     * @return array
-     */
-    function bediq_get_sub_field( $repeater_field, $sub_field = '', $post_id ) {
-        if ( ! function_exists( 'get_field' ) ) {
-            return;
-        }
-        $sub_filed_values     =     [];
-        $fields               =     get_field( $repeater_field, $post_id );
+ * Get amenities and features
+ *
+ * @return array
+ */
+function bediq_get_sub_field( $repeater_field, $sub_field = '', $post_id ) {
+    if ( ! function_exists( 'get_field' ) ) {
+        return;
+    }
+    $sub_filed_values =     [];
+    $fields           =     get_field( $repeater_field, $post_id );
 
-        if ( count( $fields ) ) {
-            foreach ( $fields as $field ) {
-                if ( ! is_array( $field[$sub_field] ) ) {
-                    $sub_filed_values[] = $field[$sub_field];
-                } else {
-                    foreach ( $field[$sub_field] as $single_field ) {
-                        $sub_filed_values[] =    $single_field;
-                    }
+    if ( count( $fields ) ) {
+        foreach ( $fields as $field ) {
+            if ( ! is_array( $field[$sub_field] ) ) {
+                $sub_filed_values[] = $field[$sub_field];
+            } else {
+                foreach ( $field[$sub_field] as $single_field ) {
+                    $sub_filed_values[] =    $single_field;
                 }
             }
         }
-
-        return $sub_filed_values;
     }
+    return $sub_filed_values;
+}

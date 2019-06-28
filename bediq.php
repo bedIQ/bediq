@@ -104,7 +104,6 @@ class bedIQ_Plugin {
         add_action( 'init', [ $this, 'init' ] );
         // Register Post Type and taxonomes
         add_action( 'init', [ $this, 'register_post_types' ] );
-        add_action( 'init', [ $this, 'register_taxonomies' ] );
 
         add_action( 'admin_notices', [ $this, 'required_plugin_notice' ] );
 
@@ -177,13 +176,6 @@ class bedIQ_Plugin {
             new \bedIQ\Admin\Admin();
         }
         new \bedIQ\Schema_Manager();
-
-        $this->container['accommodation']   =   new \bedIQ\Post_Type\Accommodation();
-        $this->container['offer']           =   new \bedIQ\Post_Type\Offer();
-        $this->container['outlet']          =   new \bedIQ\Post_Type\Outlet();
-        $this->container['interest']        =   new \bedIQ\Post_Type\Point_Of_Interest();
-        $this->container['facility']        =   new \bedIQ\Post_Type\Facility();
-        $this->container['meeting']         =   new \bedIQ\Post_Type\Meeting();
     }
 
     public function define_constants() {
@@ -201,7 +193,7 @@ class bedIQ_Plugin {
     public function activate() {
         $term       = new \bedIQ\Admin\Insert_Term();
 
-        $this->register_taxonomies();
+        $this->register_post_types();
         $term->create_new_term();
 
         flush_rewrite_rules();
@@ -213,9 +205,19 @@ class bedIQ_Plugin {
      * @return void
      */
     public function register_post_types() {
-        $containers = $this->container;
-        foreach( $containers as $container ) {
-            $container->register_post_type();
+        $post_types =   [
+            '\bedIQ\Post_Type\Accommodation',
+            '\bedIQ\Post_Type\Offer',
+            '\bedIQ\Post_Type\Outlet',
+            '\bedIQ\Post_Type\Point_Of_Interest',
+            '\bedIQ\Post_Type\Facility',
+            '\bedIQ\Post_Type\Meeting'
+        ];
+
+        foreach( $post_types as $post_type ) {
+            $object = new $post_type();
+            $object->register_post_type();
+            $object->register_taxonomy();
         }
     }
 
