@@ -381,9 +381,9 @@ class Point_Of_Interest {
                     'placeholder'   => '',
                 ],
                 [
-                    'key'           => 'field_outlet_shift',
+                    'key'           => 'field_poi_shift',
                     'label'         => __( 'Opening Hours', 'bediq' ),
-                    'name'          => 'visibility',
+                    'name'          => 'poi_visibility',
                     'type'          => 'repeater',
                     'min'           => 1,
                     'max'           => 0,
@@ -391,7 +391,7 @@ class Point_Of_Interest {
                     'button_label'  => __( 'Add new shift', 'bediq' ),
                     'sub_fields'    => [
                         [
-                            'key'           => 'field_5d0a011c9e7c1',
+                            'key'           => 'field_poi_opening_hours',
                             'label'         => __( 'Opening Hours', 'bediq' ),
                             'name'          => 'opening_hours',
                             'type'          => 'group',
@@ -423,9 +423,9 @@ class Point_Of_Interest {
                             ],
                         ],
                         [
-                            'key'           => 'field_5d0a01c29e7c4',
+                            'key'           => 'field_poi_opening_days',
                             'label'         => __( 'Days', 'bediq' ),
-                            'name'          => 'outlet_opening_days',
+                            'name'          => 'poi_opening_days',
                             'type'          => 'group',
                             'instructions'  => '',
                             'wrapper'       => [
@@ -434,9 +434,9 @@ class Point_Of_Interest {
                             'layout' => 'block',
                             'sub_fields'    => [
                                 [
-                                    'key'       => 'field_5d0a01e09e7c5',
+                                    'key'       => 'field_poi_opening_day',
                                     'label'     => '',
-                                    'name'      => 'outlet_opening_days',
+                                    'name'      => 'poi_opening_day',
                                     'type'      => 'checkbox',
                                     'wrapper'   => [
                                         'width' => '',

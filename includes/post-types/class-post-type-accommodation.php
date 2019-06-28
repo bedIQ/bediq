@@ -102,7 +102,7 @@ class Accommodation implements \bedIQ\Post_Type {
                 [
                     'key'    => 'offers',
                     'label'  => __( 'Offers', 'bediq' ),
-                    'name'   => 'offers',
+                    'name'   => 'acm_offers',
                     'type'   => 'repeater',
                     'layout' => 'row',
                     'button_label' => 'Add New Offer',
@@ -111,7 +111,7 @@ class Accommodation implements \bedIQ\Post_Type {
                         [
                             'key'   => 'offer',
                             'label' => '',
-                            'name'  => 'offer',
+                            'name'  => 'acm_offer',
                             'type' => 'post_object',
                             'post_type' => [
                                 0 => 'offer',
@@ -125,7 +125,7 @@ class Accommodation implements \bedIQ\Post_Type {
                 [
                     'key'       => 'floor_size',
                     'label'     => __( 'Floor Size', 'bediq' ),
-                    'name'      => 'floor_size',
+                    'name'      => 'acm_floor_size',
                     'type'      => 'text',
                     'wrapper'   => [
                         'width' => '50',
@@ -134,7 +134,7 @@ class Accommodation implements \bedIQ\Post_Type {
                 [
                     'key'     => 'floor_size_unit',
                     'label'   => __( 'Unit', 'bediq' ),
-                    'name'    => 'floor_size_unit',
+                    'name'    => 'acm_floor_size_unit',
                     'type'    => 'select',
                     'wrapper' => [
                         'width' => '30',
@@ -147,7 +147,7 @@ class Accommodation implements \bedIQ\Post_Type {
                 [
                     'key'   => 'field_5cfe21a576261',
                     'label' => __( 'Bed Room', 'bediq' ),
-                    'name'  => 'bed_room',
+                    'name'  => 'acm_bed_room',
                     'type'  => 'repeater',
                     'min'   => 1,
                     'max'   => 0,
@@ -157,13 +157,13 @@ class Accommodation implements \bedIQ\Post_Type {
                         [
                             'key'   => 'field_5cfe223476262',
                             'label' => __( 'Bed Room Name', 'bediq' ),
-                            'name'  => 'bed_room_name',
+                            'name'  => 'acm_bed_room_name',
                             'type'  => 'text',
                         ],
                         [
                             'key'   => 'field_5cff3f0101fc0',
                             'label' => __( 'Beddings', 'bediq' ),
-                            'name'  => 'beddings',
+                            'name'  => 'acm_beddings',
                             'type'  => 'repeater',
                             'wrapper' => [
                                 'width' => '50',
@@ -177,7 +177,7 @@ class Accommodation implements \bedIQ\Post_Type {
                                 [
                                     'key'     => 'field_5cff429301fc1',
                                     'label'   => __( 'Bedding', 'bediq' ),
-                                    'name'    => 'bedding',
+                                    'name'    => 'acm_bedding',
                                     'type'    => 'select',
                                     'wrapper' => [
                                         'width' => '50',
@@ -195,7 +195,7 @@ class Accommodation implements \bedIQ\Post_Type {
                         [
                             'key'   => 'field_5cff43ba01fc2',
                             'label' => __( 'Bothrooms', 'bediq' ),
-                            'name'  => 'bothrooms',
+                            'name'  => 'acm_bathrooms',
                             'type'  => 'repeater',
                             'wrapper' => [
                                 'width' => '50',
@@ -207,8 +207,8 @@ class Accommodation implements \bedIQ\Post_Type {
                             'sub_fields'   => [
                                 [
                                     'key'     => 'field_5cff43d501fc3',
-                                    'label'   => __( 'Bothroom', 'bediq' ),
-                                    'name'    => 'bothroom',
+                                    'label'   => __( 'Bathroom', 'bediq' ),
+                                    'name'    => 'acm_bathroom',
                                     'type'    => 'select',
                                     'choices' => [
                                         'guest_toilet'      => __( 'Guest Toilet', 'bediq' ),
@@ -222,7 +222,7 @@ class Accommodation implements \bedIQ\Post_Type {
                         [
                             'key'     => 'field_5cff48dcf0fe9',
                             'label'   => 'Occupancy',
-                            'name'    => 'occupancy',
+                            'name'    => 'acm_occupancy',
                             'type'    => 'number',
                             'wrapper' => [
                                 'width' => '33',
@@ -231,7 +231,7 @@ class Accommodation implements \bedIQ\Post_Type {
                         [
                             'key'     => 'field_5cff4955f0fea',
                             'label'   => __( 'Adults', 'bediq' ),
-                            'name'    => 'adults',
+                            'name'    => 'acm_adults',
                             'type'    => 'number',
                             'wrapper' => [
                                 'width' => '33',
@@ -240,7 +240,7 @@ class Accommodation implements \bedIQ\Post_Type {
                         [
                             'key'     => 'field_5cff4967f0feb',
                             'label'   => __( 'Children', 'bediq' ),
-                            'name'    => 'children',
+                            'name'    => 'acm_children',
                             'type'    => 'number',
                             'wrapper' => [
                                 'width' => '33',
@@ -249,7 +249,7 @@ class Accommodation implements \bedIQ\Post_Type {
                         [
                             'key'       => 'field_5cff4b681e373',
                             'label'     => __( 'View', 'bediq' ),
-                            'name'      => 'view',
+                            'name'      => 'acm_view',
                             'type'      => 'select',
                             'choices'   => [
                                 'view' => __( 'View', 'bediq' ),
@@ -264,7 +264,7 @@ class Accommodation implements \bedIQ\Post_Type {
                 [
                     'key'       => 'field_5cff64bdba408',
                     'label'     => 'Policies',
-                    'name'      => 'policies',
+                    'name'      => 'acm_policies',
                     'type'      => 'select',
                     'choices'   => [
                         'pets_allowed'      => __( 'Pets Allowed', 'bediq' ),
@@ -278,7 +278,7 @@ class Accommodation implements \bedIQ\Post_Type {
                 [
                     'key'    => 'field_5cff6575ba409',
                     'label'  => __( 'Features and Amenities', 'bediq' ),
-                    'name'   => 'features_and_amenities',
+                    'name'   => 'acm_features_and_amenities',
                     'type'   => 'repeater',
                     'min'    => 1,
                     'max'    => 0,
@@ -288,13 +288,13 @@ class Accommodation implements \bedIQ\Post_Type {
                         [
                             'key'   => 'field_display_name',
                             'label' =>  __( 'Display Name', 'bediq' ),
-                            'name'  =>  'display_name',
+                            'name'  =>  'acm_display_name',
                             'type'  =>  'text',
                         ],
                         [
                             'key'       => 'field_5cff659aba40a',
                             'label'     => __( 'Features', 'bediq' ),
-                            'name'      => 'features',
+                            'name'      => 'acm_features',
                             'type'      => 'select',
                             'choices'   => [
                                 'view'  => __( 'View', 'bediq' ),
@@ -337,19 +337,19 @@ class Accommodation implements \bedIQ\Post_Type {
                 [
                     'key'   => 'field_5cff81a4836bf',
                     'label' => __( 'Roomtype Code', 'bediq' ),
-                    'name'  => 'room_type_code',
+                    'name'  => 'acm_room_type_code',
                     'type'  => 'text',
                 ],
                 [
                     'key'   => 'field_5cff825c836c0',
                     'label' => 'From Price',
-                    'name'  => 'from_price',
+                    'name'  => 'acm_from_price',
                     'type'  => 'text',
                 ],
                 [
                     'key'   => 'field_5cff827b836c1',
                     'label' => 'To Price',
-                    'name'  => 'to_price',
+                    'name'  => 'acm_to_price',
                     'type'  => 'text',
                 ],
             ],
@@ -417,7 +417,7 @@ class Accommodation implements \bedIQ\Post_Type {
                 [
                     'key'           => 'field_5d0086e7c2f19',
                     'label'         => '',
-                    'name'          => 'bed_room_image',
+                    'name'          => 'acm_bed_room_image',
                     'type'          => 'image',
                     'return_format' => 'array',
                     'preview_size'  => 'post-thumbnail',
@@ -447,7 +447,7 @@ class Accommodation implements \bedIQ\Post_Type {
                 [
                     'key'           => 'field_5d0086e7c2f19',
                     'label'         => '',
-                    'name'          => 'both_room_image',
+                    'name'          => 'acm_both_room_image',
                     'type'          => 'image',
                     'return_format' => 'array',
                     'preview_size'  => 'post-thumbnail',
@@ -477,7 +477,7 @@ class Accommodation implements \bedIQ\Post_Type {
                 [
                     'key'           => 'field_view_image',
                     'label'         => '',
-                    'name'          => 'view_image',
+                    'name'          => 'acm_view_image',
                     'type'          => 'image',
                     'return_format' => 'array',
                     'preview_size'  => 'post-thumbnail',
@@ -507,7 +507,7 @@ class Accommodation implements \bedIQ\Post_Type {
                 [
                     'key' => 'field_floor_plan_image',
                     'label' => '',
-                    'name' => 'floor_plan_image',
+                    'name' => 'acm_floor_plan_image',
                     'type' => 'image',
                     'return_format' => 'array',
                     'preview_size' => 'post-thumbnail',
@@ -537,7 +537,7 @@ class Accommodation implements \bedIQ\Post_Type {
                 [
                     'key'           => 'field_gallery_image',
                     'label'         => '',
-                    'name'          => 'gallery_image',
+                    'name'          => 'acm_gallery_image',
                     'type'          => 'image',
                     'return_format' => 'array',
                     'preview_size'  => 'post-thumbnail',

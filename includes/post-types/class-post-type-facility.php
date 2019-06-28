@@ -379,7 +379,7 @@ class Facility implements \bedIQ\Post_Type {
                 [
                     'key'           => 'field_facility_shift',
                     'label'         => __( 'Opening Hours', 'bediq' ),
-                    'name'          => 'visibility',
+                    'name'          => 'facility_visibility',
                     'type'          => 'repeater',
                     'min'           => 1,
                     'max'           => 0,
@@ -387,7 +387,7 @@ class Facility implements \bedIQ\Post_Type {
                     'button_label'  => __( 'Add new shift', 'bediq' ),
                     'sub_fields'    => [
                         [
-                            'key'           => 'field_5d0a011c9e7c1',
+                            'key'           => 'field_facility_opening_hours',
                             'label'         => __( 'Opening Hours', 'bediq' ),
                             'name'          => 'opening_hours',
                             'type'          => 'group',
@@ -419,7 +419,7 @@ class Facility implements \bedIQ\Post_Type {
                             ],
                         ],
                         [
-                            'key'           => 'field_5d0a01c29e7c4',
+                            'key'           => 'field_facility_opening_days',
                             'label'         => __( 'Days', 'bediq' ),
                             'name'          => 'facility_opening_days',
                             'type'          => 'group',
@@ -430,7 +430,7 @@ class Facility implements \bedIQ\Post_Type {
                             'layout' => 'block',
                             'sub_fields'    => [
                                 [
-                                    'key'       => 'field_5d0a01e09e7c5',
+                                    'key'       => 'field_facility_opening_day',
                                     'label'     => '',
                                     'name'      => 'facility_opening_days',
                                     'type'      => 'checkbox',

@@ -381,7 +381,7 @@ class Outlet implements \bedIQ\Post_Type {
                 [
                     'key'           => 'field_outlet_shift',
                     'label'         => __( 'Opening Hours', 'bediq' ),
-                    'name'          => 'visibility',
+                    'name'          => 'outlet_visibility',
                     'type'          => 'repeater',
                     'min'           => 1,
                     'max'           => 0,
