@@ -285,11 +285,11 @@ class Meeting implements \bedIQ\Post_Type {
         ] );
 
         acf_add_local_field_group( [
-            'key'       => 'group_meeting_available_offer',
+            'key'       => 'group_meeting_offer',
             'title'     => __( 'Offers Available', 'bediq' ),
             'fields'    => [
                 [
-                    'key'           => 'field_5d09fcc8daaf8',
+                    'key'           => 'field_offers',
                     'label'         => __( 'Offers Available', 'bediq' ),
                     'name'          => 'offers_available',
                     'type'          => 'repeater',
@@ -299,16 +299,15 @@ class Meeting implements \bedIQ\Post_Type {
                     'button_label'  => __( 'Add new offer', 'bediq' ),
                     'sub_fields'    => [
                         [
-                            'key'           => 'field_5d09fd21daaf9',
+                            'key'           => 'field_offer',
                             'label'         => '',
                             'name'          => '',
                             'type'          => 'select',
-                            'choices'       => [
-                            ],
-                            'default_value' => [
+                            'type'  => 'post_object',
+                            'post_type' => [
+                                0 => 'offer',
                             ],
                             'allow_null'    => 0,
-                            'multiple'      => 1,
                             'ui'            => 1,
                             'ajax'          => 1,
                             'return_format' => 'value',
@@ -339,7 +338,7 @@ class Meeting implements \bedIQ\Post_Type {
                     ]
                 ],
                 [
-                    'key'   => 'field_5d09ff299e7ba',
+                    'key'   => 'meeting_location',
                     'label' => __( 'Location', 'bediq' ),
                     'name'  => 'meeting_location',
                     'type'  => 'text',
@@ -351,13 +350,13 @@ class Meeting implements \bedIQ\Post_Type {
                     'type'  => 'text',
                 ],
                 [
-                    'key'   => 'field_5d09ff5f9e7bc',
+                    'key'   => 'meeting_style',
                     'label' => 'Style',
                     'name'  => 'meeting_style',
                     'type'  => 'text',
                 ],
                 [
-                    'key'           => 'field_5d09ff7c9e7bd',
+                    'key'           => 'meeting_capacity',
                     'label'         => '',
                     'name'          => 'meeting_capacity',
                     'type'          => 'repeater',
@@ -395,7 +394,7 @@ class Meeting implements \bedIQ\Post_Type {
                     ],
                 ],
                 [
-                    'key'       => 'field_5d0a00709e7c0',
+                    'key'       => 'policy_name',
                     'label'     => __( 'Policy Name', 'bediq' ),
                     'name'      => 'policy_name',
                     'type'      => 'select',
@@ -412,7 +411,7 @@ class Meeting implements \bedIQ\Post_Type {
                 ],
 
                 [
-                    'key'   => 'field_5d0a04c80f7ad',
+                    'key'   => 'short_description',
                     'label' => __( 'Short Description', 'bediq' ),
                     'name'  => 'short_description',
                     'type'  => 'textarea',
