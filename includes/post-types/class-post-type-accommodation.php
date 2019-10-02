@@ -100,6 +100,7 @@ class Accommodation implements \bedIQ\Post_Type {
             'title'  => __( 'Room Features', 'bediq' ),
             'fields' => [
                 [
+
                     'key'          => 'offers',
                     'label'        => __( 'Offers', 'bediq' ),
                     'name'         => 'acm_offers',
@@ -112,6 +113,7 @@ class Accommodation implements \bedIQ\Post_Type {
                             'key'   => 'offer',
                             'label' => '',
                             'name'  => 'acm_offer',
+
                             'type'  => 'post_object',
                             'post_type' => [
                                 0 => 'offer',
@@ -123,19 +125,23 @@ class Accommodation implements \bedIQ\Post_Type {
                     ],
                 ],
                 [
+
                     'key'   => 'floor_size',
                     'label' => __( 'Floor Size', 'bediq' ),
                     'name'  => 'acm_floor_size',
                     'type'  => 'text',
+
                     'wrapper'   => [
                         'width' => '50',
                     ]
                 ],
                 [
+
                     'key'   => 'floor_size_unit',
                     'label' => __( 'Unit', 'bediq' ),
                     'name'  => 'acm_floor_size_unit',
                     'type'  => 'select',
+
                     'wrapper' => [
                         'width' => '30',
                     ],
@@ -175,10 +181,12 @@ class Accommodation implements \bedIQ\Post_Type {
                             'button_label' => __( 'Add Bedding', 'bediq' ),
                             'sub_fields' => [
                                 [
+
                                     'key'   => 'field_5cff429301fc1',
                                     'label' => __( 'Bedding', 'bediq' ),
                                     'name'  => 'acm_bedding',
                                     'type'  => 'select',
+
                                     'wrapper' => [
                                         'width' => '50',
                                     ],
@@ -206,10 +214,12 @@ class Accommodation implements \bedIQ\Post_Type {
                             'button_label' => __( 'Add Bathroom', 'bediq' ),
                             'sub_fields'   => [
                                 [
+
                                     'key'   => 'field_5cff43d501fc3',
                                     'label' => __( 'Bathroom', 'bediq' ),
                                     'name'  => 'acm_bathroom',
                                     'type'  => 'select',
+
                                     'choices' => [
                                         'guest_toilet'   => __( 'Guest Toilet', 'bediq' ),
                                         'shower'         => __( 'Shower', 'bediq' ),
