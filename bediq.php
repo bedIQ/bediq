@@ -156,7 +156,7 @@ class bedIQ_Plugin {
         }
         require_once BEDIQ_INCLUDES . '/core-functions.php';
         require_once BEDIQ_INCLUDES . '/posts-to-posts.php';
-        require_once BEDIQ_INCLUDES . '/class-schema-manager.php';
+        require_once BEDIQ_INCLUDES . '/managers/class-schema-manager.php';
         require_once BEDIQ_INCLUDES . '/interface-post-type.php';
         require_once BEDIQ_INCLUDES . '/post-types/class-post-type-accommodation.php';
         require_once BEDIQ_INCLUDES . '/post-types/class-post-type-offer.php';
@@ -175,7 +175,7 @@ class bedIQ_Plugin {
         if ( is_admin() ) {
             new \bedIQ\Admin\Admin();
         }
-        new \bedIQ\Schema_Manager();
+        new \bedIQ\Manager\Schema_Manager();
     }
 
     public function define_constants() {
@@ -391,7 +391,6 @@ class bedIQ_Plugin {
             $file   = 'single-room.php';
             $find[] = $file;
             $find[] = $this->theme_dir_path. $file;
-
         } else if ( is_single() && get_post_type() == 'offer' ) {
             $file   = 'single-offer.php';
             $find[] = $file;

@@ -100,19 +100,19 @@ class Accommodation implements \bedIQ\Post_Type {
             'title'  => __( 'Room Features', 'bediq' ),
             'fields' => [
                 [
-                    'key'    => 'offers',
-                    'label'  => __( 'Offers', 'bediq' ),
-                    'name'   => 'acm_offers',
-                    'type'   => 'repeater',
-                    'layout' => 'row',
+                    'key'          => 'offers',
+                    'label'        => __( 'Offers', 'bediq' ),
+                    'name'         => 'acm_offers',
+                    'type'         => 'repeater',
+                    'layout'       => 'row',
                     'button_label' => 'Add New Offer',
-                    'min'   =>  '1',
+                    'min'          =>  '1',
                     'sub_fields' => [
                         [
                             'key'   => 'offer',
                             'label' => '',
                             'name'  => 'acm_offer',
-                            'type' => 'post_object',
+                            'type'  => 'post_object',
                             'post_type' => [
                                 0 => 'offer',
                             ],
@@ -123,19 +123,19 @@ class Accommodation implements \bedIQ\Post_Type {
                     ],
                 ],
                 [
-                    'key'       => 'floor_size',
-                    'label'     => __( 'Floor Size', 'bediq' ),
-                    'name'      => 'acm_floor_size',
-                    'type'      => 'text',
+                    'key'   => 'floor_size',
+                    'label' => __( 'Floor Size', 'bediq' ),
+                    'name'  => 'acm_floor_size',
+                    'type'  => 'text',
                     'wrapper'   => [
                         'width' => '50',
                     ]
                 ],
                 [
-                    'key'     => 'floor_size_unit',
-                    'label'   => __( 'Unit', 'bediq' ),
-                    'name'    => 'acm_floor_size_unit',
-                    'type'    => 'select',
+                    'key'   => 'floor_size_unit',
+                    'label' => __( 'Unit', 'bediq' ),
+                    'name'  => 'acm_floor_size_unit',
+                    'type'  => 'select',
                     'wrapper' => [
                         'width' => '30',
                     ],
@@ -145,7 +145,7 @@ class Accommodation implements \bedIQ\Post_Type {
                     ]
                 ],
                 [
-                    'key'   => 'field_5cfe21a576261',
+                    'key'   => 'bed_room',
                     'label' => __( 'Bed Room', 'bediq' ),
                     'name'  => 'acm_bed_room',
                     'type'  => 'repeater',
@@ -175,19 +175,19 @@ class Accommodation implements \bedIQ\Post_Type {
                             'button_label' => __( 'Add Bedding', 'bediq' ),
                             'sub_fields' => [
                                 [
-                                    'key'     => 'field_5cff429301fc1',
-                                    'label'   => __( 'Bedding', 'bediq' ),
-                                    'name'    => 'acm_bedding',
-                                    'type'    => 'select',
+                                    'key'   => 'field_5cff429301fc1',
+                                    'label' => __( 'Bedding', 'bediq' ),
+                                    'name'  => 'acm_bedding',
+                                    'type'  => 'select',
                                     'wrapper' => [
                                         'width' => '50',
                                     ],
                                     'choices' => [
-                                        'king_size'    => __( 'King Size', 'bediq' ),
-                                        'queen_size'   => __( 'Queen Size', 'bediq' ),
-                                        'double_king'  => __ ( 'Double King', 'bediq' ),
-                                        'double'       => __( 'Double', 'bediq' ),
-                                        'sofa'         => __( 'Sofa', 'bediq' ),
+                                        'king_size'   => __( 'King Size', 'bediq' ),
+                                        'queen_size'  => __( 'Queen Size', 'bediq' ),
+                                        'double_king' => __ ( 'Double King', 'bediq' ),
+                                        'double'      => __( 'Double', 'bediq' ),
+                                        'sofa'        => __( 'Sofa', 'bediq' ),
                                     ],
                                 ],
                             ],
@@ -200,27 +200,27 @@ class Accommodation implements \bedIQ\Post_Type {
                             'wrapper' => [
                                 'width' => '50',
                             ],
-                            'min' => 1,
-                            'max' => 0,
+                            'min'    => 1,
+                            'max'    => 0,
                             'layout' => 'block',
-                            'button_label' => __( 'Add Bothroom', 'bediq' ),
+                            'button_label' => __( 'Add Bathroom', 'bediq' ),
                             'sub_fields'   => [
                                 [
-                                    'key'     => 'field_5cff43d501fc3',
-                                    'label'   => __( 'Bathroom', 'bediq' ),
-                                    'name'    => 'acm_bathroom',
-                                    'type'    => 'select',
+                                    'key'   => 'field_5cff43d501fc3',
+                                    'label' => __( 'Bathroom', 'bediq' ),
+                                    'name'  => 'acm_bathroom',
+                                    'type'  => 'select',
                                     'choices' => [
-                                        'guest_toilet'      => __( 'Guest Toilet', 'bediq' ),
-                                        'shower'            => __( 'Shower', 'bediq' ),
-                                        'bathtub'           => __( 'Bathtub', 'bediq' ),
-                                        'bathtub_shower'    => __( 'Bathtub & Shower', 'bediq' ),
+                                        'guest_toilet'   => __( 'Guest Toilet', 'bediq' ),
+                                        'shower'         => __( 'Shower', 'bediq' ),
+                                        'bathtub'        => __( 'Bathtub', 'bediq' ),
+                                        'bathtub_shower' => __( 'Bathtub & Shower', 'bediq' ),
                                     ],
                                 ],
                             ],
                         ],
                         [
-                            'key'     => 'field_5cff48dcf0fe9',
+                            'key'     => 'occupancy',
                             'label'   => 'Occupancy',
                             'name'    => 'acm_occupancy',
                             'type'    => 'number',
@@ -229,7 +229,7 @@ class Accommodation implements \bedIQ\Post_Type {
                             ],
                         ],
                         [
-                            'key'     => 'field_5cff4955f0fea',
+                            'key'     => 'adult',
                             'label'   => __( 'Adults', 'bediq' ),
                             'name'    => 'acm_adults',
                             'type'    => 'number',
@@ -238,7 +238,7 @@ class Accommodation implements \bedIQ\Post_Type {
                             ],
                         ],
                         [
-                            'key'     => 'field_5cff4967f0feb',
+                            'key'     => 'children',
                             'label'   => __( 'Children', 'bediq' ),
                             'name'    => 'acm_children',
                             'type'    => 'number',
@@ -308,7 +308,7 @@ class Accommodation implements \bedIQ\Post_Type {
                     ],
                 ],
                 [
-                    'key'   => 'field_5cff6798e3404',
+                    'key'   => 'short_description',
                     'label' => __( 'Short Description', 'bediq' ),
                     'name'  => 'short_description',
                     'type'  => 'textarea',
@@ -332,16 +332,16 @@ class Accommodation implements \bedIQ\Post_Type {
 
         acf_add_local_field_group( [
             'key'       => 'group_5cff819e50636',
-            'title'     => 'Connectivity',
+            'title'     => __( 'Connectivity', 'bediq' ),
             'fields'    => [
                 [
-                    'key'   => 'field_5cff81a4836bf',
+                    'key'   => 'room_type_code',
                     'label' => __( 'Roomtype Code', 'bediq' ),
                     'name'  => 'acm_room_type_code',
                     'type'  => 'text',
                 ],
                 [
-                    'key'   => 'field_5cff825c836c0',
+                    'key'   => 'from_price',
                     'label' => 'From Price',
                     'name'  => 'acm_from_price',
                     'type'  => 'text',
@@ -415,7 +415,7 @@ class Accommodation implements \bedIQ\Post_Type {
             'title'     => __( 'Bed Room Image', 'bediq' ),
             'fields'    => [
                 [
-                    'key'           => 'field_5d0086e7c2f19',
+                    'key'           => 'bed_room_image',
                     'label'         => '',
                     'name'          => 'acm_bed_room_image',
                     'type'          => 'image',
@@ -441,11 +441,11 @@ class Accommodation implements \bedIQ\Post_Type {
         ] );
 
         acf_add_local_field_group( [
-            'key'       => 'group_both_room_image',
-            'title'     => __( 'Both Room Image', 'bediq' ),
+            'key'       => 'group_bath_room_image',
+            'title'     => __( 'Bath Room Image', 'bediq' ),
             'fields'    => [
                 [
-                    'key'           => 'field_5d0086e7c2f19',
+                    'key'           => 'bathroom_image',
                     'label'         => '',
                     'name'          => 'acm_both_room_image',
                     'type'          => 'image',

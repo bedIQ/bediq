@@ -134,3 +134,22 @@ function bediq_get_sub_field( $repeater_field, $sub_field = '', $post_id ) {
     }
     return $sub_filed_values;
 }
+
+function bediq_get_post( $post_type ) {
+    if ( is_singular( $post_type ) ) {
+        global $post;
+
+        return $post;
+    }
+
+    $args = array(
+        'post_type'      => $post_type,
+        'numberposts'    => -1,
+        'posts_per_page' => 1,
+        'order'          => 'ASC'
+    );
+
+    $posts = get_posts($args);
+
+    return $posts[0];
+}

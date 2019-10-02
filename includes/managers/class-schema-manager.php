@@ -1,5 +1,5 @@
 <?php
-namespace bedIQ;
+namespace bedIQ\Manager;
 /**
  * Schema Manager
  */
