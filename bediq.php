@@ -156,7 +156,9 @@ class bedIQ_Plugin {
         }
         require_once BEDIQ_INCLUDES . '/core-functions.php';
         require_once BEDIQ_INCLUDES . '/posts-to-posts.php';
+
         require_once BEDIQ_INCLUDES . '/managers/class-schema-manager.php';
+
         require_once BEDIQ_INCLUDES . '/interface-post-type.php';
         require_once BEDIQ_INCLUDES . '/post-types/class-post-type-accommodation.php';
         require_once BEDIQ_INCLUDES . '/post-types/class-post-type-offer.php';
