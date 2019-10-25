@@ -47,16 +47,16 @@ add_action( 'bediq_after_single_event_summary', 'bediq_template_event_tab', 10 )
 -------------------------------------------------- */
 
 
-add_action( 'bediq_before_single_offer', 'bediq_template_featured_image', 10 );
-add_action( 'bediq_before_single_offer', 'bediq_template_post_title', 15 );
+// add_action( 'bediq_before_single_offer', 'bediq_template_featured_image', 10 );
+// add_action( 'bediq_before_single_offer', 'bediq_template_post_title', 15 );
 
-add_action( 'bediq_before_single_offer_summary', 'bediq_template_offer_offer', 15 );
-add_action( 'bediq_before_single_offer_summary', 'bediq_template_book_button', 20 );
+// add_action( 'bediq_before_single_offer_summary', 'bediq_template_offer_offer', 15 );
+// add_action( 'bediq_before_single_offer_summary', 'bediq_template_book_button', 20 );
 
-add_action( 'bediq_single_offer_summary', 'bediq_template_post_content', 10 );
-add_action( 'bediq_single_offer_summary', 'bediq_template_offer_schema', 15 );
+// add_action( 'bediq_single_offer_summary', 'bediq_template_post_content', 10 );
+// add_action( 'bediq_single_offer_summary', 'bediq_template_offer_schema', 15 );
 
-add_action( 'bediq_after_single_offer_summary', 'bediq_template_offer_tab', 15 );
+// add_action( 'bediq_after_single_offer_summary', 'bediq_template_offer_tab', 15 );
 
 
 /*  --------------------------------------------------
@@ -444,14 +444,14 @@ add_action( 'bediq_archive_event_summary', 'bediq_template_post_content', 10 );
 -------------------------------------------------- */
 
 
-add_action( 'bediq_before_archive_offer', 'bediq_template_featured_image', 10 );
-add_action( 'bediq_before_archive_offer', 'bediq_template_post_title', 15 );
-add_action( 'bediq_before_archive_offer', 'bediq_template_offer_schema', 20 );
+// add_action( 'bediq_before_archive_offer', 'bediq_template_featured_image', 10 );
+// add_action( 'bediq_before_archive_offer', 'bediq_template_post_title', 15 );
+// add_action( 'bediq_before_archive_offer', 'bediq_template_offer_schema', 20 );
 
-add_action( 'bediq_before_archive_offer_summary', 'bediq_template_offer_offer', 15 );
-add_action( 'bediq_before_archive_offer_summary', 'bediq_template_book_button', 20 );
+// add_action( 'bediq_before_archive_offer_summary', 'bediq_template_offer_offer', 15 );
+// add_action( 'bediq_before_archive_offer_summary', 'bediq_template_book_button', 20 );
 
-add_action( 'bediq_archive_offer_summary', 'bediq_template_post_content', 10 );
+// add_action( 'bediq_archive_offer_summary', 'bediq_template_post_content', 10 );
 
 //add_action( 'bediq_after_archive_offer_summary', 'bediq_template_offer_tab', 15 );
 

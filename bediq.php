@@ -107,7 +107,7 @@ class bedIQ_Plugin {
 
         add_action( 'admin_notices', [ $this, 'required_plugin_notice' ] );
 
-        add_filter( 'template_include', [ $this, 'template_loader' ], 20 );
+        // add_filter( 'template_include', [ $this, 'template_loader' ], 20 );
 
         // Loads frontend scripts and styles
         add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
