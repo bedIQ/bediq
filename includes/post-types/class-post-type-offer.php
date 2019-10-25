@@ -30,7 +30,7 @@ class Offer implements \bedIQ\Post_Type {
             'query_var'       => true,
             'has_archive'     => true,
             'supports'        => ['title', 'editor', 'thumbnail'],
-            'menu_icon'       => 'dashicons-tickets-alt',
+            'menu_icon'       => 'dashicons-screenoptions',
             'taxonomies'      => [ 'hotel_offers' ],
             'labels'          => [
                 'name'               => __( 'Offers', 'bediq' ),

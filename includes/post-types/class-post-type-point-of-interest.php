@@ -31,7 +31,7 @@ class Point_Of_Interest {
             'has_archive'     => true,
             'supports'        => ['title', 'editor', 'thumbnail'],
             'taxonomies'      => [ 'poi_types' ],
-            'menu_icon'       => 'dashicons-admin-home',
+            'menu_icon'       => 'dashicons-screenoptions',
             'labels'          => [
                 'name'               => __( 'Points of Interest', 'bediq' ),
                 'singular_name'      => __( 'Point of Interest', 'bediq' ),

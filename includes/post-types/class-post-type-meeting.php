@@ -31,7 +31,7 @@ class Meeting implements \bedIQ\Post_Type {
             'query_var'       => true,
             'has_archive'     => true,
             'supports'        => ['title', 'editor', 'thumbnail'],
-            'menu_icon'       => 'dashicons-share-alt',
+            'menu_icon'       => 'dashicons-screenoptions',
             'taxonomies'      => [],
             'labels'          => [
                 'name'               => __( 'Meeting', 'bediq' ),
