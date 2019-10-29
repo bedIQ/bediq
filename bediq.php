@@ -197,6 +197,7 @@ class bedIQ_Plugin {
 
         $this->register_post_types();
         $term->create_new_term();
+        $this->add_cap();
 
         flush_rewrite_rules();
     }
@@ -242,7 +243,7 @@ class bedIQ_Plugin {
      * Nothing being called here yet.
      */
     public function deactivate() {
-
+        $this->remove_cap();
     }
 
     /**
@@ -295,6 +296,32 @@ class bedIQ_Plugin {
 
     public function admin_enqueue_scripts() {
         wp_enqueue_style( 'bediq-admin-style', plugins_url( 'assets/css/admin.css', __FILE__ ), false, date( 'Ymd' ) );
+    }
+
+    /**
+     * Add capabiity for create accommodation
+     */
+    public function add_cap() {
+        $user_roles = [ 'administrator', 'editor', 'author' ];
+
+        foreach ( $user_roles as $user_role ) {
+            $role = get_role( $user_role );
+
+            $role->add_cap( 'create_accommodations' );
+        }
+    }
+
+    /**
+     * Remove capabiity for create accommodation
+     */
+    public function remove_cap() {
+        $user_roles = [ 'administrator', 'editor', 'author' ];
+
+        foreach ( $user_roles as $user_role ) {
+            $role = get_role( $user_role );
+
+            $role->remove_cap( 'create_accommodations' );
+        }
     }
 
     /**

@@ -56,12 +56,6 @@ class Accommodation implements \bedIQ\Post_Type {
                 'feeds'              => true,
             ],
             'capabilities'    => [
-                'edit_post'          => 'edit_accommodation',
-                'read_post'          => 'read_accommodation',
-                'delete_post'        => 'delete_accommodation',
-                'edit_others_posts'  => 'edit_others_accommodations',
-                // 'publish_posts'      => 'publish_accommodations',
-                'read_private_posts' => 'read_private_accommodations',
                 'create_posts'       => 'create_accommodations',
             ],
             'map_meta_cap' => true
