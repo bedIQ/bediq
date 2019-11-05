@@ -295,15 +295,10 @@ class Accommodation implements \bedIQ\Post_Type {
                             'key'       => 'field_5cff659aba40a',
                             'label'     => __( 'Features', 'bediq' ),
                             'name'      => 'acm_features',
-                            'type'      => 'select',
+                            'type'      => 'text',
                             'choices'   => [
                                 'view'  => __( 'View', 'bediq' ),
-                            ],
-                            'multiple'      => 1,
-                            'ui'            => 1,
-                            'ajax'          => 1,
-                            'return_format' => 'value',
-                            'placeholder'   => '',
+                            ]
                         ],
                     ],
                 ],
