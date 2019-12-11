@@ -93,11 +93,13 @@ class bedIQ_Plugin {
      */
     public function __construct() {
 
-        register_activation_hook( __FILE__, [ $this, 'activate' ] );
-        register_deactivation_hook( __FILE__, [ $this, 'deactivate' ] );
         $this->define_constants();
         $this->file_includes();
         $this->init_classes();
+
+        register_activation_hook( __FILE__, [ $this, 'activate' ] );
+        register_deactivation_hook( __FILE__, [ $this, 'deactivate' ] );
+
 
         // Localize our plugin
         add_action( 'init', [ $this, 'localization_setup' ] );
@@ -147,13 +149,11 @@ class bedIQ_Plugin {
      * @return void
      */
     public function file_includes() {
+        require_once dirname( __FILE__ ) . '/includes/admin/class-admin.php';
 
-        if ( is_admin() ) {
-            require_once dirname( __FILE__ ) . '/includes/admin/class-insert-term.php';
-            require_once dirname( __FILE__ ) . '/includes/admin/class-admin.php';
-        } else {
-            require_once dirname( __FILE__ ) . '/includes/template-functions.php';
-        }
+        require_once dirname( __FILE__ ) . '/includes/template-functions.php';
+
+        require_once dirname( __FILE__ ) . '/includes/admin/class-insert-term.php';
         require_once BEDIQ_INCLUDES . '/core-functions.php';
         require_once BEDIQ_INCLUDES . '/posts-to-posts.php';
 
