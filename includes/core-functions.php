@@ -101,12 +101,12 @@ function bediq_date_iso( $timestamp ) {
  * @param type $taxonomy
  */
 function bediq_print_tax_link( $taxonomy ) {
-    global $post;
+	global $post;
 
-    $cat = get_the_term_list( $post->ID, $taxonomy, '', ', ', '' );
-    if ( $cat && !is_wp_error( $cat ) ) {
-        echo $cat;
-    }
+	$cat = get_the_term_list( $post->ID, $taxonomy, '', ', ', '' );
+	if ( $cat && !is_wp_error( $cat ) ) {
+		echo $cat;
+	}
 }
 
 /**
